@@ -27,7 +27,7 @@ class App extends BaseConfig
      * also accepts 'http://media.example.com/' and 'http://accounts.example.com/':
      *     ['media.example.com', 'accounts.example.com']
      *
-     * @var list<string>
+     * @var string[]     
      */
     public array $allowedHostnames = [];
 
@@ -40,7 +40,8 @@ class App extends BaseConfig
      * something else. If you have configured your web server to remove this file
      * from your site URIs, set this variable to an empty string.
      */
-    public string $indexPage = 'index.php';
+    public string $indexPage = '';
+    // public string $indexPage = 'index.php';
 
     /**
      * --------------------------------------------------------------------------
@@ -94,7 +95,7 @@ class App extends BaseConfig
      *
      * IncomingRequest::setLocale() also uses this list.
      *
-     * @var list<string>
+     * @var string[]
      */
     public array $supportedLocales = ['en'];
 

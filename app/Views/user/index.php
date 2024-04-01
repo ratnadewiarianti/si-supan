@@ -1,4 +1,4 @@
-<?= $this->extend('templates/main'); ?>
+<?= $this->extend('layout/app'); ?>
 
 <?= $this->section('content'); ?>
 
@@ -26,14 +26,14 @@
                         </div>
                         <div class="card-body">
                             <div class="buttons" style="margin-top: -20px;">
-                                <!-- <a href="/user/create" class="btn btn-primary">Tambah</a> -->
+                                <a href="/user/create" class="btn btn-primary">Tambah</a>
                             </div>
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-2">
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Kode User</th>
+                                            <!-- <th>Kode User</th> -->
                                             <th>Nama</th>
                                             <th>Username</th>
                                             <th>Role</th>
@@ -42,7 +42,21 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                       
+                                        <?php $no = 1; ?>
+                                        <?php foreach ($users as $user) : ?>
+                                            <tr>
+                                                <td><?= $no++ ?></td>
+                                                <!-- <td><?= $user['id']; ?></td> -->
+                                                <td><?= $user['nama']; ?></td>
+                                                <td><?= $user['username']; ?></td>
+                                                <td><?= $user['role']; ?></td>
+                                                <td><?= $user['email']; ?></td>
+                                                <td>
+                                                    <a href="/user/edit/<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
+                                                    <a href="/user/delete/<?= $user['id']; ?>" class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
