@@ -9,31 +9,38 @@ use CodeIgniter\Router\RouteCollection;
 
 
 // Rute untuk menampilkan halaman login
-$routes->get('/', 'AuthController::login', ['as' => 'login']);
-$routes->get('login', 'AuthController::login', ['as' => 'login']);
+$routes->get('/', 'Home::index', ['filter' => 'auth']);
+$routes->get('/starter', 'Home::starter', ['filter' => 'auth']);
 
  // Rute untuk proses login
  $routes->post('auth/processLogin', 'AuthController::processLogin', ['as' => 'auth/processLogin']);
 
- // Rute untuk logout
- $routes->get('logout', 'AuthController::logout', ['as' => 'logout']);
+$routes->group('/auth', function ($routes) {
+   $routes->get('/', 'AuthController::index');
+   $routes->post('login', 'AuthController::login');
+   $routes->get('logout', 'AuthController::logout');
+});
 
-    $routes->get('/dashboard', 'Home::index');
+$routes->get('/dashboard', 'Home::index', ['filter' => 'auth']);
 
-    // USER
-    $routes->get('/user', 'UserController::index', ['as' => 'user/index']);
-    $routes->get('/user/create', 'UserController::create', ['as' => 'user/create']);
-    $routes->post('/user/store', 'UserController::store', ['as' => 'user/store']);
-    $routes->get('/user/show/(:num)', 'UserController::show/$1', ['as' => 'user/show']);
-    $routes->get('/user/edit/(:num)', 'UserController::edit/$1', ['as' => 'user/edit']);    
-    $routes->post('/user/update/(:num)', 'UserController::update/$1', ['as' => 'user/update']);
-    $routes->get('/user/delete/(:num)', 'UserController::delete/$1', ['as' => 'user/delete']);
 
-    // KARYAWAN
-    $routes->get('/karyawan', 'KaryawanController::index', ['as' => 'karyawan/index']);
-    $routes->get('/karyawan/create', 'KaryawanController::create', ['as' => 'karyawan/create']);
-    $routes->post('/karyawan/store', 'KaryawanController::store', ['as' => 'karyawan/store']);
-    $routes->get('/karyawan/show/(:num)', 'KaryawanController::show/$1', ['as' => 'karyawan/show']);
-    $routes->get('/karyawan/edit/(:num)', 'KaryawanController::edit/$1', ['as' => 'karyawan/edit']);    
-    $routes->post('/karyawan/update/(:num)', 'KaryawanController::update/$1', ['as' => 'karyawan/update']);
-    $routes->get('/karyawan/delete/(:num)', 'KaryawanController::destroy/$1', ['as' => 'karyawan/delete']);
+$routes->group('user', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'UserController::index');
+   $routes->get('create', 'UserController::create');
+   $routes->post('store', 'UserController::store');
+   $routes->post('update/(:num)', 'UserController::update/$1');
+   $routes->get('edit/(:num)', 'UserController::edit/$1');
+   $routes->get('delete/(:num)', 'UserController::delete/$1');
+   $routes->get('show/(:num)', 'UserController::show/$1');
+});
+
+$routes->group('karyawan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'KaryawanController::index');
+   $routes->get('create', 'KaryawanController::create');
+   $routes->post('store', 'KaryawanController::store');
+   $routes->post('update/(:num)', 'KaryawanController::update/$1');
+   $routes->get('edit/(:num)', 'KaryawanController::edit/$1');
+   $routes->get('delete/(:num)', 'KaryawanController::delete/$1');
+   $routes->get('show/(:num)', 'KaryawanController::show/$1');
+});
+

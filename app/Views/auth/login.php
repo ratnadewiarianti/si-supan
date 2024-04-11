@@ -17,11 +17,6 @@
     <link rel="stylesheet" href="assets/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="assets/images/favicon.png" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Load Bootstrap Datepicker CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
-
 </head>
 
 <body>
@@ -36,28 +31,13 @@
                             </div>
                             <h4>Hello! let's get started</h4>
                             <h6 class="font-weight-light">Sign in to continue.</h6>
-                            <form method="POST" action="<?= base_url('auth/processLogin');?>" class="pt-3">
+                            <form method="POST" action="<?= base_url('auth/login'); ?>" class="pt-3">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" name="username" placeholder="Username">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" class="form-control form-control-lg" id="exampleInputPassword1" name="password" placeholder="Password">
                                 </div>
-                                <div class="form-group">
-                                  <!-- <label>Tahun</label> -->
-                                  <div class="input-group">
-                                    <!-- <div class="input-group-prepend">
-                                      <div class="input-group-text">
-                                        <i class="fas fa-calendar"></i>
-                                      </div>
-                                    </div> -->
-                                    <input type="text" id="tahun" class="form-control datepicker" name="tahun" required  placeholder="Pilih Tahun">
-                                    <div class="invalid-feedback">
-                                      Pilih tahun terlebih dahulu
-                                    </div>
-                                  </div>
-                                </div>
-
                                 <div class="mt-3">
                                     <button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn">SIGN IN</button>
                                 </div>
@@ -68,7 +48,7 @@
                                             Keep me signed in
                                         </label>
                                     </div>
-                                   
+
                                 </div>
                             </form>
                         </div>
@@ -92,34 +72,6 @@
     <script src="assets/js/settings.js"></script>
     <script src="assets/js/todolist.js"></script>
     <!-- endinject -->
-
-
-  
-
-
-
-
-  
 </body>
-<!-- Load Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Load jQuery (required for Bootstrap Datepicker) -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <!-- Load Bootstrap Datepicker JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-    <script>
-        // Inisialisasi Bootstrap Datepicker
-        $(document).ready(function(){
-            $('#tahun').datepicker({
-                format: "yyyy",
-                startView: "years",
-                minViewMode: "years",
-                autoclose: true
-            });
-        });
-    </script>
-
-
 
 </html>

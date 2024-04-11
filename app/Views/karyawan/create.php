@@ -8,7 +8,7 @@
                 <div class="col-12 col-xl-8 ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Master</a></li>
-                        <li class="breadcrumb-item"><a href="/user">User</a></li>
+                        <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Add</li>
                     </ol>
                 </div>
@@ -19,7 +19,7 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Tambah User</h4>
+                        <h4 class="card-title">Tambah Karyawan</h4>
                         <form class="forms-sample" action="/karyawan/store" method="post">
                             <div class="form-group">
                                 <label>Jabatan</label>

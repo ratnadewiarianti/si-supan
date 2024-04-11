@@ -8,7 +8,7 @@
                 <div class="col-12 col-xl-8 ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Master</a></li>
-                        <li class="breadcrumb-item"><a href="user">User</a></li>
+                        <li class="breadcrumb-item"><a href="karyawan">Karyawan</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Data</li>
                     </ol>
                 </div>
@@ -25,10 +25,10 @@
                                     <div class="card-body">
                                         <div class="row mb-4">
                                             <div class="col-10">
-                                                <p class="card-title">Data Master User</p>
+                                                <p class="card-title">Data Master Karyawan</p>
                                             </div>
                                             <div class="col-2 text-end">
-                                                <a  class="btn btn-success btn-sm" href="karyawan/create">Tambah User</a>
+                                                <a  class="btn btn-success btn-sm" href="karyawan/create">Tambah Karyawan</a>
                                             </div>
                                         </div>
                                         <div class="row">

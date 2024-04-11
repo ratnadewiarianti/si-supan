@@ -65,7 +65,7 @@ class KaryawanController extends BaseController
         return redirect()->to('/karyawan');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         $this->karyawanModel->delete($id);
 

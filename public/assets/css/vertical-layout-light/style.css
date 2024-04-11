@@ -14013,7 +14013,7 @@ input[type="button"].btn-block {
   font-size: 0.875rem;
   list-style: none;
   background-color: transparent;
-  border-radius: 0.25rem;
+
 }
 
 .breadcrumb-item + .breadcrumb-item {
@@ -21544,7 +21544,7 @@ code {
 
 /* Breadcrumbs */
 .breadcrumb {
-  border: 1px solid #CED4DA;
+  border: none;
 }
 
 .breadcrumb .breadcrumb-item {

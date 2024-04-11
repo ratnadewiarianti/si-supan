@@ -19,17 +19,14 @@
                          <i class="ti-settings text-primary"></i>
                          Settings
                      </a>
-                     <a href="/logout" class="dropdown-item">
+                     <a class="dropdown-item" href="auth/logout">
                          <i class="ti-power-off text-primary"></i>
                          Logout
                      </a>
-                     <!-- <a href="/logout" class="dropdown-item has-icon text-danger">
-                    <i class="fas fa-sign-out-alt"></i> Logout
-                    </a> -->
                  </div>
              </li>
              <li class="nav-item nav-settings d-none d-lg-flex">
-                 <h5 style="display: flex; align-items: center;">Your name</h5>
+                 <h5 style="display: flex; align-items: center;"><?= session('username'); ?></h5>
              </li>
          </ul>
          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">

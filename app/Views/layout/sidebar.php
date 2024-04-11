@@ -16,7 +16,7 @@
                    <span class="menu-title">Starter</span>
                </a>
            </li>
-           <li class="nav-item">
+           <li class="nav-item  ">
                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                    <i class="ti-files menu-icon"></i>
                    <span class="menu-title">Master</span>
@@ -24,25 +24,8 @@
                </a>
                <div class="collapse" id="ui-basic">
                    <ul class="nav flex-column sub-menu">
-                       <li class="nav-item"> <a class="nav-link" href="<?= route_to('user/index'); ?>">User</a></li>
-                       <li class="nav-item"> <a class="nav-link" href="<?= route_to('karyawan/index'); ?>">Karyawan</a></li>
-                       <!-- <li class="nav-item"> <a class="nav-link" href="user/index">User</a></li> -->
-                       <!-- <li class="nav-item"> <a class="nav-link" href="#">Dropdowns</a></li>
-                       <li class="nav-item"> <a class="nav-link" href="#">Typography</a></li> -->
-                   </ul>
-               </div>
-           </li>
-           <li class="nav-item">
-               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                   <i class="ti-files menu-icon"></i>
-                   <span class="menu-title">UI Elements</span>
-                   <i class="menu-arrow"></i>
-               </a>
-               <div class="collapse" id="ui-basic">
-                   <ul class="nav flex-column sub-menu">
-                       <li class="nav-item"> <a class="nav-link" href="#">Buttons</a></li>
-                       <li class="nav-item"> <a class="nav-link" href="#">Dropdowns</a></li>
-                       <li class="nav-item"> <a class="nav-link" href="#">Typography</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/user/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="user">User</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/karyawan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="karyawan">Karyawan</a></li>
                    </ul>
                </div>
            </li>
