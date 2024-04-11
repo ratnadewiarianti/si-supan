@@ -28,3 +28,12 @@ $routes->get('login', 'AuthController::login', ['as' => 'login']);
     $routes->get('/user/edit/(:num)', 'UserController::edit/$1', ['as' => 'user/edit']);    
     $routes->post('/user/update/(:num)', 'UserController::update/$1', ['as' => 'user/update']);
     $routes->get('/user/delete/(:num)', 'UserController::delete/$1', ['as' => 'user/delete']);
+
+    // KARYAWAN
+    $routes->get('/karyawan', 'KaryawanController::index', ['as' => 'karyawan/index']);
+    $routes->get('/karyawan/create', 'KaryawanController::create', ['as' => 'karyawan/create']);
+    $routes->post('/karyawan/store', 'KaryawanController::store', ['as' => 'karyawan/store']);
+    $routes->get('/karyawan/show/(:num)', 'KaryawanController::show/$1', ['as' => 'karyawan/show']);
+    $routes->get('/karyawan/edit/(:num)', 'KaryawanController::edit/$1', ['as' => 'karyawan/edit']);    
+    $routes->post('/karyawan/update/(:num)', 'KaryawanController::update/$1', ['as' => 'karyawan/update']);
+    $routes->get('/karyawan/delete/(:num)', 'KaryawanController::destroy/$1', ['as' => 'karyawan/delete']);
