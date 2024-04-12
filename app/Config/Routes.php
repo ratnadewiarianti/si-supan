@@ -44,3 +44,12 @@ $routes->group('karyawan', ['filter' => 'auth'], function ($routes) {
    $routes->get('show/(:num)', 'KaryawanController::show/$1');
 });
 
+$routes->group('datarekening', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'DataRekeningController::index');
+   $routes->get('create', 'DataRekeningController::create');
+   $routes->post('store', 'DataRekeningController::store');
+   $routes->post('update/(:num)', 'DataRekeningController::update/$1');
+   $routes->get('edit/(:num)', 'DataRekeningController::edit/$1');
+   $routes->get('delete/(:num)', 'DataRekeningController::destroy/$1');
+   $routes->get('show/(:num)', 'DataRekeningController::show/$1');
+});

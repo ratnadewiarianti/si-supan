@@ -28,7 +28,7 @@
                                                 <p class="card-title">Data Master Karyawan</p>
                                             </div>
                                             <div class="col-2 text-end">
-                                                <a  class="btn btn-success btn-sm" href="karyawan/create">Tambah Karyawan</a>
+                                                <a  class="btn btn-success btn-sm" href="karyawan/create">Tambah Data</a>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -63,7 +63,7 @@
                                     <?php endforeach; ?>
                                         <?php else : ?>
                                             <tr>
-                                                <td colspan="6" class="text-center">Tidak ada data Indikator Kinerja Urusan.</td>
+                                                <td colspan="6" class="text-center">Tidak ada data Karyawan.</td>
                                             </tr>
                                         <?php endif; ?>
                                     
