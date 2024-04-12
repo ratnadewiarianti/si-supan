@@ -37,3 +37,12 @@ $routes->get('login', 'AuthController::login', ['as' => 'login']);
     $routes->get('/karyawan/edit/(:num)', 'KaryawanController::edit/$1', ['as' => 'karyawan/edit']);    
     $routes->post('/karyawan/update/(:num)', 'KaryawanController::update/$1', ['as' => 'karyawan/update']);
     $routes->get('/karyawan/delete/(:num)', 'KaryawanController::destroy/$1', ['as' => 'karyawan/delete']);
+
+    // DATA REKENING
+    $routes->get('/datarekening', 'DataRekeningController::index', ['as' => 'datarekening/index']);
+    $routes->get('/datarekening/create', 'DataRekeningController::create', ['as' => 'datarekening/create']);
+    $routes->post('/datarekening/store', 'DataRekeningController::store', ['as' => 'datarekening/store']);
+    $routes->get('/datarekening/show/(:num)', 'DataRekeningController::show/$1', ['as' => 'datarekening/show']);
+    $routes->get('/datarekening/edit/(:num)', 'DataRekeningController::edit/$1', ['as' => 'datarekening/edit']);    
+    $routes->post('/datarekening/update/(:num)', 'DataRekeningController::update/$1', ['as' => 'datarekening/update']);
+    $routes->get('/datarekening/delete/(:num)', 'DataRekeningController::destroy/$1', ['as' => 'datarekening/delete']);

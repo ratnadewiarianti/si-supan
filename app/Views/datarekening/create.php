@@ -8,7 +8,7 @@
                 <div class="col-12 col-xl-8 ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Master</a></li>
-                        <li class="breadcrumb-item"><a href="/karyawan">Karyawan</a></li>
+                        <li class="breadcrumb-item"><a href="/datarekening">Data Rekening</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Add</li>
                     </ol>
                 </div>
@@ -19,32 +19,39 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Tambah Karyawan</h4>
-                        <form class="forms-sample" action="/karyawan/store" method="post">
+                        <h4 class="card-title">Tambah Data Rekening</h4>
+                        <form class="forms-sample" action="/datarekening/store" method="post">
                             <div class="form-group">
-                                <label>Jabatan</label>
-                                <input type="text" name="jabatan" class="form-control" required>
+                                <label>Akun</label>
+                                <input type="number" name="akun" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>NIP</label>
-                                <input type="text" name="nip" class="form-control" required>
+                                <label>Kelompok</label>
+                                <input type="number" name="kelompok" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label>Nama</label>
-                                <input type="text" name="nama" class="form-control" required>
+                                <label>Jenis</label>
+                                <input type="number" name="jenis" class="form-control" required>
                             </div>
                             <div class="form-group">
-                                <label for="kategori_pegawai">Kategori Pegawai</label>
-                                <select name="kategori_pegawai" class="form-control" required>
-                                    <option value="PNS">PNS</option>
-                                    <option value="PTT">PTT</option>
-                                    <option value="Tenaga Ahli">Tenaga Ahli</option>
-                                </select>
+                                <label>Objek</label>
+                                <input type="number" name="objek" class="form-control" required>
                             </div>
-
+                            <div class="form-group">
+                                <label>Rincian Objek</label>
+                                <input type="number" name="rincian_object" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Sub Rincian Objek</label>
+                                <input type="number" name="sub_rincian_objek" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Uraian Akun</label>
+                                <input type="text" name="uraian_akun" class="form-control" required>
+                            </div>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->
-                            <a href="<?= base_url('/karyawan'); ?>" class="btn btn-danger">Batal</a>
+                            <a href="<?= base_url('/datarekening'); ?>" class="btn btn-danger">Batal</a>
                         </form>
                     </div>
                 </div>

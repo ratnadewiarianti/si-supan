@@ -26,6 +26,7 @@
                    <ul class="nav flex-column sub-menu">
                        <li class="nav-item"> <a class="nav-link" href="<?= route_to('user/index'); ?>">User</a></li>
                        <li class="nav-item"> <a class="nav-link" href="<?= route_to('karyawan/index'); ?>">Karyawan</a></li>
+                       <li class="nav-item"> <a class="nav-link" href="<?= route_to('datarekening/index'); ?>">Data Rekening</a></li>
                        <!-- <li class="nav-item"> <a class="nav-link" href="user/index">User</a></li> -->
                        <!-- <li class="nav-item"> <a class="nav-link" href="#">Dropdowns</a></li>
                        <li class="nav-item"> <a class="nav-link" href="#">Typography</a></li> -->
