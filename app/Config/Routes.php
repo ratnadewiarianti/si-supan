@@ -53,3 +53,21 @@ $routes->group('datarekening', ['filter' => 'auth'], function ($routes) {
    $routes->get('delete/(:num)', 'DataRekeningController::destroy/$1');
    $routes->get('show/(:num)', 'DataRekeningController::show/$1');
 });
+
+$routes->group('rakbelanja', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'RakBelanjaController::index');
+   $routes->get('create', 'RakBelanjaController::create');
+   $routes->post('store', 'RakBelanjaController::store');
+   $routes->post('update/(:num)', 'RakBelanjaController::update/$1');
+   $routes->get('edit/(:num)', 'RakBelanjaController::edit/$1');
+   $routes->get('delete/(:num)', 'RakBelanjaController::destroy/$1');
+});
+
+$routes->group('detailrak', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'DetailRakController::show/$1');
+   $routes->get('create/(:num)', 'DetailRakController::create/$1');
+   $routes->post('store', 'DetailRakController::store');
+   $routes->post('update/(:num)', 'DetailRakController::update/$1');
+   $routes->get('edit/(:num)', 'DetailRakController::edit/$1');
+   $routes->get('delete/(:num)', 'DetailRakController::destroy/$1');
+});

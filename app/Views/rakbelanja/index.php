@@ -8,7 +8,7 @@
                 <div class="col-12 col-xl-8 ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Master</a></li>
-                        <li class="breadcrumb-item"><a href="datarekening">Data Rekening</a></li>
+                        <li class="breadcrumb-item"><a href="/rakbelanja">Rak Belanja</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Data</li>
                     </ol>
                 </div>
@@ -25,10 +25,10 @@
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-10">
-                                <p class="card-title">Data Master Data Rekening</p>
+                                <p class="card-title">Data Master Data Rak Belanja</p>
                             </div>
                             <div class="col-2 text-end">
-                                <a class="btn btn-success btn-sm" href="/datarekening/create">Tambah Data</a>
+                                <a class="btn btn-success btn-sm" href="/rakbelanja/create">Tambah Data</a>
                             </div>
                         </div>
                         <div class="row">
@@ -38,32 +38,37 @@
                                         <thead>
                                             <tr>
                                                 <th class="">No</th>
+                                                <th>Nama Sub Kegiatan</th>
                                                 <th>Kode Akun</th>
-                                                <th>Uraian Akun</th>
+                                                <th>Nama Akun</th>
+                                                <th>Nilai Rincian</th>
+                                                <th>Total Rak</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php if (!empty($datarekening)) : ?>
-                                            <?php $no = 1; ?>
-                                            <?php foreach ($datarekening as $row) : ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $row['akun']; ?>.<?= $row['kelompok']; ?>.<?= $row['jenis']; ?>.<?= $row['objek']; ?>.<?= $row['rincian_object']; ?>.<?= $row['sub_rincian_objek']; ?>
-                                                </td>
-                                                <td><?= $row['uraian_akun']; ?></td>
-                                                <td>
-                                                    <a href="/datarekening/edit/<?= $row['id']; ?>"
-                                                        class="btn btn-primary">Edit</a>
-                                                    <a href="/datarekening/delete/<?= $row['id']; ?>"
-                                                        class="btn btn-danger">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
+                                            <?php if (!empty($rakbelanja)) : ?>
+                                                <?php $no = 1; ?>
+                                                <?php foreach ($rakbelanja as $row) : ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $row['nm_subkegiatan']; ?></td>
+                                                        <td><?= $row['akun']; ?>.<?= $row['kelompok']; ?>.<?= $row['jenis']; ?>.<?= $row['objek']; ?>.<?= $row['rincian_object']; ?>.<?= $row['sub_rincian_objek']; ?>
+                                                        </td>
+                                                        <td><?= $row['uraian_akun']; ?></td>
+                                                        <td><?= 'Rp ' . number_format($row['nilai_rincian'], 0, ',', '.'); ?></td>
+                                                        <td><?= $row['total_rak']; ?></td>
+                                                        <td>
+                                                            <a href="/detailrak/show/<?= $row['id']; ?>" class="btn btn-sm btn-info">Detail</a>
+                                                            <a href="/rakbelanja/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
+                                                            <a href="/rakbelanja/delete/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             <?php else : ?>
-                                            <tr>
-                                                <td colspan="6" class="text-center">Tidak ada data Rekening.</td>
-                                            </tr>
+                                                <tr>
+                                                    <td colspan="6" class="text-center">Tidak ada data Rekening.</td>
+                                                </tr>
                                             <?php endif; ?>
 
                                         </tbody>
@@ -94,5 +99,10 @@
 
 
 <?= $this->section('javascript') ?>
+<script>
+    $(document).ready(function() {
+        $('#table-1').DataTable();
+    });
+</script>
 
 <?= $this->endSection() ?>

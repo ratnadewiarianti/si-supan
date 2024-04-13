@@ -24,8 +24,10 @@
                </a>
                <div class="collapse" id="ui-basic">
                    <ul class="nav flex-column sub-menu">
-                       <li class="nav-item <?= (strpos($uri, '/user/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="user">User</a></li>
-                       <li class="nav-item <?= (strpos($uri, '/karyawan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="karyawan">Karyawan</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/user/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/user">User</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/karyawan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/karyawan">Karyawan</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/datarekening/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/datarekening">Rekening</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/rakbelanja/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/rakbelanja">Rak Belanja</a></li>
                    </ul>
                </div>
            </li>
