@@ -26,10 +26,29 @@
                    <ul class="nav flex-column sub-menu">
                        <li class="nav-item <?= (strpos($uri, '/user/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/user">User</a></li>
                        <li class="nav-item <?= (strpos($uri, '/karyawan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/karyawan">Karyawan</a></li>
-                       <li class="nav-item <?= (strpos($uri, '/datarekening/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/datarekening">Rekening</a></li>
                        <li class="nav-item <?= (strpos($uri, '/rakbelanja/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/rakbelanja">Rak Belanja</a></li>
                    </ul>
                </div>
+
+           </li>
+           <li class="nav-item  ">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                   <i class="ti-files menu-icon"></i>
+                   <span class="menu-title">Data Rekening</span>
+                   <i class="menu-arrow"></i>
+               </a>
+               <div class="collapse" id="ui-basic">
+                   <ul class="nav flex-column sub-menu">
+                       <li class="nav-item <?= (strpos($uri, '/datarekening/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/datarekening">Rekening</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/akun/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/akun">Akun</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/kelompok/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/kelompok">Kelompok</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/jenis/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/jenis">Jenis</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/objek/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/objek">Objek</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/rincianobjek/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/rincianobjek">Rincian Objek</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/subrincian/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/subrincian">Sub Rincian Objek</a></li>
+                   </ul>
+               </div>
+
            </li>
        </ul>
    </nav>
