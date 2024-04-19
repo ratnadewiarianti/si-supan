@@ -15,6 +15,26 @@ class SubRincianObjekTable extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
+            'id_akun' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true
+            ],
+            'id_kelompok' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true
+            ],
+            'id_jenis' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true
+            ],
+            'id_objek' => [
+                'type' => 'INT',
+                'constraint' => 5,
+                'unsigned' => true
+            ],
             'id_rincian_objek' => [
                 'type' => 'INT',
                 'constraint' => 5,
@@ -36,6 +56,6 @@ class SubRincianObjekTable extends Migration
 
     public function down()
     {
-        //
+        $this->forge->dropTable('sub_rincian_objek');
     }
 }

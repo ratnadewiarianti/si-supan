@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-10">
-                                <p class="card-title">Master Rekening Data Sub Rinciaan Objek</p>
+                                <p class="card-title">Master Rekening Data Sub Rincian Objek</p>
                             </div>
                             <div class="col-2 text-end">
                                 <a class="btn btn-success btn-sm" href="/subrincian/create">Tambah Data</a>
@@ -38,9 +38,8 @@
                                         <thead>
                                             <tr>
                                                 <th class="">No</th>
-                                                <th>Kode Rincian Objek</th>
-                                                <th>Kode Sub Rincian Objek</th>
-                                                <th>Uraian Sub Rincian Objek</th>
+                                                <th>Kode Rekening</th>
+                                                <th>Uraian Akun</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -50,9 +49,8 @@
                                                 <?php foreach ($subrincian as $row) : ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
-                                                        <td><?= $row['kode_rincian_objek']; ?></td>
-                                                        <td><?= $row['kode_sub_rincian_objek']; ?></td>
-                                                        <td><?= $row['uraian_sub_rincian_objek']; ?></td>
+                                                        <td><?= $row['kode_rekening']; ?></td>
+                                                        <td><?= $row['uraian_akun']; ?></td>
                                                         <td>
                                                             <a href="/subrincian/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                                                             <a href="/subrincian/delete/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>

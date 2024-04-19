@@ -22,21 +22,45 @@
                         <h4 class="card-title">Tambah Data Sub Rincian Objek</h4>
                         <form action="/subrincian/store/" method="post">
                             <div class="form-group">
-                                <label>Kode Rincian Objek</label>
-                                <select class="form-control" name="id_rincian_objek" required>
+                                <label>Kode Akun</label>
+                                <select class="form-control" name="id_akun" id="id_akun" required>
                                     <option selected disabled>-</option>
-                                    <?php foreach ($rincianobjek as $key) : ?>
-                                        <option value="<?= $key['id']; ?>"><?= $key['kode_rincian_objek']; ?> - <?= $key['uraian_rincian_objek']; ?></option>
+                                    <?php foreach ($akun as $key) : ?>
+                                        <option value="<?= $key['id']; ?>"><?= $key['kode_akun']; ?> - <?= $key['uraian_akun']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="form-group">
+                                <label>Kode Kelompok</label>
+                                <select class="form-control" name="id_kelompok" id="id_kelompok" required>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Kode Jenis</label>
+                                <select class="form-control" name="id_jenis" id="id_jenis" required>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Kode Objek</label>
+                                <select class="form-control" name="id_objek" id="id_objek" required>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Kode Rincian Objek</label>
+                                <select class="form-control" name="id_rincian_objek" id="id_rincian_objek" required>
+
+                                </select>
+                            </div>
+                            <div class="form-group">
                                 <label>Kode Sub Rincian objek</label>
-                                <input type="text" name="kode_sub_rincian_objek" class="form-control"  required>
+                                <input type="text" name="kode_sub_rincian_objek" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Uraian Sub Rincian objek</label>
-                                <input type="text" name="uraian_sub_rincian_objek" class="form-control"  required>
+                                <input type="text" name="uraian_sub_rincian_objek" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->
@@ -60,5 +84,83 @@
 
 
 <?= $this->section('javascript') ?>
-<!--  script src -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        // ajax method for get kelompok option
+        $('#id_akun').change(function() {
+            var id_akun = $(this).val();
+            if (id_akun != '') {
+                $.ajax({
+                    url: '/subrincian/getKelompok/' + id_akun,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        var options = '<option value="">- Pilih Kelompok -</option>';
+                        $.each(response, function(index, value) {
+                            options += '<option value="' + value.id + '">' + value.kode_kelompok + ' - ' + value.uraian_kelompok + '</option>';
+                        });
+                        $('#id_kelompok').html(options);
+                    }
+                });
+            }
+        });
+
+        // ajax method for get jenis option
+        $('#id_kelompok').change(function() {
+            var id_kelompok = $(this).val();
+            if (id_kelompok != '') {
+                $.ajax({
+                    url: '/subrincian/getJenis/' + id_kelompok,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        var options = '<option value="">- Pilih Jenis -</option>';
+                        $.each(response, function(index, value) {
+                            options += '<option value="' + value.id + '">' + value.kode_jenis + ' - ' + value.uraian_jenis + '</option>';
+                        });
+                        $('#id_jenis').html(options);
+                    }
+                });
+            }
+        });
+
+        // ajax method for get objek option
+        $('#id_jenis').change(function() {
+            var id_jenis = $(this).val();
+            if (id_jenis != '') {
+                $.ajax({
+                    url: '/subrincian/getObjek/' + id_jenis,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        var options = '<option value="">- Pilih Objek -</option>';
+                        $.each(response, function(index, value) {
+                            options += '<option value="' + value.id + '">' + value.kode_objek + ' - ' + value.uraian_objek + '</option>';
+                        });
+                        $('#id_objek').html(options);
+                    }
+                });
+            }
+        });
+
+        // ajax method for get rincian objek option
+        $('#id_objek').change(function() {
+            var id_objek = $(this).val();
+            if (id_objek != '') {
+                $.ajax({
+                    url: '/subrincian/getRincianObjek/' + id_objek,
+                    type: 'get',
+                    dataType: 'json',
+                    success: function(response) {
+                        var options = '<option value="">- Pilih Objek -</option>';
+                        $.each(response, function(index, value) {
+                            options += '<option value="' + value.id + '">' + value.kode_rincian_objek + ' - ' + value.uraian_rincian_objek + '</option>';
+                        });
+                        $('#id_rincian_objek').html(options);
+                    }
+                });
+            }
+        });
+    });
+</script>
 <?= $this->endSection() ?>

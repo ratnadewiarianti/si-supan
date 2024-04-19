@@ -53,8 +53,7 @@
                                                     <tr>
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $row['nm_subkegiatan']; ?></td>
-                                                        <td><?= $row['akun']; ?>.<?= $row['kelompok']; ?>.<?= $row['jenis']; ?>.<?= $row['objek']; ?>.<?= $row['rincian_object']; ?>.<?= $row['sub_rincian_objek']; ?>
-                                                        </td>
+                                                        <td><?= $row['kode_rekening']; ?></td>
                                                         <td><?= $row['uraian_akun']; ?></td>
                                                         <td><?= 'Rp ' . number_format($row['nilai_rincian'], 0, ',', '.'); ?></td>
                                                         <td><?= $row['total_rak']; ?></td>

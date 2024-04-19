@@ -4,15 +4,15 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-use App\Models\DataRekeningModel;
+use App\Models\SubRincianObjekModel;
 use App\Models\RakBelanjaModel;
 class RakBelanjaController extends BaseController
 {
-    protected $DataRekeningModel;
+    protected $SubRincianObjekModel;
     protected $RakBelanjaModel;
     public function __construct()
     {
-        $this->DataRekeningModel = new DataRekeningModel();
+        $this->SubRincianObjekModel = new SubRincianObjekModel();
         $this->RakBelanjaModel = new RakBelanjaModel();
     }
 
@@ -26,9 +26,10 @@ class RakBelanjaController extends BaseController
         return view('rakbelanja/index', $data);
     }
 
+
     public function create()
     {
-        $data['rekening'] = $this->DataRekeningModel->findAll();
+        $data['rekening'] = $this->SubRincianObjekModel->getRekening();
         return view('rakbelanja/create', $data);
     }
 
@@ -50,7 +51,7 @@ class RakBelanjaController extends BaseController
     {
         $data = [
             'rakbelanja' => $this->RakBelanjaModel->find($id),
-            'rekening' => $this->DataRekeningModel->findAll()
+            'rekening' => $this->SubRincianObjekModel->getRekening()
         ];
         return view('rakbelanja/edit', $data);
     }

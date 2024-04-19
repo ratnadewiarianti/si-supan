@@ -32,14 +32,14 @@
 
            </li>
            <li class="nav-item  ">
-               <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
                    <i class="ti-files menu-icon"></i>
-                   <span class="menu-title">Data Rekening</span>
+                   <span class="menu-title">Master Rekening</span>
                    <i class="menu-arrow"></i>
                </a>
-               <div class="collapse" id="ui-basic">
+               <div class="collapse" id="ui-basic2">
                    <ul class="nav flex-column sub-menu">
-                       <li class="nav-item <?= (strpos($uri, '/datarekening/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/datarekening">Rekening</a></li>
+                    
                        <li class="nav-item <?= (strpos($uri, '/akun/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/akun">Akun</a></li>
                        <li class="nav-item <?= (strpos($uri, '/kelompok/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/kelompok">Kelompok</a></li>
                        <li class="nav-item <?= (strpos($uri, '/jenis/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/jenis">Jenis</a></li>

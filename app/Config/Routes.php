@@ -124,4 +124,8 @@ $routes->group('subrincian', ['filter' => 'auth'], function ($routes) {
    $routes->post('update/(:num)', 'SubRincianObjekController::update/$1');
    $routes->get('edit/(:num)', 'SubRincianObjekController::edit/$1');
    $routes->get('delete/(:num)', 'SubRincianObjekController::destroy/$1');
+   $routes->get('getKelompok/(:num)', 'SubRincianObjekController::getKelompok/$1');
+   $routes->get('getJenis/(:num)', 'SubRincianObjekController::getJenis/$1');
+   $routes->get('getObjek/(:num)', 'SubRincianObjekController::getObjek/$1');
+   $routes->get('getRincianObjek/(:num)', 'SubRincianObjekController::getRincianObjek/$1');
 });

@@ -30,7 +30,7 @@
                                 <select class="form-control" name="id_rekening" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($rekening as $key) : ?>
-                                        <option value="<?= $key['id']; ?>"><?= $key['akun']; ?>.<?= $key['kelompok']; ?>.<?= $key['jenis']; ?>.<?= $key['objek']; ?>.<?= $key['rincian_object']; ?>.<?= $key['sub_rincian_objek']; ?> - <?= $key['uraian_akun']; ?></option>
+                                        <option value="<?= $key['id']; ?>"><?= $key['kode_rekening']; ?> - <?= $key['uraian_akun']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
