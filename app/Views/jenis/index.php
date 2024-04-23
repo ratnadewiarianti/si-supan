@@ -38,7 +38,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="">No</th>
-                                                <th>Kode Kelompok</th>
+                                               
                                                 <th>Kode Jenis</th>
                                                 <th>Uraian Jenis</th>
                                                 <th>Action</th>
@@ -50,7 +50,7 @@
                                                 <?php foreach ($jenis as $row) : ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
-                                                        <td><?= $row['kode_kelompok']; ?></td>
+                                                       
                                                         <td><?= $row['kode_jenis']; ?></td>
                                                         <td><?= $row['uraian_jenis']; ?></td>
                                                         <td>

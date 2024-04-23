@@ -18,16 +18,13 @@ class JenisController extends BaseController
 
     public function index()
     {
-        $data['jenis'] = $this->JenisModel
-            ->select('jenis.*,kelompok.kode_kelompok')
-            ->join('kelompok', 'kelompok.id = jenis.id_kelompok')
-            ->findAll();
+        $data['jenis'] = $this->JenisModel->getData();
         return view('jenis/index', $data);
     }
 
     public function create()
     {
-        $data['kelompok'] = $this->KelompokModel->findAll();
+        $data['kelompok'] = $this->KelompokModel->getData();
         return view('jenis/create', $data);
     }
 
@@ -49,7 +46,7 @@ class JenisController extends BaseController
     {
         $data = [
             'jenis' => $this->JenisModel->find($id),
-            'kelompok' => $this->KelompokModel->findAll()
+            'kelompok' => $this->KelompokModel->getData()
         ];
         return view('jenis/edit', $data);
     }

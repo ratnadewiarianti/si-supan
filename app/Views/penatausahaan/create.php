@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Pengguna Anggaran</label>
-                                <select class="form-control" name="karyawan_1" required>
+                                <select class="form-control js-example-basic-single w-100" name="karyawan_1" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($karyawan as $key_1) : ?>
                                         <option value="<?= $key_1['id']; ?>"><?= $key_1['nama']; ?></option>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Bendahara Mengeluarkan</label>
-                                <select class="form-control" name="karyawan_2" required>
+                                <select class="form-control js-example-basic-single w-100" name="karyawan_2" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($karyawan as $key_2) : ?>
                                         <option value="<?= $key_2['id']; ?>"><?= $key_2['nama']; ?></option>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label>TTD Penerima</label>
-                                <select class="form-control" name="karyawan_3" required>
+                                <select class="form-control js-example-basic-single w-100" name="karyawan_3" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($karyawan as $key_3) : ?>
                                         <option value="<?= $key_3['id']; ?>"><?= $key_3['nama']; ?></option>

@@ -18,16 +18,13 @@ class RincianObjekController extends BaseController
 
     public function index()
     {
-        $data['rincianobjek'] = $this->RincianObjekModel
-            ->select('rincian_objek.*,objek.kode_objek')
-            ->join('objek', 'objek.id = rincian_objek.id_objek')
-            ->findAll();
+        $data['rincianobjek'] = $this->RincianObjekModel->getData();
         return view('rincianobjek/index', $data);
     }
 
     public function create()
     {
-        $data['objek'] = $this->ObjekModel->findAll();
+        $data['objek'] = $this->ObjekModel->getData();
         return view('rincianobjek/create', $data);
     }
 
@@ -49,7 +46,7 @@ class RincianObjekController extends BaseController
     {
         $data = [
             'rincianobjek' => $this->RincianObjekModel->find($id),
-            'objek' => $this->ObjekModel->findAll()
+            'objek' => $this->ObjekModel->getData()
         ];
         return view('rincianobjek/edit', $data);
     }

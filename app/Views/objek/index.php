@@ -38,7 +38,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="">No</th>
-                                                <th>Kode Jenis</th>
+                                            
                                                 <th>Kode Objek</th>
                                                 <th>Uraian Objek</th>
                                                 <th>Action</th>
@@ -50,7 +50,7 @@
                                                 <?php foreach ($objek as $row) : ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
-                                                        <td><?= $row['kode_jenis']; ?></td>
+                                                      
                                                         <td><?= $row['kode_objek']; ?></td>
                                                         <td><?= $row['uraian_objek']; ?></td>
                                                         <td>

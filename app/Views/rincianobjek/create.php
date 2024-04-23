@@ -23,7 +23,7 @@
                         <form action="/rincianobjek/store/" method="post">
                             <div class="form-group">
                                 <label>Kode Objek</label>
-                                <select class="form-control" name="id_objek" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_objek" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($objek as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['kode_objek']; ?> - <?= $key['uraian_objek']; ?></option>
@@ -32,11 +32,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Kode Rincian objek</label>
-                                <input type="text" name="kode_rincian_objek" class="form-control"  required>
+                                <input type="text" name="kode_rincian_objek" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Uraian Rincian objek</label>
-                                <input type="text" name="uraian_rincian_objek" class="form-control"  required>
+                                <input type="text" name="uraian_rincian_objek" class="form-control" required>
                             </div>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->

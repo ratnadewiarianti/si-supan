@@ -27,7 +27,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Data Rekening</label>
-                                <select class="form-control" name="id_rekening" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_rekening" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($rekening as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $rakbelanja['id_rekening']) echo 'selected="selected"'; ?>><?= $key['kode_rekening']; ?> - <?= $key['uraian_akun']; ?></option>

@@ -56,7 +56,7 @@
                                                         <td><?= $row['kode_rekening']; ?></td>
                                                         <td><?= $row['uraian_akun']; ?></td>
                                                         <td><?= 'Rp ' . number_format($row['nilai_rincian'], 0, ',', '.'); ?></td>
-                                                        <td><?= $row['total_rak']; ?></td>
+                                                        <td><?= 'Rp ' . number_format($row['total_rak'], 0, ',', '.'); ?></td>
                                                         <td>
                                                             <a href="/detailrak/show/<?= $row['id']; ?>" class="btn btn-sm btn-info">Detail</a>
                                                             <a href="/rakbelanja/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>

@@ -23,7 +23,7 @@
                         <form class="forms-sample" action="/detailrak/update/<?= $detailrak['id']; ?>" method="post">
                             <div class="form-group">
                                 <label>Bulan</label>
-                                <select class="form-control" name="bulan" required>
+                                <select class="form-control js-example-basic-single w-100" name="bulan" required>
                                     <option selected disabled>-</option>
                                     <?= $bulan_options ?>
                                 </select>
