@@ -130,6 +130,78 @@ $routes->group('subrincian', ['filter' => 'auth'], function ($routes) {
    $routes->get('getRincianObjek/(:num)', 'SubRincianObjekController::getRincianObjek/$1');
 });
 
+$routes->group('urusan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'UrusanController::index');
+   $routes->get('create', 'UrusanController::create');
+   $routes->post('store', 'UrusanController::store');
+   $routes->post('update/(:num)', 'UrusanController::update/$1');
+   $routes->get('edit/(:num)', 'UrusanController::edit/$1');
+   $routes->get('delete/(:num)', 'UrusanController::destroy/$1');
+});
+
+$routes->group('bidang_urusan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'BidangUrusanController::index');
+   $routes->get('create', 'BidangUrusanController::create');
+   $routes->post('store', 'BidangUrusanController::store');
+   $routes->post('update/(:num)', 'BidangUrusanController::update/$1');
+   $routes->get('edit/(:num)', 'BidangUrusanController::edit/$1');
+   $routes->get('delete/(:num)', 'BidangUrusanController::destroy/$1');
+});
+
+$routes->group('program', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'ProgramController::index');
+   $routes->get('create', 'ProgramController::create');
+   $routes->post('store', 'ProgramController::store');
+   $routes->post('update/(:num)', 'ProgramController::update/$1');
+   $routes->get('edit/(:num)', 'ProgramController::edit/$1');
+   $routes->get('delete/(:num)', 'ProgramController::destroy/$1');
+   $routes->get('getBidangUrusan/(:num)', 'ProgramController::getBidangUrusan/$1');
+});
+
+$routes->group('kegiatan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'KegiatanController::index');
+   $routes->get('create', 'KegiatanController::create');
+   $routes->post('store', 'KegiatanController::store');
+   $routes->post('update/(:num)', 'KegiatanController::update/$1');
+   $routes->get('edit/(:num)', 'KegiatanController::edit/$1');
+   $routes->get('delete/(:num)', 'KegiatanController::destroy/$1');
+   $routes->get('getBidangUrusan/(:num)', 'KegiatanController::getBidangUrusan/$1');
+   $routes->get('getProgram/(:num)', 'KegiatanController::getProgram/$1');
+});
+
+$routes->group('subkegiatan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'SubkegiatanController::index');
+   $routes->get('create', 'SubkegiatanController::create');
+   $routes->post('store', 'SubkegiatanController::store');
+   $routes->post('update/(:num)', 'SubkegiatanController::update/$1');
+   $routes->get('edit/(:num)', 'SubkegiatanController::edit/$1');
+   $routes->get('delete/(:num)', 'SubkegiatanController::destroy/$1');
+   $routes->get('getBidangUrusan/(:num)', 'SubkegiatanController::getBidangUrusan/$1');
+   $routes->get('getProgram/(:num)', 'SubkegiatanController::getProgram/$1');
+   $routes->get('getKegiatan/(:num)', 'SubkegiatanController::getKegiatan/$1');
+});
+
+$routes->group('dpa', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'DPAController::index');
+   $routes->get('create', 'DPAController::create');
+   $routes->post('store', 'DPAController::store');
+   $routes->post('update/(:num)', 'DPAController::update/$1');
+   $routes->get('edit/(:num)', 'DPAController::edit/$1');
+   $routes->get('delete/(:num)', 'DPAController::destroy/$1');
+});
+
+$routes->group('detaildpa', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'DetailDPAController::show/$1');
+   $routes->get('create/(:num)', 'DetailDPAController::create/$1');
+   $routes->post('store', 'DetailDPAController::store');
+   $routes->post('update/(:num)', 'DetailDPAController::update/$1');
+   $routes->get('edit/(:num)', 'DetailDPAController::edit/$1');
+   $routes->get('delete/(:num)', 'DetailDPAController::destroy/$1');
+   $routes->post('update_jumlah_perubahan/(:num)', 'DetailDPAController::update_jumlah_perubahan/$1');
+   $routes->get('edit_jumlah_perubahan/(:num)', 'DetailDPAController::edit_jumlah_perubahan/$1');
+});
+
+
 $routes->group('penatausahaan', ['filter' => 'auth'], function ($routes) {
    $routes->get('/', 'PenataUsahaanController::index');
    $routes->get('create', 'PenataUsahaanController::create');
