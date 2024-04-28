@@ -130,6 +130,16 @@ $routes->group('subrincian', ['filter' => 'auth'], function ($routes) {
    $routes->get('getRincianObjek/(:num)', 'SubRincianObjekController::getRincianObjek/$1');
 });
 
+$routes->group('penatausahaan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'PenataUsahaanController::index');
+   $routes->get('create', 'PenataUsahaanController::create');
+   $routes->post('store', 'PenataUsahaanController::store');
+   $routes->post('update/(:num)', 'PenataUsahaanController::update/$1');
+   $routes->get('edit/(:num)', 'PenataUsahaanController::edit/$1');
+   $routes->get('delete/(:num)', 'PenataUsahaanController::destroy/$1');
+});
+
+
 $routes->group('urusan', ['filter' => 'auth'], function ($routes) {
    $routes->get('/', 'UrusanController::index');
    $routes->get('create', 'UrusanController::create');

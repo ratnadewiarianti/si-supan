@@ -28,16 +28,17 @@
                                             <th>Kode Akun</th>
                                             <th>Nama Akun</th>
                                             <th>Nilai Rincian</th>
+                                            <th>Total Rak</th>
                                         </thead>
                                         <tbody>
                                             <?php if (!empty($rakbelanja)) : ?>
                                                 <?php foreach ($rakbelanja as $row) : ?>
                                                     <tr>
                                                         <td><?= $row['nm_subkegiatan']; ?></td>
-                                                        <td><?= $row['akun']; ?>.<?= $row['kelompok']; ?>.<?= $row['jenis']; ?>.<?= $row['objek']; ?>.<?= $row['rincian_object']; ?>.<?= $row['sub_rincian_objek']; ?>
-                                                        </td>
+                                                        <td><?= $row['kode_rekening']; ?></td>
                                                         <td><?= $row['uraian_akun']; ?></td>
                                                         <td><?= 'Rp ' . number_format($row['nilai_rincian'], 0, ',', '.'); ?></td>
+                                                        <td><?= 'Rp ' . number_format($row['total_rak'], 0, ',', '.'); ?></td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             <?php else : ?>
@@ -97,9 +98,9 @@
                                             <?php else : ?>
                                                 <tr>
                                                     <td colspan=" 6" class="text-center">Tidak ada data Rekening.
-                                                        </td>
-                                                    </tr>
-                                                <?php endif; ?>
+                                                    </td>
+                                                </tr>
+                                            <?php endif; ?>
 
                                         </tbody>
                                     </table>

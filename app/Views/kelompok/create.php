@@ -23,7 +23,7 @@
                         <form action="/kelompok/store/" method="post">
                             <div class="form-group">
                                 <label>Kode Akun</label>
-                                <select class="form-control" name="id_akun" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_akun" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($akun as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['kode_akun']; ?> - <?= $key['uraian_akun']; ?></option>

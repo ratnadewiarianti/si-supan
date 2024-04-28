@@ -38,7 +38,6 @@
                                         <thead>
                                             <tr>
                                                 <th class="">No</th>
-                                                <th>Kode Akun</th>
                                                 <th>Kode kelompok</th>
                                                 <th>Uraian kelompok</th>
                                                 <th>Action</th>
@@ -50,7 +49,6 @@
                                                 <?php foreach ($kelompok as $row) : ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
-                                                        <td><?= $row['kode_akun']; ?></td>
                                                         <td><?= $row['kode_kelompok']; ?></td>
                                                         <td><?= $row['uraian_kelompok']; ?></td>
                                                         <td>

@@ -18,16 +18,13 @@ class ObjekController extends BaseController
 
     public function index()
     {
-        $data['objek'] = $this->ObjekModel
-            ->select('objek.*, jenis.kode_jenis')
-            ->join('jenis', 'jenis.id = objek.id_jenis')
-            ->findAll();
+        $data['objek'] = $this->ObjekModel->getData();
         return view('objek/index', $data);
     }
 
     public function create()
     {
-        $data['jenis'] = $this->JenisModel->findAll();
+        $data['jenis'] = $this->JenisModel->getData();
         return view('objek/create', $data);
     }
 
@@ -49,7 +46,7 @@ class ObjekController extends BaseController
     {
         $data = [
             'objek' => $this->ObjekModel->find($id),
-            'jenis' => $this->JenisModel->findAll()
+            'jenis' => $this->JenisModel->getData()
         ];
         return view('objek/edit', $data);
     }

@@ -23,7 +23,7 @@
                         <form action="/subrincian/store/" method="post">
                             <div class="form-group">
                                 <label>Kode Akun</label>
-                                <select class="form-control" name="id_akun" id="id_akun" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_akun" id="id_akun" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($akun as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['kode_akun']; ?> - <?= $key['uraian_akun']; ?></option>
@@ -32,25 +32,25 @@
                             </div>
                             <div class="form-group">
                                 <label>Kode Kelompok</label>
-                                <select class="form-control" name="id_kelompok" id="id_kelompok" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_kelompok" id="id_kelompok" required>
 
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Kode Jenis</label>
-                                <select class="form-control" name="id_jenis" id="id_jenis" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_jenis" id="id_jenis" required>
 
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Kode Objek</label>
-                                <select class="form-control" name="id_objek" id="id_objek" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_objek" id="id_objek" required>
 
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Kode Rincian Objek</label>
-                                <select class="form-control" name="id_rincian_objek" id="id_rincian_objek" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_rincian_objek" id="id_rincian_objek" required>
 
                                 </select>
                             </div>

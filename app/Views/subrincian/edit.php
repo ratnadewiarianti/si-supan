@@ -23,7 +23,7 @@
                         <form action="/subrincian/update/<?= $subrincian['id']; ?>" method="post">
                             <div class="form-group">
                                 <label>Kode Akun</label>
-                                <select class="form-control" name="id_akun" id="id_akun" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_akun" id="id_akun" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($akun as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subrincian['id_akun']) echo 'selected="selected"' ?>><?= $key['kode_akun']; ?> - <?= $key['uraian_akun']; ?></option>
@@ -32,7 +32,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Kode Kelompok</label>
-                                <select class="form-control" name="id_kelompok" id="id_kelompok" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_kelompok" id="id_kelompok" required>
                                     <?php foreach ($kelompok as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subrincian['id_kelompok']) echo 'selected="selected"' ?>><?= $key['kode_kelompok']; ?> - <?= $key['uraian_kelompok']; ?></option>
                                     <?php endforeach; ?>
@@ -40,7 +40,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Kode Jenis</label>
-                                <select class="form-control" name="id_jenis" id="id_jenis" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_jenis" id="id_jenis" required>
                                     <?php foreach ($jenis as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subrincian['id_jenis']) echo 'selected="selected"' ?>><?= $key['kode_jenis']; ?> - <?= $key['uraian_jenis']; ?></option>
                                     <?php endforeach; ?>
@@ -48,7 +48,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Kode Objek</label>
-                                <select class="form-control" name="id_objek" id="id_objek" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_objek" id="id_objek" required>
                                     <?php foreach ($objek as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subrincian['id_objek']) echo 'selected="selected"' ?>><?= $key['kode_objek']; ?> - <?= $key['uraian_objek']; ?></option>
                                     <?php endforeach; ?>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Kode Rincian Objek</label>
-                                <select class="form-control" name="id_rincian_objek" id="id_rincian_objek" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_rincian_objek" id="id_rincian_objek" required>
                                     <?php foreach ($rincianobjek as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subrincian['id_rincian_objek']) echo 'selected="selected"' ?>><?= $key['kode_rincian_objek']; ?> - <?= $key['uraian_rincian_objek']; ?></option>
                                     <?php endforeach; ?>
