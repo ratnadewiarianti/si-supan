@@ -194,9 +194,12 @@ $routes->group('detaildpa', ['filter' => 'auth'], function ($routes) {
    $routes->get('show/(:num)', 'DetailDPAController::show/$1');
    $routes->get('create/(:num)', 'DetailDPAController::create/$1');
    $routes->post('store', 'DetailDPAController::store');
-   $routes->post('update/(:num)', 'DetailDPAController::update/$1');
+
+   $routes->put('update/(:num)', 'DetailDPAController::update/$1'); 
    $routes->get('edit/(:num)', 'DetailDPAController::edit/$1');
    $routes->get('delete/(:num)', 'DetailDPAController::destroy/$1');
    $routes->post('update_jumlah_perubahan/(:num)', 'DetailDPAController::update_jumlah_perubahan/$1');
    $routes->get('edit_jumlah_perubahan/(:num)', 'DetailDPAController::edit_jumlah_perubahan/$1');
 });
+
+

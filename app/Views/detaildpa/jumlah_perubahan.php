@@ -7,9 +7,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Tambah Jumlah Perubahan</h4>
-                        <form class="forms-sample" action="/detaildpa/update_jumlah_perubahan" method="post">
-<!-- ada masalah saat mepost data -->
-                            
+                        <form class="forms-sample" action="/detaildpa/update_jumlah_perubahan/<?= $detaildpa['id']; ?>" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Jumlah Perubahan</label>
                                 <div class="input-group">
@@ -17,12 +15,13 @@
                                         <span class="input-group-text">Rp.</span>
                                     </div>
                                     <input type="number" name="jumlah_perubahan" class="form-control" required>
-
+                                    <!-- Tambahkan input hidden untuk menyimpan ID detail -->
+                                    <input type="hidden" name="id" value="<?= $detaildpa['id'] ?>">
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->
-                            <a href="/detaildpa/show/<?= service('uri')->getSegment(3); ?>" class="btn btn-danger">Batal</a>
+                            <a href="/detaildpa/show/<?= $detaildpa['id_dpa']; ?>" class="btn btn-danger">Batal</a>
                         </form>
                     </div>
                 </div>
@@ -37,10 +36,8 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>
-
 <!-- link ref -->
 <?= $this->endSection() ?>
-
 
 <?= $this->section('javascript') ?>
 <!--  script src -->

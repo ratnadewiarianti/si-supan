@@ -20,7 +20,8 @@ class DetailDPAModel extends Model
     public function getDetailDPA()
     {
         $query = $this->db->table('detail_dpa')
-            ->select('detail_dpa.id, detail_dpa.id_dpa, detail_dpa.jumlah, detail_dpa.jumlah_perubahan, detail_dpa.id_subkegiatan, detail_dpa.id_rekening, subkegiatan.kode_subkegiatan, urusan.kode_urusan, bidang_urusan.kode_bidang_urusan, kegiatan.kode_kegiatan, program.kode_program, sub_rincian_objek.kode_sub_rincian_objek, akun.kode_akun, kelompok.kode_kelompok, jenis.kode_jenis, objek.kode_objek, rincian_objek.kode_rincian_objek')
+            ->select('detail_dpa.id, detail_dpa.id_dpa, detail_dpa.jumlah, detail_dpa.jumlah_perubahan, detail_dpa.id_subkegiatan, detail_dpa.id_rekening, subkegiatan.kode_subkegiatan, urusan.kode_urusan, bidang_urusan.kode_bidang_urusan, kegiatan.kode_kegiatan, program.kode_program, sub_rincian_objek.kode_sub_rincian_objek, akun.kode_akun, kelompok.kode_kelompok, jenis.kode_jenis, objek.kode_objek, rincian_objek.kode_rincian_objek, dpa.nomor_dpa')
+            ->join('dpa', 'dpa.id = detail_dpa.id_dpa')
             ->join('subkegiatan', 'subkegiatan.id = detail_dpa.id_subkegiatan')
             ->join('urusan', 'urusan.id = subkegiatan.id_urusan')
             ->join('bidang_urusan', 'bidang_urusan.id = subkegiatan.id_bidang_urusan')
@@ -36,6 +37,7 @@ class DetailDPAModel extends Model
     
         return $query->getResultArray();
     }
+    
     
 
 //     public function getDetailDPA()
