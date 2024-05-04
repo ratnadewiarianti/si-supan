@@ -116,11 +116,13 @@
 
                                                 <td>
 
-                                                <a href="/detaildpa/show/<?= $row['id']; ?>"
-                                                    class="btn btn-sm btn-success">Detail</a>
+                                                <!-- <a href="/detaildpasubkegiatan/showdetail/<?= $row['id']; ?>"
+                                                    class="btn btn-sm btn-success">Detail</a> -->
+                                                    <a href="/detaildpa_subkegiatan/showdetail/<?= $row['id']; ?>" class="btn btn-sm btn-success">Detail</a>
+
                                                 <a href="/detaildpa/edit/<?= $row['id']; ?>"
                                                     class="btn btn-sm btn-primary">Edit</a>
-                                                <a href="/dpa/delete/<?= $row['id']; ?>"
+                                                <a href="/detaildpa/delete/<?= $row['id']; ?>"
                                                     class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>

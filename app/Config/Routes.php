@@ -212,4 +212,26 @@ $routes->group('detaildpa', ['filter' => 'auth'], function ($routes) {
    $routes->get('edit_jumlah_perubahan/(:num)', 'DetailDPAController::edit_jumlah_perubahan/$1');
 });
 
+// $routes->group('detaildpa_subkegiatan', ['filter' => 'auth'], function ($routes) {
+//    $routes->get('showdetail/(:num)', 'DetailDPASubkegiatanController::showdetail/$1');
+//    $routes->get('create/(:num)', 'DetailDPASubkegiatanController::create/$1');
+//    $routes->post('store', 'DetailDPASubkegiatanController::store');
+//    $routes->put('update/(:num)', 'DetailDPASubkegiatanController::update/$1'); 
+//    $routes->get('edit/(:num)', 'DetailDPASubkegiatanController::edit/$1');
+//    $routes->get('delete/(:num)', 'DetailDPASubkegiatanController::destroy/$1');
+//    $routes->post('update_perubahan/(:num)', 'DetailDPASubkegiatanController::update_perubahan/$1');
+//    $routes->get('edit_perubahan/(:num)', 'DetailDPASubkegiatanController::edit_perubahan/$1');
+// });
+
+$routes->group('detaildpa_subkegiatan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('showdetail/(:num)', 'DetailDPASubkegiatanController::showdetail/$1');
+   $routes->get('create/(:num)', 'DetailDPASubkegiatanController::create/$1');
+   $routes->post('store', 'DetailDPASubkegiatanController::store');
+   $routes->post('update/(:num)', 'DetailDPASubkegiatanController::update/$1'); 
+   $routes->get('edit/(:num)', 'DetailDPASubkegiatanController::edit/$1');
+   $routes->get('delete/(:num)', 'DetailDPASubkegiatanController::destroy/$1');
+   $routes->post('update_perubahan/(:num)', 'DetailDPASubkegiatanController::update_perubahan/$1');
+   $routes->get('perubahan/(:num)', 'DetailDPASubkegiatanController::perubahan/$1');
+});
+
 

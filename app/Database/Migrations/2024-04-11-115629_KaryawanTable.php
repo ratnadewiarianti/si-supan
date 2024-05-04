@@ -27,7 +27,23 @@ class KaryawanTable extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => 255,
             ],
+            'status_ttd' => [
+                'type' => 'VARCHAR',
+                'constraint' => 10,
+            ],
+            'file' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
             'kategori_pegawai' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'norek' => [
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+            ],
+            'keterangan' => [
                 'type' => 'VARCHAR',
                 'constraint' => 100,
             ],

@@ -41,7 +41,10 @@
                                         <th>Jabatan</th>
                                         <th>NIP</th>
                                         <th>Nama</th>
+                                        <th>No Rek</th>
+                                        <th>File</th>
                                         <th>Kategori Pegawai</th>
+                                        <th>Keterangan</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -55,6 +58,9 @@
                                             <td><?= $row['nip']; ?></td>
                                             <td><?= $row['nama']; ?></td>
                                             <td><?= $row['kategori_pegawai']; ?></td>
+                                            <td><?= $row['status_ttd']; ?></td>
+                                            <td><?= $row['norek']; ?></td>
+                                            <td><?= $row['keterangan']; ?></td>
                                             <td>
                                                 <a href="/karyawan/edit/<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
                                                 <a href="/karyawan/delete/<?= $row['id']; ?>" class="btn btn-danger">Delete</a>

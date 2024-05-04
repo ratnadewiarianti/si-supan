@@ -11,7 +11,11 @@ class KaryawanModel extends Model
         'jabatan',
         'nip',
         'nama',
-        'kategori_pegawai'
+        'kategori_pegawai',
+        'norek',
+        'keterangan',
+        'status_ttd',
+        'file'
     ];
 
     // Dates
@@ -24,7 +28,7 @@ class KaryawanModel extends Model
     {
         // Query builder untuk mengambil data karyawab beserta data urusan, indikator kinerja terkait dan program terkait.
         $query = $this->db->table('karyawan')
-            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan')
+            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan, karyawan.norek, karyawan.keterangan, karyawan.status_ttd, karyawan.file, karyawan.kategori_pegawai')
             ->where('kategori_pegawai', 'PNS')
             ->get();
         
@@ -35,7 +39,7 @@ class KaryawanModel extends Model
     {
         // Query builder untuk mengambil data karyawab beserta data urusan, indikator kinerja terkait dan program terkait.
         $query = $this->db->table('karyawan')
-            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan')
+            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan, karyawan.norek, karyawan.keterangan, karyawan.status_ttd, karyawan.file, karyawan.kategori_pegawai')
             ->where('kategori_pegawai', 'PTT')
             ->get();
         
@@ -46,7 +50,7 @@ class KaryawanModel extends Model
     {
         // Query builder untuk mengambil data karyawab beserta data urusan, indikator kinerja terkait dan program terkait.
         $query = $this->db->table('karyawan')
-            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan')
+            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan, karyawan.norek, karyawan.keterangan, karyawan.status_ttd, karyawan.file, karyawan.kategori_pegawai')
             ->where('kategori_pegawai', 'Tenaga Ahli')
             ->get();
         

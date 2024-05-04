@@ -25,14 +25,17 @@
                                 <label>Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control" required>
                             </div>
+
                             <div class="form-group">
                                 <label>NIP</label>
                                 <input type="text" name="nip" class="form-control" required>
                             </div>
+
                             <div class="form-group">
                                 <label>Nama</label>
                                 <input type="text" name="nama" class="form-control" required>
                             </div>
+
                             <div class="form-group">
                                 <label for="kategori_pegawai">Kategori Pegawai</label>
                                 <select name="kategori_pegawai" class="form-control" required>
@@ -40,6 +43,33 @@
                                     <option value="PTT">PTT</option>
                                     <option value="Tenaga Ahli">Tenaga Ahli</option>
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>No Rek</label>
+                                <input type="text" name="norek" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status Tanda Tangan</label><br>
+                                <input type="radio" name="status_ttd" value="Ya" required onclick="showUploadForm()">
+                                Ya<br>
+                                <input type="radio" name="status_ttd" value="Tidak" required onclick="hideUploadForm()">
+                                Tidak
+                            </div>
+
+                            <div class="form-group">
+                                <div id="uploadForm" style="display: none;">
+                                    <form enctype="multipart/form-data">
+                                        <label for="fileUpload">Upload Foto (Format JPG/PNG)</label><br>
+                                        <input type="file" id="fileUpload" name="fileUpload" accept=".jpg, .jpeg, .png">
+                                    </form>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Keterangan</label>
+                                <input type="text" name="keterangan" class="form-control" required>
                             </div>
 
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
@@ -56,6 +86,15 @@
     <?= $this->include('layout/footer') ?>
     <!-- partial -->
 </div>
+<script>
+    function showUploadForm() {
+        document.getElementById('uploadForm').style.display = 'block';
+    }
+
+    function hideUploadForm() {
+        document.getElementById('uploadForm').style.display = 'none';
+    }
+</script>
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>

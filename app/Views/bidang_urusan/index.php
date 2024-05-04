@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-10">
-                                <p class="card-title">Master Rekening Data Bidang Urusan</p>
+                                <p class="card-title">Master Data Bidang Urusan</p>
                             </div>
                             <div class="col-2 text-end">
                                 <a class="btn btn-success btn-sm" href="/bidang_urusan/create">Tambah Data</a>
