@@ -26,35 +26,20 @@ class KaryawanModel extends Model
 
     public function getKaryawanwithPNS() 
     {
-        // Query builder untuk mengambil data karyawab beserta data urusan, indikator kinerja terkait dan program terkait.
-        $query = $this->db->table('karyawan')
-            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan, karyawan.norek, karyawan.keterangan, karyawan.status_ttd, karyawan.file, karyawan.kategori_pegawai')
-            ->where('kategori_pegawai', 'PNS')
-            ->get();
-        
-        return $query->getResultArray();
+        // Query builder untuk mengambil data karyawan dengan kategori pegawai PNS
+        return $this->where('kategori_pegawai', 'PNS')->findAll();
     }
 
     public function getKaryawanwithPTT() 
     {
-        // Query builder untuk mengambil data karyawab beserta data urusan, indikator kinerja terkait dan program terkait.
-        $query = $this->db->table('karyawan')
-            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan, karyawan.norek, karyawan.keterangan, karyawan.status_ttd, karyawan.file, karyawan.kategori_pegawai')
-            ->where('kategori_pegawai', 'PTT')
-            ->get();
-        
-        return $query->getResultArray();
+        // Query builder untuk mengambil data karyawan dengan kategori pegawai PTT
+        return $this->where('kategori_pegawai', 'PTT')->findAll();
     }
 
     public function getKaryawanwithTenaga() 
     {
-        // Query builder untuk mengambil data karyawab beserta data urusan, indikator kinerja terkait dan program terkait.
-        $query = $this->db->table('karyawan')
-            ->select('karyawan.id, karyawan.nama, karyawan.nip, karyawan.jabatan, karyawan.norek, karyawan.keterangan, karyawan.status_ttd, karyawan.file, karyawan.kategori_pegawai')
-            ->where('kategori_pegawai', 'Tenaga Ahli')
-            ->get();
-        
-        return $query->getResultArray();
+        // Query builder untuk mengambil data karyawan dengan kategori pegawai Tenaga Ahli
+        return $this->where('kategori_pegawai', 'Tenaga Ahli')->findAll();
     }
 
 

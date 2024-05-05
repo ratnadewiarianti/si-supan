@@ -1,4 +1,5 @@
 <?= $this->extend('layout/app') ?>
+
 <?= $this->section('content') ?>
 <div class="main-panel">
     <div class="content-wrapper">
@@ -20,7 +21,22 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Tambah Karyawan</h4>
-                        <form class="forms-sample" action="/karyawan/store" method="post">
+                        <!-- Tampilkan pesan kesalahan -->
+                        <?php if(session()->has('error')): ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?= session('error') ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if(session()->has('errors')): ?>
+                            <?php foreach(session()->get('errors') as $error): ?>
+                                <div class="alert alert-danger" role="alert">
+                                    <?= $error ?>
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                        <!-- End tampilkan pesan kesalahan -->
+                        <form class="forms-sample" action="/karyawan/store" method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label>Jabatan</label>
                                 <input type="text" name="jabatan" class="form-control" required>
@@ -57,14 +73,13 @@
                                 <input type="radio" name="status_ttd" value="Tidak" required onclick="hideUploadForm()">
                                 Tidak
                             </div>
-
+                            
+                            <div id="uploadForm" style="display: none;">
                             <div class="form-group">
-                                <div id="uploadForm" style="display: none;">
-                                    <form enctype="multipart/form-data">
-                                        <label for="fileUpload">Upload Foto (Format JPG/PNG)</label><br>
-                                        <input type="file" id="fileUpload" name="fileUpload" accept=".jpg, .jpeg, .png">
-                                    </form>
-                                </div>
+                                <label>Upload Tanda Tangan</label> <br>
+                                <label><small>Upload dalam Format JPG dan PNG</small></label> <br>
+                                <input type="file" name="file" id="fileUpload" class="form-control-file" accept=".jpg, .jpeg, .png">
+                            </div>
                             </div>
 
                             <div class="form-group">
@@ -73,7 +88,6 @@
                             </div>
 
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
-                            <!-- <button class="btn btn-light">Batal</button> -->
                             <a href="<?= base_url('/karyawan'); ?>" class="btn btn-danger">Batal</a>
                         </form>
                     </div>
@@ -89,12 +103,15 @@
 <script>
     function showUploadForm() {
         document.getElementById('uploadForm').style.display = 'block';
+        document.getElementById('fileUpload').setAttribute('required', 'required');
     }
 
     function hideUploadForm() {
         document.getElementById('uploadForm').style.display = 'none';
+        document.getElementById('fileUpload').removeAttribute('required');
     }
 </script>
+
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>

@@ -98,9 +98,9 @@
                                             <tr>
                                             <td><?= $no++; ?></td>
                                                 <td><?= $row['nomor_dpa']; ?></td>
-                                                <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?>.<?= $row['kode_program']; ?>.<?= $row['kode_kegiatan']; ?>.<?= $row['kode_subkegiatan']; ?>
+                                                <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?>.<?= $row['kode_program']; ?>.<?= $row['kode_kegiatan']; ?>.<?= $row['kode_subkegiatan']; ?> <?= $row['nomenklatur_urusan_provinsi']; ?>
                                                 </td>
-                                                <td><?= $row['kode_akun']; ?>.<?= $row['kode_kelompok']; ?>.<?= $row['kode_jenis']; ?>.<?= $row['kode_objek']; ?>.<?= $row['kode_rincian_objek']; ?>.<?= $row['kode_sub_rincian_objek']; ?>
+                                                <td><?= $row['kode_akun']; ?>.<?= $row['kode_kelompok']; ?>.<?= $row['kode_jenis']; ?>.<?= $row['kode_objek']; ?>.<?= $row['kode_rincian_objek']; ?>.<?= $row['kode_sub_rincian_objek']; ?> <?= $row['uraian_sub_rincian_objek']; ?>
                                                 </td>
                                                 <td><?= 'Rp ' . number_format($row['jumlah'], 0, ',', '.'); ?></td>
 
