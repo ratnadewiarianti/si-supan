@@ -25,15 +25,14 @@ class DetailDPAController extends BaseController
 
 
     public function show($id)
-    {
-        $data = [
-            // 'dpa' => $this->DPAModel->findDatabyId($id),
-            'detaildpa' => $this->DetailDPAModel->where('id_dpa', $id)->getDetailDPA(),
-        ];
+{
+    $data = [
+        'detaildpa' => $this->DetailDPAModel->getDetailDPA($id), // Mengirimkan ID
+    ];
 
-        // $penatausahaans = $this->penatausahaanModel->getPenatausahaan2();
-        return view('detaildpa/show', $data);
-    }
+    return view('detaildpa/show', $data);
+}
+
 
 
     public function create($id)

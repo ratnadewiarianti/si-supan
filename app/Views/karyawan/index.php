@@ -20,62 +20,71 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row"> -->
-                            <div class="col-md-12 grid-margin stretch-card">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="row mb-4">
-                                            <div class="col-10">
-                                                <p class="card-title">Data Master Karyawan</p>
-                                            </div>
-                                            <div class="col-2 text-end">
-                                                <a  class="btn btn-success btn-sm" href="karyawan/create">Tambah Data</a>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                            <div class="table-responsive">
-                            <table class="table table-striped" id="table-1">
-                                <thead>
-                                    <tr>
-                                    <th class="">No</th>
-                                        <th>Jabatan</th>
-                                        <th>NIP</th>
-                                        <th>Nama</th>
-                                        <th>Kategori Pegawai</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php if (!empty($karyawan)) : ?>
-                                    <?php $no = 1; ?>
-                                    <?php foreach ($karyawan as $row) : ?>
-                                        <tr>
-                                            <td><?= $no++; ?></td>
-                                            <td><?= $row['jabatan']; ?></td>
-                                            <td><?= $row['nip']; ?></td>
-                                            <td><?= $row['nama']; ?></td>
-                                            <td><?= $row['kategori_pegawai']; ?></td>
-                                            <td>
-                                                <a href="/karyawan/edit/<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
-                                                <a href="/karyawan/delete/<?= $row['id']; ?>" class="btn btn-danger">Delete</a>
-                                            </td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                        <?php else : ?>
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row mb-4">
+                            <div class="col-10">
+                                <p class="card-title">Data Master Karyawan</p>
+                            </div>
+                            <div class="col-2 text-end">
+                                <a class="btn btn-success btn-sm" href="karyawan/create">Tambah Data</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-striped" id="table-1">
+                                        <thead>
+                                            <tr>
+                                                <th class="">No</th>
+                                                <th>Jabatan</th>
+                                                <th>NIP</th>
+                                                <th>Nama</th>
+                                                <th>No Rek</th>
+                                                <th>File</th>
+                                                <th>Kategori Pegawai</th>
+                                                <th>Keterangan</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php if (!empty($karyawan)) : ?>
+                                            <?php $no = 1; ?>
+                                            <?php foreach ($karyawan as $row) : ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $row['jabatan']; ?></td>
+                                                <td><?= $row['nip']; ?></td>
+                                                <td><?= $row['nama']; ?></td>
+                                                <td><?= $row['kategori_pegawai']; ?></td>
+                                                <td><?= !empty($row['file']) ? '<img src="' . base_url('uploads/ttd/' . $row['file']) . '" alt="Gambar" width="100" height="100">' : '-' ?></td>
+
+                                                <td><?= $row['norek']; ?></td>
+                                                <td><?= $row['keterangan']; ?></td>
+                                                <td>
+                                                    <a href="/karyawan/edit/<?= $row['id']; ?>"
+                                                        class="btn btn-primary">Edit</a>
+                                                    <a href="/karyawan/delete/<?= $row['id']; ?>"
+                                                        class="btn btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
+                                            <?php else : ?>
                                             <tr>
                                                 <td colspan="6" class="text-center">Tidak ada data Karyawan.</td>
                                             </tr>
-                                        <?php endif; ?>
-                                    
-                                </tbody>
-                            </table>
+                                            <?php endif; ?>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        </tbody>
+                                    </table>
+
                                 </div>
-                            <!-- </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- </div>
                         </div>
                     </div>
                 </div> -->

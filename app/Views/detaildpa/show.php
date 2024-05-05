@@ -98,9 +98,9 @@
                                             <tr>
                                             <td><?= $no++; ?></td>
                                                 <td><?= $row['nomor_dpa']; ?></td>
-                                                <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?>.<?= $row['kode_program']; ?>.<?= $row['kode_kegiatan']; ?>.<?= $row['kode_subkegiatan']; ?>
+                                                <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?>.<?= $row['kode_program']; ?>.<?= $row['kode_kegiatan']; ?>.<?= $row['kode_subkegiatan']; ?> <?= $row['nomenklatur_urusan_provinsi']; ?>
                                                 </td>
-                                                <td><?= $row['kode_akun']; ?>.<?= $row['kode_kelompok']; ?>.<?= $row['kode_jenis']; ?>.<?= $row['kode_objek']; ?>.<?= $row['kode_rincian_objek']; ?>.<?= $row['kode_sub_rincian_objek']; ?>
+                                                <td><?= $row['kode_akun']; ?>.<?= $row['kode_kelompok']; ?>.<?= $row['kode_jenis']; ?>.<?= $row['kode_objek']; ?>.<?= $row['kode_rincian_objek']; ?>.<?= $row['kode_sub_rincian_objek']; ?> <?= $row['uraian_sub_rincian_objek']; ?>
                                                 </td>
                                                 <td><?= 'Rp ' . number_format($row['jumlah'], 0, ',', '.'); ?></td>
 
@@ -116,11 +116,13 @@
 
                                                 <td>
 
-                                                <a href="/detaildpa/show/<?= $row['id']; ?>"
-                                                    class="btn btn-sm btn-success">Detail</a>
+                                                <!-- <a href="/detaildpasubkegiatan/showdetail/<?= $row['id']; ?>"
+                                                    class="btn btn-sm btn-success">Detail</a> -->
+                                                    <a href="/detaildpa_subkegiatan/showdetail/<?= $row['id']; ?>" class="btn btn-sm btn-success">Detail</a>
+
                                                 <a href="/detaildpa/edit/<?= $row['id']; ?>"
                                                     class="btn btn-sm btn-primary">Edit</a>
-                                                <a href="/dpa/delete/<?= $row['id']; ?>"
+                                                <a href="/detaildpa/delete/<?= $row['id']; ?>"
                                                     class="btn btn-sm btn-danger">Delete</a>
                                                 </td>
                                             </tr>

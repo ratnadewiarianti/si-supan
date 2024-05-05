@@ -36,7 +36,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Nama Bidang Urusan</label>
-                                <input type="text" name="Nama_bidang_urusan" class="form-control" value="<?= $bidang_urusan['Nama_bidang_urusan']; ?>" required>
+                                <input type="text" name="nama_bidang_urusan" class="form-control" value="<?= $bidang_urusan['nama_bidang_urusan']; ?>" required>
                             </div>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->
