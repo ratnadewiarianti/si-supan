@@ -75,46 +75,47 @@ class DetailDPAController extends BaseController
 
     public function edit($id)
     {
-        // Ambil detail rak belanja berdasarkan ID
+        // Ambil data detail DPA berdasarkan ID
         $detaildpa = $this->DetailDPAModel->find($id);
-
-        // Ambil ID rak belanja dari detail rak belanja
-        $id_dpa = $detaildpa['id_dpa'];
-
-        // Ambil semua bulan yang sudah terpilih untuk ID rak belanja kecuali bulan pada data yang dipilih
-        $detaildpa = $this->DetailDPAModel
-            ->where('id_dpa', $id_dpa)
-            ->where('id !=', $id)
-            ->findAll();
-
+        // Ambil data rekening dan subkegiatan untuk dropdown
+        $rekening = $this->SubRincianObjekModel->getRekening();
+        $subkegiatan = $this->SubkegiatanModel->getSubkegiatan();
+    
+        // Kirim data ke view
         $data = [
-            'dpa' => $this->DPAModel->find($id_dpa),
             'detaildpa' => $detaildpa,
-            // 'bulan_options' => $options
+            'subkegiatan' => $subkegiatan,
+            'rekening' => $rekening,
         ];
-
+    
         return view('detaildpa/edit', $data);
     }
-
-
-
-
+    
     public function update($id)
     {
+        // Ambil data dari form
+        $id_dpa = $this->request->getPost('id_dpa'); // Ambil id_dpa dari form
         $data = [
-            // 'bulan' => $this->request->getPost('bulan'),
-            'id_dpa' => $this->request->getPost('id_dpa'),
+            'id_subkegiatan' => $this->request->getPost('id_subkegiatan'),
+            'id_rekening' => $this->request->getPost('id_rekening'),
             'jumlah' => $this->request->getPost('jumlah'),
+            'jumlah_perubahan' => $this->request->getPost('jumlah_perubahan'), // Tambahkan data jumlah_perubahan
         ];
-
-
-        $this->DetailDPAModel->update($id, $data);
-        $id_dpa = $data['id_dpa'];
-
-        // Redirect kembali ke fungsi show dengan menyertakan id rak belanja
-        return redirect()->to("/detaildpa/show/$id_dpa");
+    
+        // Update data detail DPA berdasarkan ID
+        if ($this->DetailDPAModel->update($id, $data)) {
+            // Redirect kembali ke halaman show dengan menyertakan ID DPA jika update berhasil
+            return redirect()->to("/detaildpa/show/$id_dpa");
+        } else {
+            // Tambahkan logika penanganan kesalahan jika diperlukan
+            return "Gagal memperbarui data.";
+        }
     }
+    
+    
 
+    
+    
 
 
     public function destroy($id)
@@ -134,46 +135,44 @@ class DetailDPAController extends BaseController
 
 
     public function edit_jumlah_perubahan($id)
-    {
-        // Ambil detail rak belanja berdasarkan ID
-        $detaildpa = $this->DetailDPAModel->find($id);
+{
+    // Ambil detail rak belanja berdasarkan ID
+    $detaildpa = $this->DetailDPAModel->find($id);
 
-        // Ambil ID rak belanja dari detail rak belanja
-        $id_dpa = $detaildpa['id_dpa'];
+    $data = [
+        'detaildpa' => $detaildpa,
+    ];
 
-        // Ambil semua bulan yang sudah terpilih untuk ID rak belanja kecuali bulan pada data yang dipilih
-        $detaildpa = $this->DetailDPAModel
-            ->where('id_dpa', $id_dpa)
-            ->where('id !=', $id)
-            ->findAll();
+    return view('detaildpa/jumlah_perubahan', $data);
+}
 
-        $data = [
-            'dpa' => $this->DPAModel->find($id_dpa),
-            'detaildpa' => $detaildpa,
-            // 'bulan_options' => $options
-        ];
+public function update_jumlah_perubahan($id)
+{
+    // Validasi data yang dikirim dari formulir
+    $validationRules = [
+        'jumlah_perubahan' => 'required|numeric', // Sesuaikan dengan aturan validasi yang Anda butuhkan
+    ];
 
-        return view('detaildpa/jumlah_perubahan', $data);
+    if (!$this->validate($validationRules)) {
+        // Jika validasi gagal, kembalikan pengguna ke halaman tambah jumlah perubahan dengan pesan kesalahan
+        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
     }
 
+    $data = [
+        'jumlah_perubahan' => $this->request->getPost('jumlah_perubahan'),
+    ];
+
+    $this->DetailDPAModel->update($id, $data);
+
+    // Ambil ID DPA terkait dari data yang diubah
+    $detailDPA = $this->DetailDPAModel->find($id);
+    $id_dpa = $detailDPA['id_dpa'];
+
+    // Redirect kembali ke halaman show dengan menyertakan ID DPA
+    return redirect()->to("/detaildpa/show/{$id_dpa}");
+}
 
 
-
-    public function update_jumlah_perubahan($id)
-    {
-        $data = [
-            // 'bulan' => $this->request->getPost('bulan'),
-            'id_dpa' => $this->request->getPost('id_dpa'),
-            'jumlah_perubahan' => $this->request->getPost('jumlah_perubahan'),
-        ];
-
-
-        $this->DetailDPAModel->update($id, $data);
-        $id_dpa = $data['id_dpa'];
-
-        // Redirect kembali ke fungsi show dengan menyertakan id rak belanja
-        return redirect()->to("/detaildpa/show/$id_dpa");
-    }
 
 
 

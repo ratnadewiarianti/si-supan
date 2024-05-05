@@ -130,6 +130,16 @@ $routes->group('subrincian', ['filter' => 'auth'], function ($routes) {
    $routes->get('getRincianObjek/(:num)', 'SubRincianObjekController::getRincianObjek/$1');
 });
 
+$routes->group('penatausahaan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'PenataUsahaanController::index');
+   $routes->get('create', 'PenataUsahaanController::create');
+   $routes->post('store', 'PenataUsahaanController::store');
+   $routes->post('update/(:num)', 'PenataUsahaanController::update/$1');
+   $routes->get('edit/(:num)', 'PenataUsahaanController::edit/$1');
+   $routes->get('delete/(:num)', 'PenataUsahaanController::destroy/$1');
+});
+
+
 $routes->group('urusan', ['filter' => 'auth'], function ($routes) {
    $routes->get('/', 'UrusanController::index');
    $routes->get('create', 'UrusanController::create');
@@ -194,19 +204,37 @@ $routes->group('detaildpa', ['filter' => 'auth'], function ($routes) {
    $routes->get('show/(:num)', 'DetailDPAController::show/$1');
    $routes->get('create/(:num)', 'DetailDPAController::create/$1');
    $routes->post('store', 'DetailDPAController::store');
-   $routes->post('update/(:num)', 'DetailDPAController::update/$1');
+
+   $routes->put('update/(:num)', 'DetailDPAController::update/$1'); 
    $routes->get('edit/(:num)', 'DetailDPAController::edit/$1');
    $routes->get('delete/(:num)', 'DetailDPAController::destroy/$1');
    $routes->post('update_jumlah_perubahan/(:num)', 'DetailDPAController::update_jumlah_perubahan/$1');
    $routes->get('edit_jumlah_perubahan/(:num)', 'DetailDPAController::edit_jumlah_perubahan/$1');
 });
 
-
-$routes->group('penatausahaan', ['filter' => 'auth'], function ($routes) {
-   $routes->get('/', 'PenataUsahaanController::index');
-   $routes->get('create', 'PenataUsahaanController::create');
-   $routes->post('store', 'PenataUsahaanController::store');
-   $routes->post('update/(:num)', 'PenataUsahaanController::update/$1');
-   $routes->get('edit/(:num)', 'PenataUsahaanController::edit/$1');
-   $routes->get('delete/(:num)', 'PenataUsahaanController::destroy/$1');
+$routes->group('detailpenatausahaan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'DetailPenatausahaanController::show/$1');
+   $routes->get('create/(:num)', 'DetailPenatausahaanController::create/$1');
+   $routes->post('store', 'DetailPenatausahaanController::store');
+   $routes->post('update/(:num)', 'DetailPenatausahaanController::update/$1');
+   $routes->get('edit/(:num)', 'DetailPenatausahaanController::edit/$1');
+   $routes->get('delete/(:num)', 'DetailPenatausahaanController::destroy/$1');
+   $routes->get('create2/(:num)', 'DetailPenatausahaanController::create2/$1');
+   $routes->post('store2', 'DetailPenatausahaanController::store2');
+   $routes->post('update2/(:num)', 'DetailPenatausahaanController::update2/$1');
+   $routes->get('edit2/(:num)', 'DetailPenatausahaanController::edit2/$1');
+   $routes->get('delete2/(:num)', 'DetailPenatausahaanController::destroy2/$1');
 });
+
+$routes->group('keterangan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'KeteranganController::show/$1');
+   $routes->get('create/(:num)', 'KeteranganController::create/$1');
+   $routes->post('store', 'KeteranganController::store');
+   $routes->post('update/(:num)', 'KeteranganController::update/$1');
+   $routes->get('edit/(:num)', 'KeteranganController::edit/$1');
+   $routes->get('delete/(:num)', 'KeteranganController::destroy/$1');
+});
+
+
+
+
