@@ -39,7 +39,12 @@ class DetailDPAModel extends Model
     return $query->getResultArray();
 }
 
-    
+    public function getDPA()
+    {
+        return  $this->select('detail_dpa.*, dpa.nomor_dpa')
+        ->join('dpa', 'dpa.id = detail_dpa.id_dpa')
+        ->findAll();
+    }
     
 
 //     public function getDetailDPA()

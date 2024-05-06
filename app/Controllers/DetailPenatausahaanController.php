@@ -41,7 +41,7 @@ class DetailPenatausahaanController extends BaseController
 
     public function create($id)
     {
-        $detaildpa = $this->DetailDPAModel->getDetailDPA();
+        $detaildpa = $this->DetailDPAModel->getDPA();
         $rekening = $this->SubRincianObjekModel->getRekening();
 
         $data = [
@@ -114,7 +114,7 @@ class DetailPenatausahaanController extends BaseController
 
     public function edit($id)
     {
-        $detaildpa = $this->DetailDPAModel->getDetailDPA();
+        $detaildpa = $this->DetailDPAModel->getDPA();
         $rekening = $this->SubRincianObjekModel->getRekening();
         $detailpenatausahaan = $this->DetailPenatausahaanModel->find($id);
         $data = [
