@@ -55,12 +55,12 @@
                </li>
            
                <li class="nav-item  ">
-               <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
                    <i class="ti-files menu-icon"></i>
                    <span class="menu-title">Master Subkegiatan </span>
                    <i class="menu-arrow"></i>
                </a>
-               <div class="collapse" id="ui-basic3">
+               <div class="collapse" id="ui-basic4">
                    <ul class="nav flex-column sub-menu">
                     
                        <li class="nav-item <?= (strpos($uri, '/urusan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/urusan">Urusan</a></li>

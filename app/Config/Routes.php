@@ -212,16 +212,30 @@ $routes->group('detaildpa', ['filter' => 'auth'], function ($routes) {
    $routes->get('edit_jumlah_perubahan/(:num)', 'DetailDPAController::edit_jumlah_perubahan/$1');
 });
 
-// $routes->group('detaildpa_subkegiatan', ['filter' => 'auth'], function ($routes) {
-//    $routes->get('showdetail/(:num)', 'DetailDPASubkegiatanController::showdetail/$1');
-//    $routes->get('create/(:num)', 'DetailDPASubkegiatanController::create/$1');
-//    $routes->post('store', 'DetailDPASubkegiatanController::store');
-//    $routes->put('update/(:num)', 'DetailDPASubkegiatanController::update/$1'); 
-//    $routes->get('edit/(:num)', 'DetailDPASubkegiatanController::edit/$1');
-//    $routes->get('delete/(:num)', 'DetailDPASubkegiatanController::destroy/$1');
-//    $routes->post('update_perubahan/(:num)', 'DetailDPASubkegiatanController::update_perubahan/$1');
-//    $routes->get('edit_perubahan/(:num)', 'DetailDPASubkegiatanController::edit_perubahan/$1');
-// });
+$routes->group('detailpenatausahaan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'DetailPenatausahaanController::show/$1');
+   $routes->get('create/(:num)', 'DetailPenatausahaanController::create/$1');
+   $routes->post('store', 'DetailPenatausahaanController::store');
+   $routes->post('update/(:num)', 'DetailPenatausahaanController::update/$1');
+   $routes->get('edit/(:num)', 'DetailPenatausahaanController::edit/$1');
+   $routes->get('delete/(:num)', 'DetailPenatausahaanController::destroy/$1');
+   $routes->get('create2/(:num)', 'DetailPenatausahaanController::create2/$1');
+   $routes->post('store2', 'DetailPenatausahaanController::store2');
+   $routes->post('update2/(:num)', 'DetailPenatausahaanController::update2/$1');
+   $routes->get('edit2/(:num)', 'DetailPenatausahaanController::edit2/$1');
+   $routes->get('delete2/(:num)', 'DetailPenatausahaanController::destroy2/$1');
+});
+
+$routes->group('keterangan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'KeteranganController::show/$1');
+   $routes->get('create/(:num)', 'KeteranganController::create/$1');
+   $routes->post('store', 'KeteranganController::store');
+   $routes->post('update/(:num)', 'KeteranganController::update/$1');
+   $routes->get('edit/(:num)', 'KeteranganController::edit/$1');
+   $routes->get('delete/(:num)', 'KeteranganController::destroy/$1');
+});
+
+
 
 $routes->group('detaildpa_subkegiatan', ['filter' => 'auth'], function ($routes) {
    $routes->get('showdetail/(:num)', 'DetailDPASubkegiatanController::showdetail/$1');

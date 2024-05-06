@@ -58,6 +58,8 @@
                                                         <td><?= $row['nama_karyawan_3']; ?></td>
                                                         <td><?= date('d F Y', strtotime($row['tanggal'])); ?></td>
                                                         <td>
+
+                                                            <a href="/detailpenatausahaan/show/<?= $row['id']; ?>" class="btn btn-sm btn-success">Detail</a>
                                                             <a href="/penatausahaan/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                                                             <a href="/penatausahaan/delete/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
                                                         </td>
