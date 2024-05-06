@@ -18,7 +18,7 @@
            </li>
            <li class="nav-item  ">
                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                   <i class="ti-files menu-icon"></i>
+                   <i class="ti-folder menu-icon"></i>
                    <span class="menu-title">Master</span>
                    <i class="menu-arrow"></i>
                </a>
@@ -26,12 +26,14 @@
                    <ul class="nav flex-column sub-menu">
                        <li class="nav-item <?= (strpos($uri, '/user/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/user">User</a></li>
                        <li class="nav-item <?= (strpos($uri, '/karyawan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/karyawan">Karyawan</a></li>
-                       <li class="nav-item <?= (strpos($uri, '/rakbelanja/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/rakbelanja">Rak Belanja</a></li>
-                       <li class="nav-item <?= (strpos($uri, '/dpa/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/dpa">DPA</a></li>
+                       
                    </ul>
                </div>
 
            </li>
+           
+           
+           
            <li class="nav-item  ">
                <a class="nav-link" data-toggle="collapse" href="#ui-basic2" aria-expanded="false" aria-controls="ui-basic">
                    <i class="ti-credit-card menu-icon"></i>
@@ -51,22 +53,11 @@
                </div>
 
                </li>
-           <li class="nav-item  ">
-               <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
-                   <i class="ti-stamp menu-icon"></i>
-                   <span class="menu-title">Penatausahaan</span>
-                   <i class="menu-arrow"></i>
-               </a>
-               <div class="collapse" id="ui-basic3">
-                   <ul class="nav flex-column sub-menu">
-                       <li class="nav-item <?= (strpos($uri, '/penatausahaan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/penatausahaan">Penatausahaan</a></li>
-                   </ul>
-               </div>
-               </li>
+           
                <li class="nav-item  ">
                <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
                    <i class="ti-files menu-icon"></i>
-                   <span class="menu-title">Master Subkegiatan</span>
+                   <span class="menu-title">Master Subkegiatan </span>
                    <i class="menu-arrow"></i>
                </a>
                <div class="collapse" id="ui-basic3">
@@ -79,8 +70,59 @@
                        <li class="nav-item <?= (strpos($uri, '/subkegiatan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/subkegiatan">Subkegiatan</a></li>
                    </ul>
                </div>
-
-
            </li>
+
+           <li class="nav-item  ">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+                   <i class="ti-money menu-icon"></i>
+                   <span class="menu-title">Anggaran</span>
+                   <i class="menu-arrow"></i>
+               </a>
+               <div class="collapse" id="ui-basic4">
+                   <ul class="nav flex-column sub-menu">
+                   <li class="nav-item <?= (strpos($uri, '/rakbelanja/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/rakbelanja">Rak Belanja</a></li>
+                       <li class="nav-item <?= (strpos($uri, '/dpa/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/dpa">DPA</a></li>
+                   </ul>
+               </div>
+               </li>
+
+           <li class="nav-item  ">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic">
+                   <i class="ti-stamp menu-icon"></i>
+                   <span class="menu-title">Penatausahaan</span>
+                   <i class="menu-arrow"></i>
+               </a>
+               <div class="collapse" id="ui-basic5">
+                   <ul class="nav flex-column sub-menu">
+                       <li class="nav-item <?= (strpos($uri, '/penatausahaan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/penatausahaan">Penatausahaan</a></li>
+                   </ul>
+               </div>
+               </li>
+
+           <li class="nav-item  ">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic">
+                   <i class="ti-check menu-icon"></i>
+                   <span class="menu-title">Verifikasi</span>
+                   <i class="menu-arrow"></i>
+               </a>
+               <div class="collapse" id="ui-basic6">
+                   <ul class="nav flex-column sub-menu">
+                       <li class="nav-item <?= (strpos($uri, '/penatausahaan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/penatausahaan">Penatausahaan</a></li>
+                   </ul>
+               </div>
+               </li>
+
+           <li class="nav-item  ">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic">
+                   <i class="ti-book menu-icon"></i>
+                   <span class="menu-title">Laporan</span>
+                   <i class="menu-arrow"></i>
+               </a>
+               <div class="collapse" id="ui-basic7">
+                   <ul class="nav flex-column sub-menu">
+                       <li class="nav-item <?= (strpos($uri, '/penatausahaan/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/penatausahaan">Penatausahaan</a></li>
+                   </ul>
+               </div>
+               </li>
        </ul>
    </nav>
