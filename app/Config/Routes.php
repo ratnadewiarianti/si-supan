@@ -131,12 +131,12 @@ $routes->group('subrincian', ['filter' => 'auth'], function ($routes) {
 });
 
 $routes->group('penatausahaan', ['filter' => 'auth'], function ($routes) {
-   $routes->get('/', 'PenataUsahaanController::index');
-   $routes->get('create', 'PenataUsahaanController::create');
-   $routes->post('store', 'PenataUsahaanController::store');
-   $routes->post('update/(:num)', 'PenataUsahaanController::update/$1');
-   $routes->get('edit/(:num)', 'PenataUsahaanController::edit/$1');
-   $routes->get('delete/(:num)', 'PenataUsahaanController::destroy/$1');
+   $routes->get('/', 'PenatausahaanController::index');
+   $routes->get('create', 'PenatausahaanController::create');
+   $routes->post('store', 'PenatausahaanController::store');
+   $routes->post('update/(:num)', 'PenatausahaanController::update/$1');
+   $routes->get('edit/(:num)', 'PenatausahaanController::edit/$1');
+   $routes->get('delete/(:num)', 'PenatausahaanController::destroy/$1');
 });
 
 

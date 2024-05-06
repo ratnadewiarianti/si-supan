@@ -73,12 +73,12 @@
            </li>
 
            <li class="nav-item  ">
-               <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+               <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic">
                    <i class="ti-money menu-icon"></i>
                    <span class="menu-title">Anggaran</span>
                    <i class="menu-arrow"></i>
                </a>
-               <div class="collapse" id="ui-basic4">
+               <div class="collapse" id="ui-basic8">
                    <ul class="nav flex-column sub-menu">
                    <li class="nav-item <?= (strpos($uri, '/rakbelanja/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/rakbelanja">Rak Belanja</a></li>
                        <li class="nav-item <?= (strpos($uri, '/dpa/') !== false) ? 'active' : '' ?>"> <a class="nav-link" href="/dpa">DPA</a></li>
