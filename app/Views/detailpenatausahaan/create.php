@@ -13,12 +13,22 @@
 
                             <!-- 'id_dpa','id_subkegiatan','id_rekening','jumlah','jumlah_perubahan' -->
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Nomor DPA</label>
                                 <select class="form-control js-example-basic-single w-100" name="id_detail_dpa" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($detaildpa as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['nomor_dpa']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div> -->
+
+                            <div class="form-group">
+                                <label>Subkegiatan</label>
+                                <select class="form-control" name="id_detail_dpa" required>
+                                    <option selected disabled>-</option>
+                                    <?php foreach ($detaildpa as $key) : ?>
+                                        <option value="<?= $key['id']; ?>"><?= $key['kode_urusan']; ?>.<?= $key['kode_bidang_urusan']; ?>.<?= $key['kode_program']; ?>.<?= $key['kode_kegiatan']; ?>.<?= $key['kode_subkegiatan']; ?> - <?= $key['nomenklatur_urusan_provinsi']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -73,6 +83,7 @@
                                 <label>Terbilang</label>
                                 <input type="text" name="terbilang" required class="form-control">
                             </div>
+                            <input type="text" name="status_verifikasi"  value="MENUNGGU" class="form-control"  hidden required>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->
                             <a href="/detailpenatausahaan/show/<?= service('uri')->getSegment(3); ?>" class="btn btn-danger">Batal</a>

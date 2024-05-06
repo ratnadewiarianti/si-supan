@@ -224,6 +224,8 @@ $routes->group('detailpenatausahaan', ['filter' => 'auth'], function ($routes) {
    $routes->post('update2/(:num)', 'DetailPenatausahaanController::update2/$1');
    $routes->get('edit2/(:num)', 'DetailPenatausahaanController::edit2/$1');
    $routes->get('delete2/(:num)', 'DetailPenatausahaanController::destroy2/$1');
+   $routes->add('terima/(:num)', 'DetailPenatausahaanController::terima/$1');
+   $routes->add('tolak/(:num)', 'DetailPenatausahaanController::tolak/$1');
 });
 
 $routes->group('keterangan', ['filter' => 'auth'], function ($routes) {
@@ -248,4 +250,11 @@ $routes->group('detaildpa_subkegiatan', ['filter' => 'auth'], function ($routes)
    $routes->get('perubahan/(:num)', 'DetailDPASubkegiatanController::perubahan/$1');
 });
 
-
+$routes->group('verifikasi', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'VerifikasiController::index');
+   $routes->get('create', 'VerifikasiController::create');
+   $routes->post('store', 'VerifikasiController::store');
+   $routes->post('update/(:num)', 'VerifikasiController::update/$1');
+   $routes->get('edit/(:num)', 'VerifikasiController::edit/$1');
+   $routes->get('delete/(:num)', 'VerifikasiController::destroy/$1');
+});

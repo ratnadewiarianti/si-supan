@@ -72,7 +72,7 @@ class DetailPenataushaanTable extends Migration
             ],
             'status_verifikasi' => [
                 'type' => 'VARCHAR',
-                'constraint' => 2
+                'constraint' => 10
             ],
             
             'created_at' => [
