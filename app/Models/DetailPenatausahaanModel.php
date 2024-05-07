@@ -35,7 +35,7 @@ class DetailPenatausahaanModel extends Model
 
     public function getDetail($id)
     {
-        return $this->select('detail_penatausahaan.*,dpa.nomor_dpa, CONCAT(akun.kode_akun, \'.\', kelompok.kode_kelompok, \'.\', jenis.kode_jenis, \'.\', objek.kode_objek, \'.\', rincian_objek.kode_rincian_objek, \'.\', sub_rincian_objek.kode_sub_rincian_objek) AS kode_rekening')
+        return $this->select('detail_penatausahaan.*,dpa.nomor_dpa, CONCAT(akun.kode_akun, \'.\', kelompok.kode_kelompok, \'.\', jenis.kode_jenis, \'.\', objek.kode_objek, \'.\', rincian_objek.kode_rincian_objek, \'.\', sub_rincian_objek.kode_sub_rincian_objek) AS kode_rekening , sub_rincian_objek.uraian_sub_rincian_objek AS uraian_akun')
             ->join('sub_rincian_objek', 'sub_rincian_objek.id = detail_penatausahaan.id_rekening')
             ->join('rincian_objek', 'rincian_objek.id = sub_rincian_objek.id_rincian_objek')
             ->join('objek', 'objek.id = sub_rincian_objek.id_objek')

@@ -39,6 +39,7 @@
                                             <th>No</th>
                                             <th>Nomor DPA</th>
                                             <th>Nomor Rekening</th>
+                                            <th>Uraian Akun</th>
                                             <th>Nomor BK Umum</th>
                                             <th>Nomor BK Pembantu</th>
                                             <th>Asli I,II,III</th>
@@ -60,6 +61,8 @@
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $row['nomor_dpa']; ?></td>
                                                         <td><?= $row['kode_rekening']; ?>
+                                                        </td>
+                                                        <td><?= $row['uraian_akun']; ?>
                                                         </td>
                                                         <td><?= $row['no_bk_umum']; ?>
                                                         </td>
@@ -111,7 +114,7 @@
                             </div>
                             <div>
                                 <a class="btn btn-success btn-sm" href="/detailpenatausahaan/create2/<?= service('uri')->getSegment(3); ?>">Tambah Data</a>
-                             
+
                             </div>
                         </div>
 
