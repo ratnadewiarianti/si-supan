@@ -24,7 +24,9 @@
                                 <p class="card-title">Detail Data penatausahaan</p>
                             </div>
                             <div>
-                                <a class="btn btn-success btn-sm" href="/detailpenatausahaan/create/<?= service('uri')->getSegment(3); ?>">Tambah Data</a>
+                                <a class="btn btn-success btn-sm"
+                                    href="/detailpenatausahaan/create/<?= service('uri')->getSegment(3); ?>">Tambah
+                                    Data</a>
                                 <a class="btn btn-dark btn-sm" href="/penatausahaan">Kembali</a>
                             </div>
                         </div>
@@ -39,7 +41,6 @@
                                             <th>No</th>
                                             <th>Nomor DPA</th>
                                             <th>Nomor Rekening</th>
-                                            <th>Uraian Akun</th>
                                             <th>Nomor BK Umum</th>
                                             <th>Nomor BK Pembantu</th>
                                             <th>Asli I,II,III</th>
@@ -49,49 +50,87 @@
                                             <th>Pajak Daerah</th>
                                             <th>PPH 21</th>
                                             <th>Terbilang</th>
+                                            <th>Status Verifikasi</th>
+                                            <th>Verifikasi</th>
                                             <th>Action</th>
 
                                             <!-- 'id_dpa','id_subkegiatan','id_rekening','jumlah','jumlah_perubahan' -->
                                         </thead>
                                         <tbody>
                                             <?php if (!empty($detailpenatausahaan)) : ?>
-                                                <?php $no = 1; ?>
-                                                <?php foreach ($detailpenatausahaan as $row) : ?>
-                                                    <tr>
-                                                        <td><?= $no++; ?></td>
-                                                        <td><?= $row['nomor_dpa']; ?></td>
-                                                        <td><?= $row['kode_rekening']; ?>
-                                                        </td>
-                                                        <td><?= $row['uraian_akun']; ?>
-                                                        </td>
-                                                        <td><?= $row['no_bk_umum']; ?>
-                                                        </td>
-                                                        <td><?= $row['no_bk_pembantu']; ?>
-                                                        </td>
-                                                        <td><?= $row['asli_123']; ?>
-                                                        </td>
-                                                        <td><?= $row['sudah_terima_dari']; ?>
-                                                        </td>
-                                                        <td><?= 'Rp ' . number_format($row['uang_sebanyak'], 0, ',', '.'); ?></td>
-                                                        <td><?= $row['untuk_pembayaran']; ?>
-                                                        </td>
-                                                        <td><?= $row['pajak_daerah']; ?>
-                                                        </td>
-                                                        <td><?= $row['pph21']; ?>
-                                                        </td>
-                                                        <td><?= $row['terbilang']; ?>
-                                                        </td>
-                                                        <td>
-                                                            <a href="/keterangan/show/<?= $row['id']; ?>" class="btn btn-sm btn-success">Keterangan</a>
-                                                            <a href="/detailpenatausahaan/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                                                            <a href="/detailpenatausahaan/delete/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
+                                            <?php $no = 1; ?>
+                                            <?php foreach ($detailpenatausahaan as $row) : ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?>.<?= $row['kode_program']; ?>.<?= $row['kode_kegiatan']; ?>.<?= $row['kode_subkegiatan']; ?>
+                                                    - <?= $row['nomenklatur_urusan_provinsi']; ?></td>
+                                                <td><?= $row['kode_rekening']; ?> -
+                                                    <?= $row['uraian_sub_rincian_objek']; ?>
+                                                </td>
+                                                <td><?= $row['no_bk_umum']; ?>
+                                                </td>
+                                                <td><?= $row['no_bk_pembantu']; ?>
+                                                </td>
+                                                <td><?= $row['asli_123']; ?>
+                                                </td>
+                                                <td><?= $row['sudah_terima_dari']; ?>
+                                                </td>
+                                                <td><?= 'Rp ' . number_format($row['uang_sebanyak'], 0, ',', '.'); ?>
+                                                </td>
+                                                <td><?= $row['untuk_pembayaran']; ?>
+                                                </td>
+                                                <td><?= $row['pajak_daerah']; ?>
+                                                </td>
+                                                <td><?= $row['pph21']; ?>
+                                                </td>
+                                                <td><?= $row['terbilang']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php
+                                                    $buttonClass = '';
+                                                    switch ($row['status_verifikasi']) {
+                                                        case 'MENUNGGU':
+                                                            $buttonClass = 'btn-warning';
+                                                            break;
+                                                        case 'DITERIMA':
+                                                            $buttonClass = 'btn-success';
+                                                            break;
+                                                        case 'DITOLAK':
+                                                            $buttonClass = 'btn-danger';
+                                                            break;
+                                                        default:
+                                                            // Default class atau logika jika tidak sesuai kondisi di atas.
+                                                            break;
+                                                    }
+                                                    ?>
+                                                    <button class="btn <?= $buttonClass; ?>" disabled><?= $row['status_verifikasi']; ?></button>
+                                                </td>
+                                                <td>
+                                                    <a href="/detailpenatausahaan/terima/<?= $row['id']; ?>"
+                                                        class="btn btn-success btn-sm btn-terima"
+                                                        data-id="<?= $row['id']; ?>"
+                                                        onclick="return confirm('Apakah Anda yakin ingin menerima data ini?')">Disetujui</a>
+                                                    <a href="/detailpenatausahaan/tolak/<?= $row['id']; ?>"
+                                                        class="btn btn-danger btn-sm btn-tolak"
+                                                        data-id="<?= $row['id']; ?>"
+                                                        onclick="return confirm('Apakah Anda yakin ingin menolak data ini?')">Ditolak</a>
+
+                                                </td>
+                                                <td>
+                                                    <a href="/keterangan/show/<?= $row['id']; ?>"
+                                                        class="btn btn-sm btn-success">Keterangan</a>
+                                                    <a href="/detailpenatausahaan/edit/<?= $row['id']; ?>"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                    <a href="/detailpenatausahaan/delete/<?= $row['id']; ?>"
+                                                        class="btn btn-sm btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
                                             <?php else : ?>
-                                                <tr>
-                                                    <td colspan="6" class="text-center">Tidak ada data detail penatausahaan.</td>
-                                                </tr>
+                                            <tr>
+                                                <td colspan="6" class="text-center">Tidak ada data detail penatausahaan.
+                                                </td>
+                                            </tr>
                                             <?php endif; ?>
 
                                         </tbody>
@@ -114,7 +153,7 @@
                             </div>
                             <div>
                                 <a class="btn btn-success btn-sm" href="/detailpenatausahaan/create2/<?= service('uri')->getSegment(3); ?>">Tambah Data</a>
-
+                             
                             </div>
                         </div>
 
@@ -135,23 +174,26 @@
                                         </thead>
                                         <tbody>
                                             <?php if (!empty($detail2)) : ?>
-                                                <?php $no = 1; ?>
-                                                <?php foreach ($detail2 as $row) : ?>
-                                                    <tr>
-                                                        <td><?= $no++; ?></td>
-                                                        <td><?= $row['nama']; ?></td>
-                                                        <td><?= $row['nip']; ?></td>
-                                                        <td><?= $row['jabatan']; ?></td>
-                                                        <td>
-                                                            <a href="/detailpenatausahaan/edit2/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                                                            <a href="/detailpenatausahaan/delete2/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
+                                            <?php $no = 1; ?>
+                                            <?php foreach ($detail2 as $row) : ?>
+                                            <tr>
+                                                <td><?= $no++; ?></td>
+                                                <td><?= $row['nama']; ?></td>
+                                                <td><?= $row['nip']; ?></td>
+                                                <td><?= $row['jabatan']; ?></td>
+                                                <td>
+                                                    <a href="/detailpenatausahaan/edit2/<?= $row['id']; ?>"
+                                                        class="btn btn-sm btn-primary">Edit</a>
+                                                    <a href="/detailpenatausahaan/delete2/<?= $row['id']; ?>"
+                                                        class="btn btn-sm btn-danger">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <?php endforeach; ?>
                                             <?php else : ?>
-                                                <tr>
-                                                    <td colspan="6" class="text-center">Tidak ada data detail penatausahaan.</td>
-                                                </tr>
+                                            <tr>
+                                                <td colspan="6" class="text-center">Tidak ada data detail penatausahaan.
+                                                </td>
+                                            </tr>
                                             <?php endif; ?>
 
                                         </tbody>
@@ -166,6 +208,65 @@
             </div>
         </div>
     </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', function () {
+    var buttonsTerima = document.querySelectorAll('.btn-terima');
+    var buttonsTolak = document.querySelectorAll('.btn-tolak');
+
+    function handleResponse(data) {
+        if (data.status === 'success') {
+            console.log(data.message);
+            // Ubah tampilan sesuai dengan respons
+            location.reload(); // Reload halaman setelah pembaruan berhasil
+        } else {
+            console.error('Gagal memperbarui status:', data.message);
+        }
+    }
+
+    buttonsTerima.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var id = this.getAttribute('data-id');
+
+            fetch('/detailpenatausahaan/terima/' + id + '?timestamp=' + new Date().getTime(), {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                handleResponse(data);
+            })
+            .catch(error => {
+                console.error('Gagal mengirim permintaan: ' + error);
+            });
+        });
+    });
+
+    buttonsTolak.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var id = this.getAttribute('data-id');
+
+            fetch('/detailpenatausahaan/tolak/' + id + '?timestamp=' + new Date().getTime(), {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                handleResponse(data);
+            })
+            .catch(error => {
+                console.error('Gagal mengirim permintaan: ' + error);
+            });
+        });
+    });
+});
+
+
+    </script>
+
+
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
     <?= $this->include('layout/footer') ?>
@@ -180,7 +281,7 @@
 
 <?= $this->section('javascript') ?>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#table-1').DataTable();
     });
 </script>

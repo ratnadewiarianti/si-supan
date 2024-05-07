@@ -81,7 +81,8 @@ class DetailPenatausahaanController extends BaseController
             'pajak_daerah' => $this->request->getPost('pajak_daerah'),
             'pph21' => $this->request->getPost('pph21'),
             'terbilang' => $this->request->getPost('terbilang'),
-            'status_verifikasi' => 0,
+            'status_verifikasi' => $this->request->getPost('status_verifikasi'),
+            // 'status_verifikasi' => 0,
             'status_kwitansi' => 0
         ];
 
@@ -156,7 +157,7 @@ class DetailPenatausahaanController extends BaseController
             'pajak_daerah' => $this->request->getPost('pajak_daerah'),
             'pph21' => $this->request->getPost('pph21'),
             'terbilang' => $this->request->getPost('terbilang'),
-            'status_verifikasi' => 0,
+            'status_verifikasi' => $this->request->getPost('status_verifikasi'),
             'status_kwitansi' => 0
         ];
 
@@ -218,6 +219,36 @@ class DetailPenatausahaanController extends BaseController
         // Redirect kembali ke halaman show dengan id_rakbelanja
         return redirect()->to("/detailpenatausahaan/show/$id_penatausahaan");
     }
+
+    public function terima($id)
+{
+    $model = new DetailPenatausahaanModel();
+    $updated = $model->updateStatusVerifikasi($id, 'DITERIMA');
+    if ($updated) {
+        // Pembaruan berhasil
+        return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil diterima']);
+    } else {
+        // Pembaruan gagal
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memperbarui status.']);
+    }
+}
+
+public function tolak($id)
+{
+    $model = new DetailPenatausahaanModel();
+    $updated = $model->updateStatusVerifikasi($id, 'DITOLAK');
+    if ($updated) {
+        // Pembaruan berhasil
+        return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil ditolak']);
+    } else {
+        // Pembaruan gagal
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memperbarui status.']);
+    }
+}
+
+
+
+
 
 
 }

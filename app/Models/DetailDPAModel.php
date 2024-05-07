@@ -41,8 +41,13 @@ class DetailDPAModel extends Model
 
     public function getDPA()
     {
-        return  $this->select('detail_dpa.*, dpa.nomor_dpa')
+        return  $this->select('detail_dpa.*, dpa.nomor_dpa, subkegiatan.kode_subkegiatan, subkegiatan.nomenklatur_urusan_provinsi, urusan.kode_urusan, bidang_urusan.kode_bidang_urusan, kegiatan.kode_kegiatan, program.kode_program')
         ->join('dpa', 'dpa.id = detail_dpa.id_dpa')
+        ->join('subkegiatan', 'subkegiatan.id = detail_dpa.id_subkegiatan')
+        ->join('urusan', 'urusan.id = subkegiatan.id_urusan')
+        ->join('bidang_urusan', 'bidang_urusan.id = subkegiatan.id_bidang_urusan')
+        ->join('program', 'program.id = subkegiatan.id_program')
+        ->join('kegiatan', 'kegiatan.id = subkegiatan.id_kegiatan')
         ->findAll();
     }
     
