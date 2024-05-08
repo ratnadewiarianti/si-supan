@@ -257,4 +257,5 @@ $routes->group('verifikasi', ['filter' => 'auth'], function ($routes) {
    $routes->post('update/(:num)', 'VerifikasiController::update/$1');
    $routes->get('edit/(:num)', 'VerifikasiController::edit/$1');
    $routes->get('delete/(:num)', 'VerifikasiController::destroy/$1');
+   $routes->get('preview_spj/(:num)', 'VerifikasiController::preview_spj/$1');
 });

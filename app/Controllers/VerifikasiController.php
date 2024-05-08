@@ -8,6 +8,7 @@ use App\Models\VerifikasiModel;
 use App\Models\DetailPenatausahaanModel;
 use App\Models\SubkegiatanModel;
 use App\Models\SubRincianObjekModel;
+use CodeIgniter\HTTP\Files\UploadedFile;
 class VerifikasiController extends BaseController
 {
     protected $VerifikasiModel;
@@ -24,51 +25,75 @@ class VerifikasiController extends BaseController
 
     public function index()
     {
-        // $verifikasi = $this->VerifikasiModel->getVerifikasi();
-        $verifikasi = $this->VerifikasiModel->findAll();
+        $verifikasiModel = new VerifikasiModel();
+        $verifikasi = $verifikasiModel->joinDetailPenatausahaan()->findAll();
+        $lastQuery = $verifikasiModel->getLastQuery();
+        // echo $lastQuery;
+        
 
         return view('verifikasi/index', ['verifikasi' => $verifikasi]);
     }
 
+    // Controller
+// public function index()
+// {
+//     $verifikasiModel = new VerifikasiModel();
+//     $data = $verifikasiModel->joinDetailPenatausahaan()->findAll();
+    
+//     // Tampilkan data
+//     print_r($data);
+// }
+
+
     public function create()
     {
-        $data['detailpenatausahaan'] = $this->DetailPenatausahaanModel->getDetailPenatausahaan();
+        $data['detailpenatausahaan'] = $this->DetailPenatausahaanModel->getCariDataVerifikasi();
         return view('verifikasi/create', $data);
     }
 
     public function store()
-    {
-        $data = [
-            'id_detail_penatausahaan' => $this->request->getPost('id_detail_penatausahaan'),
-            'nomor_bku' => $this->request->getPost('nomor_bku'),
-            'tanggal' => $this->request->getPost('tanggal'),
-            'uraian' => $this->request->getPost('uraian'),
-            'nilai_spj' => $this->request->getPost('nilai_spj'),
-            'ppn' => $this->request->getPost('ppn'),
-            'pph_psl_23' => $this->request->getPost('pph_psl_23'),
-            'pph_psl_22' => $this->request->getPost('pph_psl_22'),
-            'pph_psl_21' => $this->request->getPost('pph_psl_21'),
-            'pajak_daerah' => $this->request->getPost('pajak_daerah'),
-            'diterima' => $this->request->getPost('diterima'),
-            'file_spj' => $this->request->getPost('file_spj'),
-            'file_kwitansi' => $this->request->getPost('file_kwitansi'),
-            // 'status_bendahara' => $this->request->getPost('status_bendahara'),
-            // 'status_kasubbag' => $this->request->getPost('status_kasubbag'),
-            // 'status_pptik' => $this->request->getPost('status_pptik'),
-            // 'status_verifikator_keuangan' => $this->request->getPost('status_verifikator_keuangan'),
-        ];
+{
+    // Simpan file SPJ
+    $fileSPJ = $this->request->getFile('file_spj');
+    $fileSPJ->move(ROOTPATH . 'public/uploads/spj');
 
-        $this->VerifikasiModel->insert($data);
+    // Simpan file kwitansi
+    $fileKwitansi = $this->request->getFile('file_kwitansi');
+    $fileKwitansi->move(ROOTPATH . 'public/uploads/kwitansi');
 
-        return redirect()->to('/verifikasi');
-    }
+    // Buat array data untuk disimpan
+    $data = [
+        'id_detail_penatausahaan' => $this->request->getPost('id_detail_penatausahaan'),
+        'nomor_bku' => $this->request->getPost('nomor_bku'),
+        'tanggal' => $this->request->getPost('tanggal'),
+        'uraian' => $this->request->getPost('uraian'),
+        'nilai_spj' => $this->request->getPost('nilai_spj'),
+        'ppn' => $this->request->getPost('ppn'),
+        'pph_psl_23' => $this->request->getPost('pph_psl_23'),
+        'pph_psl_22' => $this->request->getPost('pph_psl_22'),
+        'pph_psl_21' => $this->request->getPost('pph_psl_21'),
+        'pajak_daerah' => $this->request->getPost('pajak_daerah'),
+        'diterima' => $this->request->getPost('diterima'),
+        'file_spj' => $fileSPJ->getName(),
+        'file_kwitansi' => $fileKwitansi->getName(),
+        'status_bendahara' => $this->request->getPost('status_bendahara'),
+        'status_kasubbag' => $this->request->getPost('status_kasubbag'),
+        'status_pptik' => $this->request->getPost('status_pptik'),
+        'status_verifikator_keuangan' => $this->request->getPost('status_verifikator_keuangan'),
+    ];
+
+    $this->VerifikasiModel->insert($data);
+
+    return redirect()->to('/verifikasi');
+}
+
 
 
     public function edit($id)
     {
         $data = [
             'verifikasi' => $this->VerifikasiModel->find($id),
-            'detail_penatausahaan' => $this->DetailPenatausahaanModel->findAll()
+            'detail_penatausahaan' => $this->DetailPenatausahaanModel->getCariDataVerifikasi()
         ];
         return view('verifikasi/edit', $data);
     }
@@ -102,4 +127,12 @@ class VerifikasiController extends BaseController
 
         return redirect()->to('/verifikasi');
     }
+
+    public function preview_spj($id)
+{
+    $data['verifikasi'] = $this->VerifikasiModel->find($id);
+    return view('verifikasi/preview_spj', $data);
+}
+
+    
 }

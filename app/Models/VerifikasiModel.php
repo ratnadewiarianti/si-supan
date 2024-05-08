@@ -16,19 +16,30 @@ class VerifikasiModel extends Model
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-
-    public function getVerifikasi()
-    {
-        // Query builder untuk mengambil data indikator_kinerja_urusan beserta data urusan terkait.
-        $query = $this->db->table('verifikasi')
-            ->select('verifikasi.id_detail_penatausahaan, verifikasi.nomor_bku, verifikasi.tanggal, verifikasi.uraian, verifikasi.nilai_spj, verifikasi.ppn, verifikasi.pph_psl_23, verifikasi.pph_psl_22, verifikasi.pph_psl_21, verifikasi.pajak_daerah, verifikasi.diterima, verifikasi.file_spj, verifikasi.file_kwitansi, verifikasi.status_bendahara, verifikasi.status_kasubbag, verifikasi.status_pptik, verifikasi.status_verifikator_keuangan, detail_penatausahaan.id_subkegiatan')
-            // ->join('detail_penatausahaan', 'detail_penatausahaan.id = verifikasi.id_detail_penatausahaan')
-            // ->where('bidang_urusan.tahun',session()->get('tahun'))
-            ->get();
-        
-        return $query->getResultArray();
-    }
-
+   
+    /**
+     * Menjalankan join dengan tabel detail_penatausahaan.
+     *
+     * @return mixed
+     */
     
-  
+    public function joinDetailPenatausahaan()
+{
+    return $this->join('detail_penatausahaan', 'detail_penatausahaan.id = verifikasi.id_detail_penatausahaan')
+                ->join('sub_rincian_objek', 'sub_rincian_objek.id = detail_penatausahaan.id_rekening')
+                ->join('rincian_objek', 'rincian_objek.id = sub_rincian_objek.id_rincian_objek')
+                ->join('objek', 'objek.id = sub_rincian_objek.id_objek')
+                ->join('jenis', 'jenis.id = sub_rincian_objek.id_jenis')
+                ->join('kelompok', 'kelompok.id = sub_rincian_objek.id_kelompok')
+                ->join('akun', 'akun.id = sub_rincian_objek.id_akun')
+                ->join('detail_dpa', 'detail_dpa.id = detail_penatausahaan.id_detail_dpa')
+                ->join('dpa', 'dpa.id = detail_dpa.id_dpa')
+                ->join('subkegiatan', 'subkegiatan.id = detail_dpa.id_subkegiatan')
+                ->join('urusan', 'urusan.id = subkegiatan.id_urusan')
+                ->join('bidang_urusan', 'bidang_urusan.id = subkegiatan.id_bidang_urusan')
+                ->join('program', 'program.id = subkegiatan.id_program')
+                ->join('kegiatan', 'kegiatan.id = subkegiatan.id_kegiatan')
+                ->select('verifikasi.*, detail_penatausahaan.*, CONCAT(akun.kode_akun, \'.\', kelompok.kode_kelompok, \'.\', jenis.kode_jenis, \'.\', objek.kode_objek, \'.\', rincian_objek.kode_rincian_objek, \'.\', sub_rincian_objek.kode_sub_rincian_objek) AS kode_rekening, sub_rincian_objek.uraian_sub_rincian_objek, subkegiatan.kode_subkegiatan, subkegiatan.nomenklatur_urusan_provinsi, urusan.kode_urusan, bidang_urusan.kode_bidang_urusan, kegiatan.kode_kegiatan, program.kode_program');
+}
+
 }

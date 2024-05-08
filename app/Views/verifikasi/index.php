@@ -61,8 +61,9 @@
                                                 <?php foreach ($verifikasi as $row) : ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
-                                                        <td><?= $row['id_detail_penatausahaan']; ?></td>
-                                                        <td><?= $row['id_detail_penatausahaan']; ?></td>
+                                                        <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?>.<?= $row['kode_program']; ?>.<?= $row['kode_kegiatan']; ?>.<?= $row['kode_subkegiatan']; ?> <?= $row['nomenklatur_urusan_provinsi']; ?></td>
+                                                        
+                                                        <td><?= $row['kode_rekening']; ?> <?= $row['uraian_sub_rincian_objek']; ?></td>
                                                         <td><?= $row['nomor_bku']; ?></td>
                                                         <td><?= $row['tanggal']; ?></td>
                                                         <td><?= $row['uraian']; ?></td>
@@ -73,8 +74,13 @@
                                                         <td><?= $row['pph_psl_21']; ?></td>
                                                         <td><?= $row['pajak_daerah']; ?></td>
                                                         <td><?= $row['diterima']; ?></td>
-                                                        <td><?= $row['file_spj']; ?></td>
+                                                        <!-- <td><?= $row['file_spj']; ?></td> -->
+                                                        <td>
+                                                        <a href="<?= base_url('/verifikasi/preview_spj/' . $row['id']); ?>" class="btn btn-info btn-sm">Pratinjau</a>
+</td>
+
                                                         <td><?= $row['file_kwitansi']; ?></td>
+
                                                         <!-- id_detail_penatausahaan','nomor_bku', 'tanggal', 'uraian', 'nilai_spj', 'ppn', 'pph_psl_23', 'pph_psl_22', 'pph_psl_21', 'pajak_daerah', 'diterima', 'file_spj', 'file_kwitansi', 'status_bendahara', 'status_kasubbag', 'status_pptik', 'status_verifikator_keuangan -->
                                                         <td>
                                                             <a href="/verifikasi/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
