@@ -150,24 +150,37 @@ class VerifikasiController extends BaseController
         return redirect()->to('/verifikasi');
     }
 
-    public function preview_spj($id)
+public function preview_spj($id)
 {
-    $data['verifikasi'] = $this->VerifikasiModel->find($id);
-    return view('verifikasi/preview_spj', $data);
-
-    // $verifikasiModel = new VerifikasiModel();
-    //     $verifikasi = $verifikasiModel->Verifikasi()->findAll($id);
-    //     $lastQuery = $verifikasiModel->getLastQuery();
-    //     // echo $lastQuery;
-        
-
-        // return view('verifikasi/preview_spj', ['verifikasi' => $verifikasi]);
+    // Ambil data verifikasi berdasarkan ID
+    $verifikasi = $this->VerifikasiModel->find($id);
+    
+    // Jika data ditemukan, konstruksi URL file PDF dan tampilkan di tab baru
+    if ($verifikasi) {
+        $pdf_url = base_url('uploads/spj/' . $verifikasi['file_spj']);
+        header("Location: $pdf_url");
+        exit();
+    } else {
+        // Tindakan jika data tidak ditemukan, misalnya, tampilkan pesan kesalahan
+        // atau redirect ke halaman lain
+    }
 }
-//     public function preview_spj($id)
-// {
-//     $data['verifikasi'] = $this->VerifikasiModel->find($id);
-//     return view('verifikasi/preview_spj', $data);
-// }
+
+public function preview_kwitansi($id)
+{
+    // Ambil data verifikasi berdasarkan ID
+    $verifikasi = $this->VerifikasiModel->find($id);
+    
+    // Jika data ditemukan, konstruksi URL file PDF dan tampilkan di tab baru
+    if ($verifikasi) {
+        $pdf_url_kwitansi = base_url('uploads/kwitansi/' . $verifikasi['file_kwitansi']);
+        header("Location: $pdf_url_kwitansi");
+        exit();
+    } else {
+        // Tindakan jika data tidak ditemukan, misalnya, tampilkan pesan kesalahan
+        // atau redirect ke halaman lain
+    }
+}
 
 public function download($id)
 {

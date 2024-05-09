@@ -95,4 +95,6 @@ class ProgramController extends BaseController
         $data = $this->BidangUrusanModel->where('id_urusan', $id)->findAll();
         return json_encode($data);
     }
+
+    
 }
