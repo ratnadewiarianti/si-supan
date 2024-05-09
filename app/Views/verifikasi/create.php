@@ -20,8 +20,16 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Tambah Data Verifikasi</h4>
-                        <form action="/verifikasi/store/" method="post">
-
+                        <form action="/verifikasi/store/" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                                <label>Subkegiatan</label>
+                                <select class="form-control" name="id_detail_penatausahaan" required>
+                                    <option selected disabled>-</option>
+                                    <?php foreach ($detailpenatausahaan as $key) : ?>
+                                        <option value="<?= $key['id']; ?>"><?= $key['kode_urusan']; ?>.<?= $key['kode_bidang_urusan']; ?>.<?= $key['kode_program']; ?>.<?= $key['kode_kegiatan']; ?>.<?= $key['kode_subkegiatan']; ?> - <?= $key['nomenklatur_urusan_provinsi']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
                         <!-- <td> $row['id_detail_penatausahaan']; ?></td> -->
 
                             <div class="form-group">
@@ -78,6 +86,11 @@
                                 <label><small>Upload dalam Format PDF</small></label> <br>
                                 <input type="file" name="file_kwitansi" id="file_kwitansi" class="form-control-file" accept=".pdf">
                             </div>
+                            <input type="text" name="status_bendahara"  value="MENUNGGU" class="form-control"  hidden required>
+                            <input type="text" name="status_kasubbag"  value="MENUNGGU" class="form-control"  hidden required>
+                            <input type="text" name="status_pptik"  value="MENUNGGU" class="form-control"  hidden required>
+                            <input type="text" name="status_verifikator_keuangan"  value="MENUNGGU" class="form-control"  hidden required>
+
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->
                             <a href="<?= base_url('/verifikasi'); ?>" class="btn btn-danger">Batal</a>
