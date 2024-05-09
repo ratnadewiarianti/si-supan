@@ -52,6 +52,8 @@
                                                 <th>Diterima</th>
                                                 <th>File SPJ</th>
                                                 <th>File Kwitansi</th>
+                                                <th>Status Verifikasi</th>
+                                                <th>Verifikasi</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -92,7 +94,37 @@
                                                     </td>
 
                                                         <!-- id_detail_penatausahaan','nomor_bku', 'tanggal', 'uraian', 'nilai_spj', 'ppn', 'pph_psl_23', 'pph_psl_22', 'pph_psl_21', 'pajak_daerah', 'diterima', 'file_spj', 'file_kwitansi', 'status_bendahara', 'status_kasubbag', 'status_pptik', 'status_verifikator_keuangan -->
-                                                        
+                                                        <td>
+                                                    <?php
+                                                    $buttonClass = '';
+                                                    switch ($row['status_bendahara']) {
+                                                        case 'MENUNGGU':
+                                                            $buttonClass = 'btn-warning';
+                                                            break;
+                                                        case 'DITERIMA':
+                                                            $buttonClass = 'btn-success';
+                                                            break;
+                                                        case 'DITOLAK':
+                                                            $buttonClass = 'btn-danger';
+                                                            break;
+                                                        default:
+                                                            // Default class atau logika jika tidak sesuai kondisi di atas.
+                                                            break;
+                                                    }
+                                                    ?>
+                                                    <button class="btn <?= $buttonClass; ?>" disabled><?= $row['status_bendahara']; ?></button>
+                                                </td>
+                                                <td>
+                                                    <a href="/verifikasi/terima/<?= $row['id']; ?>"
+                                                        class="btn btn-success btn-sm btn-terima"
+                                                        data-id="<?= $row['id']; ?>"
+                                                        onclick="return confirm('Apakah Anda yakin ingin menerima data ini?')">Disetujui</a>
+                                                    <a href="/verifikasi/tolak/<?= $row['id']; ?>"
+                                                        class="btn btn-danger btn-sm btn-tolak"
+                                                        data-id="<?= $row['id']; ?>"
+                                                        onclick="return confirm('Apakah Anda yakin ingin menolak data ini?')">Ditolak</a>
+
+                                                </td>
                                                         <td>
                                                            
                                                             <a href="/verifikasi/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
@@ -139,5 +171,63 @@
         $('#table-1').DataTable();
     });
 </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var buttonsTerima = document.querySelectorAll('.btn-terima');
+    var buttonsTolak = document.querySelectorAll('.btn-tolak');
+
+    function handleResponse(data) {
+        if (data.status === 'success') {
+            console.log(data.message);
+            // Ubah tampilan sesuai dengan respons
+            location.reload(); // Reload halaman setelah pembaruan berhasil
+        } else {
+            console.error('Gagal memperbarui status:', data.message);
+        }
+    }
+
+    buttonsTerima.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var id = this.getAttribute('data-id');
+
+            fetch('/verifikasi/terima/' + id + '?timestamp=' + new Date().getTime(), {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                handleResponse(data);
+            })
+            .catch(error => {
+                console.error('Gagal mengirim permintaan: ' + error);
+            });
+        });
+    });
+
+    buttonsTolak.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var id = this.getAttribute('data-id');
+
+            fetch('/verifikasi/tolak/' + id + '?timestamp=' + new Date().getTime(), {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                handleResponse(data);
+            })
+            .catch(error => {
+                console.error('Gagal mengirim permintaan: ' + error);
+            });
+        });
+    });
+});
+
+
+    </script>
+
 
 <?= $this->endSection() ?>

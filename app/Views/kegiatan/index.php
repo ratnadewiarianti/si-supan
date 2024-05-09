@@ -59,7 +59,7 @@
                                                 <?php endforeach; ?>
                                             <?php else : ?>
                                                 <tr>
-                                                    <td colspan="4" class="text-center">Tidak ada data Program.</td>
+                                                    <td colspan="4" class="text-center">Tidak ada data Subkegiatan.</td>
                                                 </tr>
                                             <?php endif; ?>
 

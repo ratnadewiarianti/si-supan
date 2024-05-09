@@ -258,5 +258,8 @@ $routes->group('verifikasi', ['filter' => 'auth'], function ($routes) {
    $routes->get('edit/(:num)', 'VerifikasiController::edit/$1');
    $routes->get('destroy/(:num)', 'VerifikasiController::destroy/$1');
    $routes->get('preview_spj/(:num)', 'VerifikasiController::preview_spj/$1');
+   $routes->get('preview_kwintansi/(:num)', 'VerifikasiController::preview_kwintansi/$1');
    $routes->get('download/(:num)', 'VerifikasiController::download/$1');
+   $routes->add('terima/(:num)', 'VerifikasiController::terima/$1');
+   $routes->add('tolak/(:num)', 'VerifikasiController::tolak/$1');
 });

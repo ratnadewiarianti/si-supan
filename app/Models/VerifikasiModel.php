@@ -60,4 +60,16 @@ class VerifikasiModel extends Model
         ->findAll();
     }
 
+    public function updateStatusBendahara($id, $status)
+{
+    $data = [
+        'status_bendahara' => $status
+    ];
+
+    $this->where('id', $id)->set($data)->update();
+
+    // Periksa apakah ada baris yang terpengaruh (diupdate)
+    return $this->db->affectedRows() > 0;
+}
+
 }

@@ -152,16 +152,16 @@ class VerifikasiController extends BaseController
 
     public function preview_spj($id)
 {
-    // $data['verifikasi'] = $this->VerifikasiModel->find($id);
-    // return view('verifikasi/preview_spj', $data);
+    $data['verifikasi'] = $this->VerifikasiModel->find($id);
+    return view('verifikasi/preview_spj', $data);
 
-    $verifikasiModel = new VerifikasiModel();
-        $verifikasi = $verifikasiModel->joinDetailPenatausahaan()->findAll($id);
-        $lastQuery = $verifikasiModel->getLastQuery();
-        // echo $lastQuery;
+    // $verifikasiModel = new VerifikasiModel();
+    //     $verifikasi = $verifikasiModel->Verifikasi()->findAll($id);
+    //     $lastQuery = $verifikasiModel->getLastQuery();
+    //     // echo $lastQuery;
         
 
-        return view('verifikasi/preview_spj', ['verifikasi' => $verifikasi]);
+        // return view('verifikasi/preview_spj', ['verifikasi' => $verifikasi]);
 }
 //     public function preview_spj($id)
 // {
@@ -175,5 +175,30 @@ public function download($id)
     return $this->response->download(ROOTPATH . 'public/uploads/spj/' . $data['file_spj'], null);
 }
 
-    
+   
+public function terima($id)
+{
+    $model = new VerifikasiModel();
+    $updated = $model->updateStatusBendahara($id, 'DITERIMA');
+    if ($updated) {
+        // Pembaruan berhasil
+        return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil diterima']);
+    } else {
+        // Pembaruan gagal
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memperbarui status.']);
+    }
+}
+
+public function tolak($id)
+{
+    $model = new VerifikasiModel();
+    $updated = $model->updateStatusBendahara($id, 'DITOLAK');
+    if ($updated) {
+        // Pembaruan berhasil
+        return $this->response->setJSON(['status' => 'success', 'message' => 'Data berhasil ditolak']);
+    } else {
+        // Pembaruan gagal
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Gagal memperbarui status.']);
+    }
+}
 }
