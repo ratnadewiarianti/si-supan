@@ -99,7 +99,48 @@ class VerifikasiController extends BaseController
 
     public function update($id)
     {
+        // Dapatkan data verifikasi yang akan diupdate
+        $verifikasi = $this->VerifikasiModel->find($id);
 
+        // Simpan file SPJ baru jika diunggah
+        $fileSPJ = $this->request->getFile('file_spj');
+        if ($fileSPJ->isValid()) {
+            // Hapus file SPJ lama jika sudah ada
+            if (!empty($verifikasi['file_spj'])) {
+                $oldFileSPJ = ROOTPATH . 'public/uploads/spj/' . $verifikasi['file_spj'];
+                if (file_exists($oldFileSPJ)) {
+                    unlink($oldFileSPJ);
+                }
+            }
+
+            // Pindahkan file SPJ baru ke direktori penyimpanan yang diinginkan
+            $fileSPJ->move(ROOTPATH . 'public/uploads/spj');
+            $fileSPJName = $fileSPJ->getName();
+        } else {
+            // Jika tidak ada file SPJ yang diunggah, gunakan file SPJ yang sudah ada
+            $fileSPJName = $verifikasi['file_spj'];
+        }
+
+        // Simpan file kwitansi baru jika diunggah
+        $fileKwitansi = $this->request->getFile('file_kwitansi');
+        if ($fileKwitansi->isValid()) {
+            // Hapus file kwitansi lama jika sudah ada
+            if (!empty($verifikasi['file_kwitansi'])) {
+                $oldFileKwitansi = ROOTPATH . 'public/uploads/kwitansi/' . $verifikasi['file_kwitansi'];
+                if (file_exists($oldFileKwitansi)) {
+                    unlink($oldFileKwitansi);
+                }
+            }
+
+            // Pindahkan file kwitansi baru ke direktori penyimpanan yang diinginkan
+            $fileKwitansi->move(ROOTPATH . 'public/uploads/kwitansi');
+            $fileKwitansiName = $fileKwitansi->getName();
+        } else {
+            // Jika tidak ada file kwitansi yang diunggah, gunakan file kwitansi yang sudah ada
+            $fileKwitansiName = $verifikasi['file_kwitansi'];
+        }
+
+        // Buat array data untuk disimpan
         $data = [
             'id_detail_penatausahaan' => $this->request->getPost('id_detail_penatausahaan'),
             'nomor_bku' => $this->request->getPost('nomor_bku'),
@@ -112,12 +153,18 @@ class VerifikasiController extends BaseController
             'pph_psl_21' => $this->request->getPost('pph_psl_21'),
             'pajak_daerah' => $this->request->getPost('pajak_daerah'),
             'diterima' => $this->request->getPost('diterima'),
-       
+            'file_spj' => $fileSPJName,
+            'file_kwitansi' => $fileKwitansiName,
+            'status_bendahara' => $this->request->getPost('status_bendahara'),
+            'status_kasubbag' => $this->request->getPost('status_kasubbag'),
+            'status_pptik' => $this->request->getPost('status_pptik'),
+            'status_verifikator_keuangan' => $this->request->getPost('status_verifikator_keuangan'),
         ];
 
+        // Update data verifikasi
         $this->VerifikasiModel->update($id, $data);
 
-        return redirect()->to('verifikasi');
+        return redirect()->to('/verifikasi');
     }
 
     public function destroy($id)
