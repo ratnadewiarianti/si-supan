@@ -91,13 +91,7 @@ class KaryawanController extends BaseController
     return redirect()->to('/karyawan');
 }
 
-
-
-    
-
-    
-
-    public function show($id)
+     public function show($id)
     {
         $data['karyawan'] = $this->karyawanModel->find($id);
         return view('karyawan/show', $data);

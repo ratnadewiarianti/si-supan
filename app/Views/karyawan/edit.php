@@ -57,7 +57,7 @@
                                     required>
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Status Tanda Tangan</label><br>
                                 <input type="radio" name="status_ttd" value="Ya"
                                     <?= isset($karyawan['status_ttd']) && $karyawan['status_ttd'] == 'Ya' ? 'checked' : ''; ?>
@@ -79,12 +79,12 @@
                                 <?php endif; ?>
                                 <label><small>Input dalam Format JPG</small></label> <br>
                                 <input type="file" name="file" class="form-control-file" accept=".jpg, .jpeg, .png">
-                            </div>
+                            </div> -->
 
 
 
                             <!-- Menyimpan nama file foto struktur saat ini -->
-                            <input type="hidden" name="foto_struktur_lama" value="<?= $karyawan['file']; ?>">
+                            <!-- <input type="hidden" name="foto_ttd_lama" value="<?= $karyawan['file']; ?>"> -->
 
                             <div class="form-group">
                                 <label>Keterangan</label>

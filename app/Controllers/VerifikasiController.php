@@ -15,6 +15,7 @@ class VerifikasiController extends BaseController
     protected $DetailPenatausahaanModel;
     protected $SubkegiatanModel;
     protected $SubRincianObjekModel;
+
     public function __construct()
     {
         $this->VerifikasiModel = new VerifikasiModel();
@@ -23,27 +24,22 @@ class VerifikasiController extends BaseController
         $this->SubRincianObjekModel = new SubRincianObjekModel();
     }
 
-    public function index()
-    {
-        $verifikasiModel = new VerifikasiModel();
-        $verifikasi = $verifikasiModel->joinDetailPenatausahaan()->findAll();
-        $lastQuery = $verifikasiModel->getLastQuery();
-        // echo $lastQuery;
+    // public function index()
+    // {
+    //     $verifikasiModel = new VerifikasiModel();
+    //     $verifikasi = $verifikasiModel->joinDetailPenatausahaan()->findAll();
+    //     $lastQuery = $verifikasiModel->getLastQuery();
+    //     // echo $lastQuery;
         
 
-        return view('verifikasi/index', ['verifikasi' => $verifikasi]);
+    //     return view('verifikasi/index', ['verifikasi' => $verifikasi]);
+    // }
+
+    public function index()
+    {
+        $data['verifikasi'] = $this->VerifikasiModel->Verifikasi();
+        return view('verifikasi/index', $data);
     }
-
-    // Controller
-// public function index()
-// {
-//     $verifikasiModel = new VerifikasiModel();
-//     $data = $verifikasiModel->joinDetailPenatausahaan()->findAll();
-    
-//     // Tampilkan data
-//     print_r($data);
-// }
-
 
     public function create()
     {
@@ -89,17 +85,39 @@ class VerifikasiController extends BaseController
 
 
 
+    // public function edit($id)
+    // {
+    //     $data = [
+    //         'verifikasi' => $this->VerifikasiModel->find($id),
+    //         'detail_penatausahaan' => $this->DetailPenatausahaanModel->getCariDataVerifikasi()
+    //     ];
+    //     return view('verifikasi/edit', $data);
+    // }
+
     public function edit($id)
     {
+        // Ambil data detail DPA berdasarkan ID
+        $verifikasi = $this->VerifikasiModel->find($id);
+        $detailpenatausahaan = $this->DetailPenatausahaanModel->getCariDataVerifikasi();  
+
         $data = [
-            'verifikasi' => $this->VerifikasiModel->find($id),
-            'detail_penatausahaan' => $this->DetailPenatausahaanModel->getCariDataVerifikasi()
+            'verifikasi' => $verifikasi,
+            'detailpenatausahaan' => $detailpenatausahaan,
         ];
+    
         return view('verifikasi/edit', $data);
     }
 
     public function update($id)
     {
+        // $fileSPJ = $this->request->getFile('file_spj');
+        // $fileSPJ->move(ROOTPATH . 'public/uploads/spj');
+    
+        // // Simpan file kwitansi
+        // $fileKwitansi = $this->request->getFile('file_kwitansi');
+        // $fileKwitansi->move(ROOTPATH . 'public/uploads/kwitansi');
+    
+        // Buat array data untuk disimpan
         $data = [
             'id_detail_penatausahaan' => $this->request->getPost('id_detail_penatausahaan'),
             'nomor_bku' => $this->request->getPost('nomor_bku'),
@@ -112,8 +130,12 @@ class VerifikasiController extends BaseController
             'pph_psl_21' => $this->request->getPost('pph_psl_21'),
             'pajak_daerah' => $this->request->getPost('pajak_daerah'),
             'diterima' => $this->request->getPost('diterima'),
-            'file_spj' => $this->request->getPost('file_spj'),
-            'file_kwitansi' => $this->request->getPost('file_kwitansi'),
+            // 'file_spj' => $fileSPJ->getName(),
+            // 'file_kwitansi' => $fileKwitansi->getName(),
+            // 'status_bendahara' => $this->request->getPost('status_bendahara'),
+            // 'status_kasubbag' => $this->request->getPost('status_kasubbag'),
+            // 'status_pptik' => $this->request->getPost('status_pptik'),
+            // 'status_verifikator_keuangan' => $this->request->getPost('status_verifikator_keuangan'),
         ];
 
         $this->VerifikasiModel->update($id, $data);
@@ -130,8 +152,27 @@ class VerifikasiController extends BaseController
 
     public function preview_spj($id)
 {
-    $data['verifikasi'] = $this->VerifikasiModel->find($id);
-    return view('verifikasi/preview_spj', $data);
+    // $data['verifikasi'] = $this->VerifikasiModel->find($id);
+    // return view('verifikasi/preview_spj', $data);
+
+    $verifikasiModel = new VerifikasiModel();
+        $verifikasi = $verifikasiModel->joinDetailPenatausahaan()->findAll($id);
+        $lastQuery = $verifikasiModel->getLastQuery();
+        // echo $lastQuery;
+        
+
+        return view('verifikasi/preview_spj', ['verifikasi' => $verifikasi]);
+}
+//     public function preview_spj($id)
+// {
+//     $data['verifikasi'] = $this->VerifikasiModel->find($id);
+//     return view('verifikasi/preview_spj', $data);
+// }
+
+public function download($id)
+{
+    $data = $this->VerifikasiModel->find($id);
+    return $this->response->download(ROOTPATH . 'public/uploads/spj/' . $data['file_spj'], null);
 }
 
     

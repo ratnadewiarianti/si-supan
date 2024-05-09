@@ -75,16 +75,28 @@
                                                         <td><?= $row['pajak_daerah']; ?></td>
                                                         <td><?= $row['diterima']; ?></td>
                                                         <!-- <td><?= $row['file_spj']; ?></td> -->
-                                                        <td>
-                                                        <a href="<?= base_url('/verifikasi/preview_spj/' . $row['id']); ?>" class="btn btn-info btn-sm">Pratinjau</a>
-</td>
 
-                                                        <td><?= $row['file_kwitansi']; ?></td>
+                                                        <td>
+                                                            <!-- <a href="<?= base_url('/verifikasi/preview_spj/' . $row['id']); ?>" class="btn btn-info btn-sm">Pratinjau</a> -->
+                                                        
+                                                        <a href="/verifikasi/preview_spj/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Pratinjau</a>
+                                                    
+                                                        <!-- <a href="/verifikasi/download/<?= $row['id']; ?>" class="btn btn-success btn-sm">Unduh</a> -->
+                                                    </td>
+
+                                                        
+
+                                                        <td>
+                                                        <a href="/verifikasi/preview_kwitansi/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Pratinjau</a>
+                                                        <!-- <?= $row['file_kwitansi']; ?> -->
+                                                    </td>
 
                                                         <!-- id_detail_penatausahaan','nomor_bku', 'tanggal', 'uraian', 'nilai_spj', 'ppn', 'pph_psl_23', 'pph_psl_22', 'pph_psl_21', 'pajak_daerah', 'diterima', 'file_spj', 'file_kwitansi', 'status_bendahara', 'status_kasubbag', 'status_pptik', 'status_verifikator_keuangan -->
+                                                        
                                                         <td>
+                                                           
                                                             <a href="/verifikasi/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
-                                                            <a href="/verifikasi/delete/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
+                                                            <a href="/verifikasi/destroy/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
                                                         </td>
                                                     </tr>
                                                 <?php endforeach; ?>
