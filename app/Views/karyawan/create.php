@@ -22,14 +22,14 @@
                     <div class="card-body">
                         <h4 class="card-title">Tambah Karyawan</h4>
                         <!-- Tampilkan pesan kesalahan -->
-                        <?php if(session()->has('error')): ?>
+                        <?php if (session()->has('error')) : ?>
                             <div class="alert alert-danger" role="alert">
                                 <?= session('error') ?>
                             </div>
                         <?php endif; ?>
 
-                        <?php if(session()->has('errors')): ?>
-                            <?php foreach(session()->get('errors') as $error): ?>
+                        <?php if (session()->has('errors')) : ?>
+                            <?php foreach (session()->get('errors') as $error) : ?>
                                 <div class="alert alert-danger" role="alert">
                                     <?= $error ?>
                                 </div>
@@ -73,13 +73,17 @@
                                 <input type="radio" name="status_ttd" value="Tidak" required onclick="hideUploadForm()">
                                 Tidak
                             </div>
-                            
+
                             <div id="uploadForm" style="display: none;">
-                            <div class="form-group">
-                                <label>Upload Tanda Tangan</label> <br>
-                                <label><small>Upload dalam Format JPG dan PNG</small></label> <br>
-                                <input type="file" name="file" id="fileUpload" class="form-control-file" accept=".jpg, .jpeg, .png">
-                            </div>
+                                <div class="form-group">
+                                    <label>Upload Tanda Tangan</label> <br>
+                                    <div id="previewContainer" style="display: none;">
+                                        <img id="previewImage" src="" alt="Pratinjau Gambar" width="100" height="100">
+                                    </div>
+                                    <label><small>Upload dalam Format JPG dan PNG</small></label> <br>
+
+                                    <input type="file" name="file" id="fileUpload" class="form-control-file" accept=".jpg, .jpeg, .png">
+                                </div>
                             </div>
 
                             <div class="form-group">
@@ -110,6 +114,24 @@
         document.getElementById('uploadForm').style.display = 'none';
         document.getElementById('fileUpload').removeAttribute('required');
     }
+
+    function previewImage(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                document.getElementById('previewImage').setAttribute('src', e.target.result);
+                document.getElementById('previewContainer').style.display = 'block'; // Tampilkan pratinjau kontainer
+            }
+
+            reader.readAsDataURL(input.files[0]); // Membaca data URL gambar
+        }
+    }
+
+    // Panggil fungsi previewImage() ketika pengguna memilih gambar baru
+    document.getElementById('fileUpload').addEventListener('change', function() {
+        previewImage(this);
+    });
 </script>
 
 <?= $this->endSection() ?>

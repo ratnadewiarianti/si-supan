@@ -105,17 +105,58 @@ class KaryawanController extends BaseController
 
     public function update($id)
     {
-        $data = [
-            'jabatan' => $this->request->getPost('jabatan'),
-            'nip' => $this->request->getPost('nip'),
-            'nama' => $this->request->getPost('nama'),
-            'kategori_pegawai' => $this->request->getPost('kategori_pegawai'),
-        ];
+        $karyawan = $this->karyawanModel->find($id);
+        $file = $this->request->getFile('file');
 
-        $this->karyawanModel->update($id, $data);
+        if (empty($file) || !$file->isValid()) {
+            // Jika tidak ada file yang diunggah atau tidak valid, update data karyawan
+            $data = [
+                'jabatan' => $this->request->getPost('jabatan'),
+                'nip' => $this->request->getPost('nip'),
+                'nama' => $this->request->getPost('nama'),
+                'kategori_pegawai' => $this->request->getPost('kategori_pegawai'),
+            ];
+
+            $this->karyawanModel->update($id, $data);
+        } else {
+            // Jika ada file yang diunggah, simpan file ke direktori yang diinginkan
+            if ($file->isValid() && !$file->hasMoved()) {
+                // Hapus foto lama jika ada
+               
+                    if ($karyawan['file']) {
+                        $filePath = ROOTPATH . 'public/uploads/ttd/' . $karyawan['file'];
+                        if (file_exists($filePath)) {
+                            unlink($filePath); // Hapus file
+                        }
+                    }
+
+                
+
+                // Pindahkan foto baru ke direktori yang diinginkan
+                $newName = $file->getRandomName();
+                $file->move(ROOTPATH . 'public/uploads/ttd', $newName);
+
+                // Sekarang update data karyawan bersama dengan nama file yang disimpan
+                $data = [
+                    'jabatan' => $this->request->getPost('jabatan'),
+                    'nip' => $this->request->getPost('nip'),
+                    'nama' => $this->request->getPost('nama'),
+                    'kategori_pegawai' => $this->request->getPost('kategori_pegawai'),
+                    'status_ttd' => $this->request->getPost('status_ttd'),
+                    'file' => $newName, // Kolom 'ttd' disimpan dengan nama file yang baru
+                ];
+
+                $this->karyawanModel->update($id, $data);
+            } else {
+                // Handle error jika file tidak valid atau tidak dapat dipindahkan
+                // Misalnya, file terlalu besar atau tidak didukung
+                // Anda dapat menambahkan kode yang sesuai di sini
+            }
+        }
 
         return redirect()->to('/karyawan');
     }
+
 
     public function delete($id)
 {
