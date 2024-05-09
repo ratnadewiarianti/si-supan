@@ -90,7 +90,6 @@ class DetailPenatausahaanController extends BaseController
 
         // Ambil kembali id rak belanja dari data yang disimpan
         $id_penatausahaan = $data['id_penatausahaan'];
-
         // Redirect kembali ke fungsi show dengan menyertakan id rak belanja
         return redirect()->to("/detailpenatausahaan/show/$id_penatausahaan");
     }

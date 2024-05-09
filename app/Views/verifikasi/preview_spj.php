@@ -1,23 +1,14 @@
-<?= $this->extend('layout/main'); ?>
+<!DOCTYPE html>
+<html lang="en">
 
-<?= $this->section('content'); ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pratinjau File SPJ</title>
+</head>
 
-<div class="main-content">
-    <section class="section">
-        <div class="section-header">
-            <h1>Pratinjau File SPJ</h1>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header">
-                        <h4>File SPJ</h4>
-                    </div>
-                   
-                </div>
-            </div>
-        </div>
-    </section>
-</div>
+<body>
+    <embed src="<?= base_url('uploads/spj/' . $filename) ?>" type="application/pdf" width="100%" height="600px">
+</body>
 
-<?= $this->endSection(); ?>
+</html>
