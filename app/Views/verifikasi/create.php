@@ -23,7 +23,7 @@
                         <form action="/verifikasi/store/" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                                 <label>Subkegiatan</label>
-                                <select class="form-control" name="id_detail_penatausahaan" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_detail_penatausahaan" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($detailpenatausahaan as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['kode_urusan']; ?>.<?= $key['kode_bidang_urusan']; ?>.<?= $key['kode_program']; ?>.<?= $key['kode_kegiatan']; ?>.<?= $key['kode_subkegiatan']; ?> - <?= $key['nomenklatur_urusan_provinsi']; ?></option>
