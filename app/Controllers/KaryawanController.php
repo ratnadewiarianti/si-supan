@@ -86,11 +86,75 @@ class KaryawanController extends BaseController
 
     // Simpan data ke database
     $this->karyawanModel->insert($data);
+{
+    // Validasi data
+    $validationRules = [
+        'jabatan' => 'required',
+        'nip' => 'required',
+        'nama' => 'required',
+        'kategori_pegawai' => 'required',
+        'norek' => 'required',
+        'keterangan' => 'required',
+    ];
+
+    // Tambahkan validasi untuk file jika status_ttd adalah "Ya"
+    if ($this->request->getPost('status_ttd') == 'Ya') {
+        $validationRules['file'] = 'uploaded[file]|mime_in[file,image/jpeg,image/png]|max_size[file,1024]';
+    }
+
+    // Jalankan validasi
+    if (!$this->validate($validationRules)) {
+        // Jika validasi gagal, kembalikan ke halaman create dengan pesan error
+        return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
+    }
+
+    // Inisialisasi $namaFile dengan null
+    $namaFile = null;
+
+    // Ambil file yang diunggah jika status_ttd adalah "Ya"
+    if ($this->request->getPost('status_ttd') == 'Ya') {
+        $file = $this->request->getFile('file');
+
+        // Pastikan file berhasil diunggah
+        if ($file->isValid() && !$file->hasMoved()) {
+            // Generate nama unik untuk file
+            $namaFile = $file->getRandomName();
+
+            // Pindahkan file ke folder yang diinginkan
+            $file->move(ROOTPATH . 'public/uploads/ttd', $namaFile);
+        } else {
+            // Jika file gagal diunggah, tampilkan pesan error
+            return redirect()->back()->withInput()->with('error', 'Gagal mengunggah file. Silakan coba lagi.');
+        }
+    }
+
+    // Data untuk disimpan ke database
+    $data = [
+        'jabatan' => $this->request->getPost('jabatan'),
+        'nip' => $this->request->getPost('nip'),
+        'nama' => $this->request->getPost('nama'),
+        'kategori_pegawai' => $this->request->getPost('kategori_pegawai'),
+        'norek' => $this->request->getPost('norek'),
+        'status_ttd' => $this->request->getPost('status_ttd'),
+        'keterangan' => $this->request->getPost('keterangan'),
+    ];
+
+    // Jika file diunggah, tambahkan atribut file ke data yang akan disimpan
+    if ($namaFile !== null) {
+        $data['file'] = $namaFile;
+    }
+
+    // Simpan data ke database
+    $this->karyawanModel->insert($data);
 
     // Redirect ke halaman karyawan setelah berhasil disimpan
     return redirect()->to('/karyawan');
 }
+    // Redirect ke halaman karyawan setelah berhasil disimpan
+    return redirect()->to('/karyawan');
+}
 
+     public function show($id)
      public function show($id)
     {
         $data['karyawan'] = $this->karyawanModel->find($id);
@@ -173,8 +237,28 @@ class KaryawanController extends BaseController
         }
 
         // Hapus data karyawan dari database
+{
+    // Ambil data karyawan berdasarkan ID
+    $karyawan = $this->karyawanModel->find($id);
+
+    // Pastikan data karyawan ditemukan
+    if ($karyawan) {
+        // Hapus file dari folder uploads jika ada
+        if ($karyawan['file']) {
+            $filePath = ROOTPATH . 'public/uploads/ttd/' . $karyawan['file'];
+            if (file_exists($filePath)) {
+                unlink($filePath); // Hapus file
+            }
+        }
+
+        // Hapus data karyawan dari database
         $this->karyawanModel->delete($id);
     }
+    }
+
+    // Redirect ke halaman karyawan setelah berhasil dihapus
+    return redirect()->to('/karyawan');
+}
 
     // Redirect ke halaman karyawan setelah berhasil dihapus
     return redirect()->to('/karyawan');
