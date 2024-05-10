@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-10">
-                                <p class="card-title">Master Rekening Data SubKegiatan</p>
+                                <p class="card-title">Master Data SubKegiatan</p>
                             </div>
                             <div class="col-2 text-end">
                                 <a class="btn btn-success btn-sm" href="/subkegiatan/create">Tambah Data</a>
@@ -65,7 +65,7 @@
                                                 <?php endforeach; ?>
                                             <?php else : ?>
                                                 <tr>
-                                                    <td colspan="4" class="text-center">Tidak ada data Program.</td>
+                                                    <td colspan="4" class="text-center">Tidak ada data Subkegiatan.</td>
                                                 </tr>
                                             <?php endif; ?>
 

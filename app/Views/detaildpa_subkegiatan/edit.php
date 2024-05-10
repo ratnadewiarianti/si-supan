@@ -6,59 +6,125 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit Detail DPA</h4> <!-- Mengubah judul -->
-                        <!-- <form class="forms-sample" action="/detaildpa/update <?= $detaildpa['id']; ?>" method="post"> Mengubah action -->
-                        <form class="forms-sample" action="/detaildpa/update/<?= $detaildpa['id']; ?>" method="post">
-                            <input type="hidden" name="_method" value="PUT"> <!-- Menyertakan _method untuk PUT -->
-                            <!-- <input type="hidden" name="id" value="<?= $detaildpa['id']; ?>" class="form-control" required> -->
-                            <input type="hidden" name="id_dpa" value="<?= $detaildpa['id_dpa']; ?>" class="form-control" required>
+                        <h4 class="card-title">Edit Detail Subkegiatan DPA</h4> <!-- Mengubah judul -->
+                        <!-- <form class="forms-sample" action="/detaildpa/update <?= $detaildpa_subkegiatan['id']; ?>" method="post"> Mengubah action -->
+                        <form class="forms-sample" action="/detaildpa_subkegiatan/update/<?= $detaildpa_subkegiatan['id']; ?>" method="post">
 
-                            <!-- 'id_dpa','id_subkegiatan','id_rekening','jumlah','jumlah_perubahan' -->
+                            <input type="hidden" name="id_detail_dpa"
+                                value="<?= $detaildpa_subkegiatan['id_detail_dpa']; ?>" class="form-control" required>
+
 
                             <div class="form-group">
-                                <label>Subkegiatan</label>
-                                <select class="form-control" name="id_subkegiatan" required>
-                                    <option selected disabled>-</option>
-                                    <?php foreach ($subkegiatan as $key) : ?>
-                                        <option value="<?= $key['id']; ?>" <?= ($key['id'] == $detaildpa['id_subkegiatan']) ? 'selected' : ''; ?>><?= $key['kode_subkegiatan1']; ?> - <?= $key['nama_subkegiatan']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <label>Uraian</label>
+                                <input type="text" name="uraian" class="form-control"
+                                    value="<?= $detaildpa_subkegiatan['uraian']; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Koefisien</label>
+                                <input type="text" name="koefisien" class="form-control"
+                                    value="<?= $detaildpa_subkegiatan['koefisien']; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Satuan</label>
+                                <input type="text" name="satuan" class="form-control"
+                                    value="<?= $detaildpa_subkegiatan['satuan']; ?>" required>
                             </div>
 
                             <div class="form-group">
-                                <label>Rekening</label>
-                                <select class="form-control" name="id_rekening" required>
-                                    <option selected disabled>-</option>
-                                    <?php foreach ($rekening as $key) : ?>
-                                        <option value="<?= $key['id']; ?>" <?= ($key['id'] == $detaildpa['id_rekening']) ? 'selected' : ''; ?>><?= $key['kode_rekening']; ?> - <?= $key['uraian_akun']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <label>Harga</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="number" id="harga" name="harga" class="form-control"
+                                        value="<?= $detaildpa_subkegiatan['harga']; ?>" required>
+                                </div>
                             </div>
-
+                            <div class="form-group">
+                                <label>PPN</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="number" id="ppn" name="ppn" class="form-control"
+                                        value="<?= $detaildpa_subkegiatan['ppn']; ?>" required>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Jumlah</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
-                                    <input type="number" name="jumlah" class="form-control" value="<?= $detaildpa['jumlah']; ?>" required>
+                                    <input type="number" id="jumlah" name="jumlah" class="form-control"
+                                        value="<?= $detaildpa_subkegiatan['jumlah']; ?>" readonly>
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label>Keterangan</label>
+                                <input type="text" name="keterangan" class="form-control"
+                                    value="<?= $detaildpa_subkegiatan['keterangan']; ?>" required>
+                            </div>
 
-                            <?php if (!empty($detaildpa['jumlah_perubahan'])): ?> <!-- Menampilkan form-group jika jumlah_perubahan tidak kosong -->
+                            <?php if (empty($detaildpa_subkegiatan['koefisien_perubahan'])): ?>
+                            <!-- Form tidak muncul jika data koefisien_perubahan kosong -->
+                            <?php else: ?>
+                            <!-- Form muncul jika data koefisien_perubahan terisi -->
+                            <div class="form-group">
+                                <label>Koefisien Perubahan</label>
+                                <input type="text" name="koefisien_perubahan" class="form-control"
+                                    value="<?= $detaildpa_subkegiatan['koefisien_perubahan']; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Satuan Perubahan</label>
+                                <input type="text" name="satuan_perubahan" class="form-control"
+                                    value="<?= $detaildpa_subkegiatan['satuan_perubahan']; ?>" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Harga Perubahan</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="number" id="harga_perubahan" name="harga_perubahan"
+                                        class="form-control" value="<?= $detaildpa_subkegiatan['harga_perubahan']; ?>"
+                                        required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>PPN Perubahan</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="number" id="ppn_perubahan" name="ppn_perubahan" class="form-control"
+                                        value="<?= $detaildpa_subkegiatan['ppn_perubahan']; ?>" required>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Jumlah Perubahan</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
-                                    <input type="number" name="jumlah_perubahan" class="form-control" value="<?= $detaildpa['jumlah_perubahan']; ?>" required>
+                                    <input type="number" id="jumlah_perubahan" name="jumlah_perubahan"
+                                        class="form-control" value="<?= $detaildpa_subkegiatan['jumlah_perubahan']; ?>"
+                                        readonly>
                                 </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Keterangan Perubahan</label>
+                                <input type="text" name="keterangan_perubahan" class="form-control"
+                                    value="<?= $detaildpa_subkegiatan['keterangan_perubahan']; ?>" required>
                             </div>
                             <?php endif; ?>
 
+
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
-                            <a href="/detaildpa/show/<?= $detaildpa['id_dpa']; ?>" class="btn btn-danger">Batal</a>
+                            <a href="/detaildpa_subkegiatan/showdetail/<?= $detaildpa_subkegiatan['id_detail_dpa']; ?>"
+                                class="btn btn-danger">Batal</a>
                         </form>
                     </div>
                 </div>
@@ -70,6 +136,46 @@
     <?= $this->include('layout/footer') ?>
     <!-- partial -->
 </div>
+
+<script>
+    // Mendapatkan elemen-elemen input
+    var hargaInput = document.getElementById("harga");
+    var ppnInput = document.getElementById("ppn");
+    var jumlahInput = document.getElementById("jumlah");
+
+    // Menambahkan event listener untuk menghitung jumlah
+    hargaInput.addEventListener("input", updateJumlah);
+    ppnInput.addEventListener("input", updateJumlah);
+
+    // Fungsi untuk menghitung jumlah
+    function updateJumlah() {
+        var harga = parseFloat(hargaInput.value) || 0; // Mengonversi harga menjadi angka, jika kosong maka 0
+        var ppn = parseFloat(ppnInput.value) || 0; // Mengonversi ppn menjadi angka, jika kosong maka 0
+        var jumlah = harga - ppn; // Menghitung jumlah
+        jumlahInput.value = jumlah; // Menetapkan jumlah ke input jumlah, dengan membulatkan ke 2 angka desimal
+    }
+</script>
+
+<script>
+    // Mendapatkan elemen-elemen input
+    var hargaInput = document.getElementById("harga_perubahan");
+    var ppnInput = document.getElementById("ppn_perubahan");
+    var jumlahInput = document.getElementById("jumlah_perubahan");
+
+    // Menambahkan event listener untuk menghitung jumlah
+    hargaInput.addEventListener("input", updateJumlah);
+    ppnInput.addEventListener("input", updateJumlah);
+
+    // Fungsi untuk menghitung jumlah
+    function updateJumlah() {
+        var harga = parseFloat(hargaInput.value) || 0; // Mengonversi harga menjadi angka, jika kosong maka 0
+        var ppn = parseFloat(ppnInput.value) || 0; // Mengonversi ppn menjadi angka, jika kosong maka 0
+        var jumlah = harga - ppn; // Menghitung jumlah
+        jumlahInput.value = jumlah; // Menetapkan jumlah ke input jumlah, dengan membulatkan ke 2 angka desimal
+    }
+</script>
+
+
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>

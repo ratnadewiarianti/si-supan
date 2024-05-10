@@ -11,4 +11,11 @@ class JenisModel extends Model
     protected $useAutoIncrement = true;
     protected $allowedFields    =  ['id_kelompok','kode_jenis','uraian_jenis'];
 
+    public function getData()
+    {
+        return $this->select('jenis.id, CONCAT(akun.kode_akun, \'.\', kelompok.kode_kelompok, \'.\', jenis.kode_jenis) AS kode_jenis, uraian_jenis')
+        ->join('kelompok', 'kelompok.id = jenis.id_kelompok')
+        ->join('akun', 'akun.id = kelompok.id_akun')
+        ->findAll();
+    }
 }

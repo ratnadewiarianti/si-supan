@@ -23,7 +23,7 @@
                         <form action="/dpa/update/<?= $dpa['id']; ?>" method="post">
                             <div class="form-group">
                                 <label>Nomor DPA</label>
-                                <input type="text" name="nomor_dpa" class="form-control" value="<?= $dpa['kode_dpa']; ?>" required>
+                                <input type="text" name="nomor_dpa" class="form-control" value="<?= $dpa['nomor_dpa']; ?>" required>
                             </div>
                            
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>

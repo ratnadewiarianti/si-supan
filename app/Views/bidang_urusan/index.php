@@ -25,7 +25,7 @@
                     <div class="card-body">
                         <div class="row mb-4">
                             <div class="col-10">
-                                <p class="card-title">Master Rekening Data Bidang Urusan</p>
+                                <p class="card-title">Master Data Bidang Urusan</p>
                             </div>
                             <div class="col-2 text-end">
                                 <a class="btn btn-success btn-sm" href="/bidang_urusan/create">Tambah Data</a>
@@ -38,7 +38,7 @@
                                         <thead>
                                             <tr>
                                                 <th class="">No</th>
-                                                <th>Kode Urusan</th>
+                                                <!-- <th>Kode Urusan</th> -->
                                                 <th>Kode Bidang Urusan</th>
                                                 <th>Nama Bidang Urusan</th>
                                                 <th>Action</th>
@@ -50,8 +50,8 @@
                                                 <?php foreach ($bidang_urusan as $row) : ?>
                                                     <tr>
                                                         <td><?= $no++; ?></td>
-                                                        <td><?= $row['kode_urusan']; ?></td>
-                                                        <td><?= $row['kode_bidang_urusan']; ?></td>
+                                                        <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?></td>
+                                                        <!-- <td></td> -->
                                                         <td><?= $row['nama_bidang_urusan']; ?></td>
                                                         <td>
                                                             <a href="/bidang_urusan/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>

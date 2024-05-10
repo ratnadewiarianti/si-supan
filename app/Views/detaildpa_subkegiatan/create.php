@@ -6,47 +6,61 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Tambah Detail DPA</h4>
-                        <form class="forms-sample" action="/detaildpa/store" method="post">
-                            
-                            <input type="hidden" name="id_dpa" value="<?= service('uri')->getSegment(3); ?>"class="form-control" required>
+                        <h4 class="card-title">Tambah Detail DPA Subkegiatan</h4>
+                        <form class="forms-sample" action="/detaildpa_subkegiatan/store" method="post">
 
-                            <!-- 'id_dpa','id_subkegiatan','id_rekening','jumlah','jumlah_perubahan' -->
+                            <input type="hidden" name="id_detail_dpa" value="<?= service('uri')->getSegment(3); ?>"
+                                class="form-control" required>
+
+                            <!-- id_detail_dpa','uraian','koefisien','satuan','harga','ppn','jumlah','keterangan','koefisien_perubahan','satuan_perubahan','harga_perubahan','ppn_perubahan','jumlah_perubahan','keterangan_perubahan' -->
 
                             <div class="form-group">
-                                <label>Subkegiatan</label>
-                                <select class="form-control" name="id_subkegiatan" required>
-                                    <option selected disabled>-</option>
-                                    <?php foreach ($subkegiatan as $key) : ?>
-                                        <option value="<?= $key['id']; ?>"><?= $key['kode_subkegiatan1']; ?> - <?= $key['nama_subkegiatan']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <label>Uraian</label>
+                                <input type="text" name="uraian" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Koefisien</label>
+                                <input type="text" name="koefisien" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Satuan</label>
+                                <input type="text" name="satuan" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <label>Rekening</label>
-                                <select class="form-control" name="id_rekening" required>
-                                    <option selected disabled>-</option>
-                                    <?php foreach ($rekening as $key) : ?>
-                                        <option value="<?= $key['id']; ?>"><?= $key['kode_rekening']; ?> - <?= $key['uraian_akun']; ?></option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <label>Harga</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="number" id="harga" name="harga" class="form-control" required>
+                                </div>
                             </div>
-
+                            <div class="form-group">
+                                <label>PPN</label>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="number" id="ppn" name="ppn" class="form-control" required>
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label>Jumlah</label>
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Rp.</span>
                                     </div>
-                                    <input type="number" name="jumlah" class="form-control" required>
+                                    <input type="number" id="jumlah" name="jumlah" class="form-control" readonly>
                                 </div>
                             </div>
-
-                            
+                            <div class="form-group">
+                                <label>Keterangan</label>
+                                <input type="text" name="keterangan" class="form-control" required>
+                            </div>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
-                            <!-- <button class="btn btn-light">Batal</button> -->
-                            <a href="/detaildpa/show/<?= service('uri')->getSegment(3); ?>" class="btn btn-danger">Batal</a>
+                            <a href="/detaildpa_subkegiatan/showdetail/<?= service('uri')->getSegment(3); ?>"
+                                class="btn btn-danger">Batal</a>
                         </form>
                     </div>
                 </div>
@@ -58,6 +72,26 @@
     <?= $this->include('layout/footer') ?>
     <!-- partial -->
 </div>
+
+<script>
+    // Mendapatkan elemen-elemen input
+    var hargaInput = document.getElementById("harga");
+    var ppnInput = document.getElementById("ppn");
+    var jumlahInput = document.getElementById("jumlah");
+
+    // Menambahkan event listener untuk menghitung jumlah
+    hargaInput.addEventListener("input", updateJumlah);
+    ppnInput.addEventListener("input", updateJumlah);
+
+    // Fungsi untuk menghitung jumlah
+    function updateJumlah() {
+        var harga = parseFloat(hargaInput.value) || 0; // Mengonversi harga menjadi angka, jika kosong maka 0
+        var ppn = parseFloat(ppnInput.value) || 0; // Mengonversi ppn menjadi angka, jika kosong maka 0
+        var jumlah = harga - ppn; // Menghitung jumlah
+        jumlahInput.value = jumlah; // Menetapkan jumlah ke input jumlah, dengan membulatkan ke 2 angka desimal
+    }
+</script>
+
 <?= $this->endSection() ?>
 
 <?= $this->section('styles') ?>

@@ -130,6 +130,16 @@ $routes->group('subrincian', ['filter' => 'auth'], function ($routes) {
    $routes->get('getRincianObjek/(:num)', 'SubRincianObjekController::getRincianObjek/$1');
 });
 
+$routes->group('penatausahaan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'PenatausahaanController::index');
+   $routes->get('create', 'PenatausahaanController::create');
+   $routes->post('store', 'PenatausahaanController::store');
+   $routes->post('update/(:num)', 'PenatausahaanController::update/$1');
+   $routes->get('edit/(:num)', 'PenatausahaanController::edit/$1');
+   $routes->get('delete/(:num)', 'PenatausahaanController::destroy/$1');
+});
+
+
 $routes->group('urusan', ['filter' => 'auth'], function ($routes) {
    $routes->get('/', 'UrusanController::index');
    $routes->get('create', 'UrusanController::create');
@@ -202,4 +212,54 @@ $routes->group('detaildpa', ['filter' => 'auth'], function ($routes) {
    $routes->get('edit_jumlah_perubahan/(:num)', 'DetailDPAController::edit_jumlah_perubahan/$1');
 });
 
+$routes->group('detailpenatausahaan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'DetailPenatausahaanController::show/$1');
+   $routes->get('create/(:num)', 'DetailPenatausahaanController::create/$1');
+   $routes->post('store', 'DetailPenatausahaanController::store');
+   $routes->post('update/(:num)', 'DetailPenatausahaanController::update/$1');
+   $routes->get('edit/(:num)', 'DetailPenatausahaanController::edit/$1');
+   $routes->get('delete/(:num)', 'DetailPenatausahaanController::destroy/$1');
+   $routes->get('create2/(:num)', 'DetailPenatausahaanController::create2/$1');
+   $routes->post('store2', 'DetailPenatausahaanController::store2');
+   $routes->post('update2/(:num)', 'DetailPenatausahaanController::update2/$1');
+   $routes->get('edit2/(:num)', 'DetailPenatausahaanController::edit2/$1');
+   $routes->get('delete2/(:num)', 'DetailPenatausahaanController::destroy2/$1');
+   $routes->add('terima/(:num)', 'DetailPenatausahaanController::terima/$1');
+   $routes->add('tolak/(:num)', 'DetailPenatausahaanController::tolak/$1');
+});
 
+$routes->group('keterangan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('show/(:num)', 'KeteranganController::show/$1');
+   $routes->get('create/(:num)', 'KeteranganController::create/$1');
+   $routes->post('store', 'KeteranganController::store');
+   $routes->post('update/(:num)', 'KeteranganController::update/$1');
+   $routes->get('edit/(:num)', 'KeteranganController::edit/$1');
+   $routes->get('delete/(:num)', 'KeteranganController::destroy/$1');
+});
+
+
+
+$routes->group('detaildpa_subkegiatan', ['filter' => 'auth'], function ($routes) {
+   $routes->get('showdetail/(:num)', 'DetailDPASubkegiatanController::showdetail/$1');
+   $routes->get('create/(:num)', 'DetailDPASubkegiatanController::create/$1');
+   $routes->post('store', 'DetailDPASubkegiatanController::store');
+   $routes->post('update/(:num)', 'DetailDPASubkegiatanController::update/$1'); 
+   $routes->get('edit/(:num)', 'DetailDPASubkegiatanController::edit/$1');
+   $routes->get('delete/(:num)', 'DetailDPASubkegiatanController::destroy/$1');
+   $routes->post('update_perubahan/(:num)', 'DetailDPASubkegiatanController::update_perubahan/$1');
+   $routes->get('perubahan/(:num)', 'DetailDPASubkegiatanController::perubahan/$1');
+});
+
+$routes->group('verifikasi', ['filter' => 'auth'], function ($routes) {
+   $routes->get('/', 'VerifikasiController::index');
+   $routes->get('create', 'VerifikasiController::create');
+   $routes->post('store', 'VerifikasiController::store');
+   $routes->post('update/(:num)', 'VerifikasiController::update/$1');
+   $routes->get('edit/(:num)', 'VerifikasiController::edit/$1');
+   $routes->get('destroy/(:num)', 'VerifikasiController::destroy/$1');
+   $routes->get('preview_spj/(:segment)', 'VerifikasiController::preview_spj/$1');
+   $routes->get('preview_kwintansi/(:segment)', 'VerifikasiController::preview_kwintansi/$1');
+   $routes->get('download/(:num)', 'VerifikasiController::download/$1');
+   $routes->add('terima/(:num)', 'VerifikasiController::terima/$1');
+   $routes->add('tolak/(:num)', 'VerifikasiController::tolak/$1');
+});

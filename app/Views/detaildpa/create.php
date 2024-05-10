@@ -15,7 +15,7 @@
 
                             <div class="form-group">
                                 <label>Subkegiatan</label>
-                                <select class="form-control" name="id_subkegiatan" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_subkegiatan" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($subkegiatan as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['kode_subkegiatan1']; ?> - <?= $key['nama_subkegiatan']; ?></option>
@@ -25,7 +25,7 @@
 
                             <div class="form-group">
                                 <label>Rekening</label>
-                                <select class="form-control" name="id_rekening" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_rekening" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($rekening as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['kode_rekening']; ?> - <?= $key['uraian_akun']; ?></option>

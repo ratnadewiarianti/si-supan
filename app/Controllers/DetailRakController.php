@@ -24,6 +24,10 @@ class DetailRakController extends BaseController
             'rakbelanja' => $this->RakBelanjaModel->findDatabyId($id),
             'detailrak' => $this->DetailRakBelanjaModel->where('id_rakbelanja', $id)->findAll(),
         ];
+        foreach ($data['rakbelanja'] as &$rak) {
+            $totalRak = $this->RakBelanjaModel->getTotalRak($rak['id']);
+            $rak['total_rak'] = $totalRak;
+        }
         return view('detailrak/show', $data);
     }
 

@@ -23,7 +23,9 @@
                         <form action="/program/store/" method="post">
                             <div class="form-group">
                                 <label>Kode Urusan</label>
-                                <select class="form-control" name="id_urusan" id="id_urusan" required>
+                                <!-- <select class="form-control" name="id_urusan" id="id_urusan" required> -->
+                                <select class="form-control js-example-basic-single w-100" name="id_urusan" id="id_urusan" required>
+
                                     <option selected disabled>-</option>
                                     <?php foreach ($urusan as $key) : ?>
                                         <option value="<?= $key['id']; ?>"><?= $key['kode_urusan']; ?> - <?= $key['nama_urusan']; ?></option>
@@ -32,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Bidang Urusan</label>
-                                <select class="form-control" name="id_bidang_urusan" id="id_bidang_urusan" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_bidang_urusan" id="id_bidang_urusan" required>
 
                                 </select>
                             </div>

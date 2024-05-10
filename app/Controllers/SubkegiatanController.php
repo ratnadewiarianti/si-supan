@@ -100,7 +100,6 @@ class SubkegiatanController extends BaseController
         return redirect()->to('/subkegiatan');
     }
 
-
     // AJAX METHOD FOR DEPENDENT DROPDOWN / CHAINED SELECT OPTION
     public function getBidangUrusan($id)
     {

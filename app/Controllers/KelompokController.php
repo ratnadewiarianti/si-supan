@@ -18,10 +18,7 @@ class KelompokController extends BaseController
 
     public function index()
     {
-        $data['kelompok'] = $this->KelompokModel
-            ->select('kelompok.*,akun.kode_akun')
-            ->join('akun', 'akun.id = kelompok.id_akun')
-            ->findAll();
+        $data['kelompok'] = $this->KelompokModel->getData();
 
         return view('kelompok/index', $data);
     }

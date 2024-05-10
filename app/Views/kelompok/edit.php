@@ -23,7 +23,7 @@
                         <form action="/kelompok/update/<?= $kelompok['id']; ?>" method="post">
                             <div class="form-group">
                                 <label>Kode Akun</label>
-                                <select class="form-control" name="id_akun" required>
+                                <select class="form-control js-example-basic-single w-100" name="id_akun" required>
                                     <option selected disabled>-</option>
                                     <?php foreach ($akun as $key) : ?>
                                         <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $kelompok['id_akun']) echo 'selected="selected"'; ?>><?= $key['kode_akun']; ?> - <?= $key['uraian_akun']; ?></option>
