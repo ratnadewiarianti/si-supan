@@ -103,8 +103,7 @@
                                                             break;
                                                     }
                                                     ?>
-                                                    <button class="btn <?= $buttonClass; ?>"
-                                                        disabled><?= $row['status_verifikasi']; ?></button>
+                                                    <button class="btn <?= $buttonClass; ?>" disabled><?= $row['status_verifikasi']; ?></button>
                                                 </td>
                                                 <td>
                                                     <a href="/detailpenatausahaan/terima/<?= $row['id']; ?>"
@@ -118,13 +117,8 @@
 
                                                 </td>
                                                 <td>
-                                                    <?php if ($row['status_verifikasi'] === 'DITERIMA'): ?>
-                                                    <a href="<?= base_url('/detailpenatausahaan/cetakArsip'); ?>"
-                                                        class="btn btn-warning">Cetak</a>
-                                                    <?php endif; ?>
-
                                                     <a href="/keterangan/show/<?= $row['id']; ?>"
-                                                        class="btn btn-sm btn-success">Detail</a>
+                                                        class="btn btn-sm btn-success">Keterangan</a>
                                                     <a href="/detailpenatausahaan/edit/<?= $row['id']; ?>"
                                                         class="btn btn-sm btn-primary">Edit</a>
                                                     <a href="/detailpenatausahaan/delete/<?= $row['id']; ?>"
@@ -158,10 +152,8 @@
                                 <p class="card-title">Anggota</p>
                             </div>
                             <div>
-                                <a class="btn btn-success btn-sm"
-                                    href="/detailpenatausahaan/create2/<?= service('uri')->getSegment(3); ?>">Tambah
-                                    Data</a>
-
+                                <a class="btn btn-success btn-sm" href="/detailpenatausahaan/create2/<?= service('uri')->getSegment(3); ?>">Tambah Data</a>
+                             
                             </div>
                         </div>
 
@@ -218,60 +210,60 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var buttonsTerima = document.querySelectorAll('.btn-terima');
-            var buttonsTolak = document.querySelectorAll('.btn-tolak');
+document.addEventListener('DOMContentLoaded', function () {
+    var buttonsTerima = document.querySelectorAll('.btn-terima');
+    var buttonsTolak = document.querySelectorAll('.btn-tolak');
 
-            function handleResponse(data) {
-                if (data.status === 'success') {
-                    console.log(data.message);
-                    // Ubah tampilan sesuai dengan respons
-                    location.reload(); // Reload halaman setelah pembaruan berhasil
-                } else {
-                    console.error('Gagal memperbarui status:', data.message);
-                }
-            }
+    function handleResponse(data) {
+        if (data.status === 'success') {
+            console.log(data.message);
+            // Ubah tampilan sesuai dengan respons
+            location.reload(); // Reload halaman setelah pembaruan berhasil
+        } else {
+            console.error('Gagal memperbarui status:', data.message);
+        }
+    }
 
-            buttonsTerima.forEach(function (button) {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
+    buttonsTerima.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
 
-                    var id = this.getAttribute('data-id');
+            var id = this.getAttribute('data-id');
 
-                    fetch('/detailpenatausahaan/terima/' + id + '?timestamp=' + new Date()
-                            .getTime(), {
-                                method: 'GET',
-                            })
-                        .then(response => response.json())
-                        .then(data => {
-                            handleResponse(data);
-                        })
-                        .catch(error => {
-                            console.error('Gagal mengirim permintaan: ' + error);
-                        });
-                });
-            });
-
-            buttonsTolak.forEach(function (button) {
-                button.addEventListener('click', function (event) {
-                    event.preventDefault();
-
-                    var id = this.getAttribute('data-id');
-
-                    fetch('/detailpenatausahaan/tolak/' + id + '?timestamp=' + new Date()
-                            .getTime(), {
-                                method: 'GET',
-                            })
-                        .then(response => response.json())
-                        .then(data => {
-                            handleResponse(data);
-                        })
-                        .catch(error => {
-                            console.error('Gagal mengirim permintaan: ' + error);
-                        });
-                });
+            fetch('/detailpenatausahaan/terima/' + id + '?timestamp=' + new Date().getTime(), {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                handleResponse(data);
+            })
+            .catch(error => {
+                console.error('Gagal mengirim permintaan: ' + error);
             });
         });
+    });
+
+    buttonsTolak.forEach(function (button) {
+        button.addEventListener('click', function (event) {
+            event.preventDefault();
+
+            var id = this.getAttribute('data-id');
+
+            fetch('/detailpenatausahaan/tolak/' + id + '?timestamp=' + new Date().getTime(), {
+                method: 'GET',
+            })
+            .then(response => response.json())
+            .then(data => {
+                handleResponse(data);
+            })
+            .catch(error => {
+                console.error('Gagal mengirim permintaan: ' + error);
+            });
+        });
+    });
+});
+
+
     </script>
 
 

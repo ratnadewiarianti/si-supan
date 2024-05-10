@@ -34,6 +34,19 @@
                                 <label>Nama</label>
                                 <input type="text" name="nama" class="form-control" value="<?= $karyawan['nama']; ?>" required>
                             </div>
+                        <form action="/karyawan/update/<?= $karyawan['id']; ?>" enctype="multipart/form-data" method="post">
+                            <div class="form-group">
+                                <label>Jabatan</label>
+                                <input type="text" name="jabatan" class="form-control" value="<?= $karyawan['jabatan']; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>NIP</label>
+                                <input type="text" name="nip" class="form-control" value="<?= $karyawan['nip']; ?>" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Nama</label>
+                                <input type="text" name="nama" class="form-control" value="<?= $karyawan['nama']; ?>" required>
+                            </div>
 
                             <div class="form-group">
                                 <label for="kategori_pegawai">Kategori Pegawai</label>
@@ -44,7 +57,6 @@
                                         Tenaga Ahli</option>
                                 </select>
                             </div>
-
                             <div class="form-group">
                                 <label>No Rek</label>
                                 <input type="text" name="norek" class="form-control" value="<?= $karyawan['norek']; ?>" required>
@@ -119,6 +131,7 @@
             previewImage(this);
         });
     </script>
+   
     <!-- content-wrapper ends -->
     <!-- partial:partials/_footer.html -->
     <?= $this->include('layout/footer') ?>
