@@ -155,10 +155,10 @@ class VerifikasiController extends BaseController
             'diterima' => $this->request->getPost('diterima'),
             'file_spj' => $fileSPJName,
             'file_kwitansi' => $fileKwitansiName,
-            'status_bendahara' => $this->request->getPost('status_bendahara'),
-            'status_kasubbag' => $this->request->getPost('status_kasubbag'),
-            'status_pptik' => $this->request->getPost('status_pptik'),
-            'status_verifikator_keuangan' => $this->request->getPost('status_verifikator_keuangan'),
+             // 'status_bendahara' => $this->request->getPost('status_bendahara'),
+            // 'status_kasubbag' => $this->request->getPost('status_kasubbag'),
+            // 'status_pptik' => $this->request->getPost('status_pptik'),
+            // 'status_verifikator_keuangan' => $this->request->getPost('status_verifikator_keuangan'),
         ];
 
         // Update data verifikasi

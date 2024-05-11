@@ -41,9 +41,9 @@
                                                 <th>Jabatan</th>
                                                 <th>NIP</th>
                                                 <th>Nama</th>
-                                                <th>No Rek</th>
-                                                <th>File</th>
                                                 <th>Kategori Pegawai</th>
+                                                <th>File</th>
+                                                <th>No Rek</th>
                                                 <th>Keterangan</th>
                                                 <th>Action</th>
                                             </tr>

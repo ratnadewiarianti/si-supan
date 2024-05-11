@@ -115,6 +115,8 @@ class KaryawanController extends BaseController
                 'nip' => $this->request->getPost('nip'),
                 'nama' => $this->request->getPost('nama'),
                 'kategori_pegawai' => $this->request->getPost('kategori_pegawai'),
+                'status_ttd' => $this->request->getPost('status_ttd'),
+                'keterangan' => $this->request->getPost('keterangan'),
             ];
 
             $this->karyawanModel->update($id, $data);
@@ -143,6 +145,7 @@ class KaryawanController extends BaseController
                     'nama' => $this->request->getPost('nama'),
                     'kategori_pegawai' => $this->request->getPost('kategori_pegawai'),
                     'status_ttd' => $this->request->getPost('status_ttd'),
+                    'keterangan' => $this->request->getPost('keterangan'),
                     'file' => $newName, // Kolom 'ttd' disimpan dengan nama file yang baru
                 ];
 

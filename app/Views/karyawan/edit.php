@@ -65,7 +65,7 @@
                                     <br>
                                 <?php endif; ?>
                                 <label><small>Input dalam Format JPG</small></label> <br>
-                                <input type="file" id="fileInput" class="form-control-file" accept=".jpg, .jpeg, .png">
+                                <input type="file" id="fileInput" name="file" class="form-control-file" accept=".jpg, .jpeg, .png"> 
                             </div>
 
                             <!-- Menyimpan nama file foto struktur saat ini -->
