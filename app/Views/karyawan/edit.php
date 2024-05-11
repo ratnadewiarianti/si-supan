@@ -52,9 +52,9 @@
 
                             <div class="form-group">
                                 <label>Status Tanda Tangan</label><br>
-                                <input type="radio" name="status_ttd" value="Ya" <?= isset($karyawan['status_ttd']) && $karyawan['status_ttd'] == 'Ya' ? 'checked' : ''; ?> required onclick="toggleUploadForm(this)">
+                                <input type="radio" name="status_ttd" value="Ya" <?= isset($karyawan['status_ttd']) && $karyawan['status_ttd'] == 'Ya' ? 'checked' : ''; ?> onclick="toggleUploadForm(this)">
                                 Ya<br>
-                                <input type="radio" name="status_ttd" value="Tidak" <?= isset($karyawan['status_ttd']) && $karyawan['status_ttd'] == 'Tidak' ? 'checked' : ''; ?> required onclick="toggleUploadForm(this)">
+                                <input type="radio" name="status_ttd" value="Tidak" <?= isset($karyawan['status_ttd']) && $karyawan['status_ttd'] == 'Tidak' ? 'checked' : ''; ?> onclick="toggleUploadForm(this)">
                                 Tidak
                             </div>
 
@@ -65,7 +65,7 @@
                                     <br>
                                 <?php endif; ?>
                                 <label><small>Input dalam Format JPG</small></label> <br>
-                                <input type="file" id="fileInput" class="form-control-file" accept=".jpg, .jpeg, .png">
+                                <input type="file" id="fileInput" name="file" class="form-control-file" accept=".jpg, .jpeg, .png">
                             </div>
 
                             <!-- Menyimpan nama file foto struktur saat ini -->
@@ -73,7 +73,7 @@
 
                             <div class="form-group">
                                 <label>Keterangan</label>
-                                <input type="text" name="keterangan" class="form-control" value="<?= $karyawan['keterangan']; ?>" required>
+                                <input type="text" name="keterangan" class="form-control" value="<?= $karyawan['keterangan']; ?>">
                             </div>
 
                             <button type="submit" class="btn btn-primary mr-2">Simpan</button>
