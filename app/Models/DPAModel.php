@@ -28,5 +28,6 @@ class DPAModel extends Model
         ->findAll();
     }
 
+  
 
 }

@@ -52,31 +52,28 @@ class DetailDPAModel extends Model
     }
     
 
-//     public function getDetailDPA()
-// {
-//     return $this->select('detail_dpa.*, 
-//                           subkegiatan.id AS id_subkegiatan, 
-//                           CONCAT(urusan.kode_urusan, \'.\', bidang_urusan.kode_bidang_urusan, \'.\', program.kode_program, \'.\', kegiatan.kode_kegiatan, \'.\', subkegiatan.kode_subkegiatan) AS kode_subkegiatan, 
-//                           nomenklatur_urusan_provinsi AS nama_subkegiatan,
-//                           sub_rincian_objek.id AS id_rekening, 
-//                           CONCAT(akun.kode_akun, \'.\', kelompok.kode_kelompok, \'.\', jenis.kode_jenis, \'.\', objek.kode_objek, \'.\', rincian_objek.kode_rincian_objek, \'.\', sub_rincian_objek.kode_sub_rincian_objek) AS kode_rekening, 
-//                           uraian_sub_rincian_objek AS uraian_akun, 
-//                           detail_dpa.jumlah, 
-//                           detail_dpa.jumlah_perubahan')
-//         ->join('dpa', 'dpa.id = detail_dpa.id_dpa')
-//         ->join('sub_rincian_objek AS sro_detail_dpa', 'sro_detail_dpa.id = detail_dpa.id_rekening')
-//         ->join('rincian_objek', 'rincian_objek.id = sro_detail_dpa.id_rincian_objek')
-//         ->join('objek', 'objek.id = sro_detail_dpa.id_objek')
-//         ->join('jenis', 'jenis.id = sro_detail_dpa.id_jenis')
-//         ->join('kelompok', 'kelompok.id = sro_detail_dpa.id_kelompok')
-//         ->join('akun', 'akun.id = sro_detail_dpa.id_akun')
-//         ->join('subkegiatan', 'subkegiatan.id = dpa.id_subkegiatan')
-//         ->join('kegiatan', 'kegiatan.id = subkegiatan.id_kegiatan')
-//         ->join('program', 'program.id = subkegiatan.id_program')
-//         ->join('bidang_urusan', 'bidang_urusan.id = subkegiatan.id_bidang_urusan')
-//         ->join('urusan', 'urusan.id = subkegiatan.id_urusan')
-//         ->findAll();
-// }
+ public function getKegiatan($idd)
+    {
+        return $this->select('detail_dpa.*, CONCAT(urusan.kode_urusan, \'.\', bidang_urusan.kode_bidang_urusan, \'.\', program.kode_program, \'.\', kegiatan.kode_kegiatan) AS kode_kegiatan,  kegiatan.nama_kegiatan')
+        ->join('subkegiatan', 'subkegiatan.id = detail_dpa.id_subkegiatan')
+        ->join('kegiatan', 'kegiatan.id = subkegiatan.id_kegiatan')
+        ->join('program', 'program.id = subkegiatan.id_program')
+        ->join('bidang_urusan', 'bidang_urusan.id = subkegiatan.id_bidang_urusan')
+        ->join('urusan', 'urusan.id = subkegiatan.id_urusan')
+        ->where('detail_dpa.id',$idd)
+        ->first();
+    }
 
+    public function getProgram($idd)
+    {
+        return $this->select('detail_dpa.*, CONCAT(urusan.kode_urusan, \'.\', bidang_urusan.kode_bidang_urusan, \'.\', program.kode_program) AS kode_program,  program.nama_program')
+        ->join('subkegiatan', 'subkegiatan.id = detail_dpa.id_subkegiatan')
+        ->join('kegiatan', 'kegiatan.id = subkegiatan.id_kegiatan')
+        ->join('program', 'program.id = subkegiatan.id_program')
+        ->join('bidang_urusan', 'bidang_urusan.id = subkegiatan.id_bidang_urusan')
+        ->join('urusan', 'urusan.id = subkegiatan.id_urusan')
+        ->where('detail_dpa.id', $idd)
+        ->first();
+    }
 
 }

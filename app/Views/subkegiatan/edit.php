@@ -42,7 +42,7 @@
                                 <label>Kode program</label>
                                 <select class="form-control" name="id_program" id="id_program" required>
                                     <?php foreach ($program as $key) : ?>
-                                        <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subkegiatan['id_program']) echo 'selected="selected"' ?>><?= $key['kode_program1']; ?> - <?= $key['nama_program']; ?></option>
+                                        <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subkegiatan['id_program']) echo 'selected="selected"' ?>><?= $key['kode_program']; ?> - <?= $key['nama_program']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -50,7 +50,7 @@
                                 <label>Kode kegiatan</label>
                                 <select class="form-control" name="id_kegiatan" id="id_kegiatan" required>
                                     <?php foreach ($kegiatan as $key) : ?>
-                                        <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subkegiatan['id_kegiatan']) echo 'selected="selected"' ?>><?= $key['kode_kegiatan1']; ?> - <?= $key['nama_kegiatan']; ?></option>
+                                        <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $subkegiatan['id_kegiatan']) echo 'selected="selected"' ?>><?= $key['kode_kegiatan']; ?> - <?= $key['nama_kegiatan']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

@@ -8,7 +8,7 @@
                 <div class="col-12 col-xl-8 ">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Master</a></li>
-                        <li class="breadcrumb-item"><a href="/subrincian">Sub Rincian Objek</a></li>
+                        <li class="breadcrumb-item"><a href="/kegiatan">Kegiatan</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Edit</li>
                     </ol>
                 </div>
@@ -19,8 +19,8 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Edit Data Sub Rincian Objek</h4>
-                        <form action="/subrincian/update/<?= $kegiatan['id']; ?>" method="post">
+                        <h4 class="card-title">Edit Data Kegiatan</h4>
+                        <form action="/kegiatan/update/<?= $kegiatan['id']; ?>" method="post">
                             <div class="form-group">
                                 <label>Urusan</label>
                                 <select class="form-control" name="id_urusan" id="id_urusan" required>
@@ -42,7 +42,7 @@
                                 <label>Program</label>
                                 <select class="form-control" name="id_program" id="id_program" required>
                                     <?php foreach ($program as $key) : ?>
-                                        <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $kegiatan['id_program']) echo 'selected="selected"' ?>><?= $key['kode_program1']; ?> - <?= $key['nama_program']; ?></option>
+                                        <option value="<?= $key['id']; ?>" <?php if ($key['id'] == $kegiatan['id_program']) echo 'selected="selected"' ?>><?= $key['kode_program']; ?> - <?= $key['nama_program']; ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>

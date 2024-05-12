@@ -226,6 +226,7 @@ $routes->group('detailpenatausahaan', ['filter' => 'auth'], function ($routes) {
    $routes->get('delete2/(:num)', 'DetailPenatausahaanController::destroy2/$1');
    $routes->add('terima/(:num)', 'DetailPenatausahaanController::terima/$1');
    $routes->add('tolak/(:num)', 'DetailPenatausahaanController::tolak/$1');
+   $routes->get('cetak/(:num)', 'DetailPenatausahaanController::cetak/$1');
 });
 
 $routes->group('keterangan', ['filter' => 'auth'], function ($routes) {
@@ -262,4 +263,5 @@ $routes->group('verifikasi', ['filter' => 'auth'], function ($routes) {
    $routes->get('download/(:num)', 'VerifikasiController::download/$1');
    $routes->add('terima/(:num)', 'VerifikasiController::terima/$1');
    $routes->add('tolak/(:num)', 'VerifikasiController::tolak/$1');
+  
 });
