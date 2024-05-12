@@ -128,3 +128,4 @@ nb-configuration.xml
 
 #lewati file config app.php
 app/Config/App.php
+app/Config/App.php
