@@ -37,7 +37,6 @@
                                         <!-- <div class="table-responsive">
                                     <table class="display expandable-table" style="width:100%" id=" table-2"> -->
                                         <thead>
-                                            <th>cetak</th>
                                             <th>No</th>
                                             <th>Nomor DPA</th>
                                             <th>Nomor Rekening</th>
@@ -62,9 +61,6 @@
                                                 <?php foreach ($detailpenatausahaan as $row) : ?>
                                                     <tr>
                                                         <td>
-                                                            <a href="/detailpenatausahaan/cetak/<?= $row['id']; ?>" class="btn btn-sm btn-dark" target="_blank">Cetak</a>
-                                                        </td>
-                                                        <td>
                                                             <?= $no++; ?>
                                                         </td>
                                                         <td>
@@ -84,14 +80,20 @@
                                                         <td>
                                                             <?= $row['asli_123']; ?>
                                                         </td>
-                                                        <td>
-                                                            <?= $row['sudah_terima_dari']; ?>
+                                                        <td style="text-align: justify;">
+                                                            <?php
+                                                            $wrapped_text = wordwrap($row['sudah_terima_dari'], 40, "<br>\n", true);
+                                                            echo $wrapped_text;
+                                                            ?>
                                                         </td>
                                                         <td>
                                                             <?= $row['uang_sebanyak']; ?>
                                                         </td>
-                                                        <td>
-                                                            <?= $row['untuk_pembayaran']; ?>
+                                                        <td style="text-align: justify;">
+                                                            <?php
+                                                            $wrapped_text = wordwrap($row['untuk_pembayaran'], 70, "<br>\n", true);
+                                                            echo $wrapped_text;
+                                                            ?>
                                                         </td>
                                                         <td>
                                                             <?= $row['pajak_daerah']; ?>
@@ -128,6 +130,9 @@
 
                                                         </td>
                                                         <td>
+                                                            <?php if ($row['status_verifikasi'] == 'DITERIMA') : ?>
+                                                                <a href="/detailpenatausahaan/cetak/<?= $row['id']; ?>" class="btn btn-sm btn-dark" target="_blank">Cetak</a>
+                                                            <?php endif; ?>
                                                             <a href="/keterangan/show/<?= $row['id']; ?>" class="btn btn-sm btn-success">Keterangan</a>
                                                             <a href="/detailpenatausahaan/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                                                             <a href="/detailpenatausahaan/delete/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>
