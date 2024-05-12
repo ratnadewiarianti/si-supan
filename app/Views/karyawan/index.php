@@ -50,30 +50,27 @@
                                         </thead>
                                         <tbody>
                                             <?php if (!empty($karyawan)) : ?>
-                                            <?php $no = 1; ?>
-                                            <?php foreach ($karyawan as $row) : ?>
-                                            <tr>
-                                                <td><?= $no++; ?></td>
-                                                <td><?= $row['jabatan']; ?></td>
-                                                <td><?= $row['nip']; ?></td>
-                                                <td><?= $row['nama']; ?></td>
-                                                <td><?= $row['kategori_pegawai']; ?></td>
-                                                <td><?= !empty($row['file']) ? '<img src="' . base_url('uploads/ttd/' . $row['file']) . '" alt="Gambar" width="100" height="100">' : '-' ?></td>
-
-                                                <td><?= $row['norek']; ?></td>
-                                                <td><?= $row['keterangan']; ?></td>
-                                                <td>
-                                                    <a href="/karyawan/edit/<?= $row['id']; ?>"
-                                                        class="btn btn-primary">Edit</a>
-                                                    <a href="/karyawan/delete/<?= $row['id']; ?>"
-                                                        class="btn btn-danger">Delete</a>
-                                                </td>
-                                            </tr>
-                                            <?php endforeach; ?>
+                                                <?php $no = 1; ?>
+                                                <?php foreach ($karyawan as $row) : ?>
+                                                    <tr>
+                                                        <td><?= $no++; ?></td>
+                                                        <td><?= $row['jabatan']; ?></td>
+                                                        <td><?= $row['nip']; ?></td>
+                                                        <td><?= $row['nama']; ?></td>
+                                                        <td><?= $row['norek']; ?></td>
+                                                        <td><?= !empty($row['file']) ? '<img src="' . base_url('uploads/ttd/' . $row['file']) . '" alt="Gambar" width="100" height="100">' : '-' ?></td>
+                                                        <td><?= $row['kategori_pegawai']; ?></td>
+                                                        <td><?= $row['keterangan']; ?></td>
+                                                        <td>
+                                                            <a href="/karyawan/edit/<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
+                                                            <a href="/karyawan/delete/<?= $row['id']; ?>" class="btn btn-danger">Delete</a>
+                                                        </td>
+                                                    </tr>
+                                                <?php endforeach; ?>
                                             <?php else : ?>
-                                            <tr>
-                                                <td colspan="6" class="text-center">Tidak ada data Karyawan.</td>
-                                            </tr>
+                                                <tr>
+                                                    <td colspan="6" class="text-center">Tidak ada data Karyawan.</td>
+                                                </tr>
                                             <?php endif; ?>
 
                                         </tbody>

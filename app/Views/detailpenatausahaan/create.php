@@ -60,16 +60,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Uang Sebanyak</label>
-                                <div class="input-group">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Rp.</span>
-                                    </div>
-                                    <input type="number" name="uang_sebanyak" class="form-control" required>
-                                </div>
+                                <input type="text" name="uang_sebanyak" class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label>Untuk Pembayaran</label>
-                                <input type="text" name="untuk_pembayaran" required class="form-control">
+
+                                <textarea name="untuk_pembayaran" required class="form-control" style="min-height:100px"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Pajak Daerah</label>
@@ -81,9 +77,14 @@
                             </div>
                             <div class="form-group">
                                 <label>Terbilang</label>
-                                <input type="text" name="terbilang" required class="form-control">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Rp.</span>
+                                    </div>
+                                    <input type="number" name="terbilang" required class="form-control">
+                                </div>
                             </div>
-                            <input type="text" name="status_verifikasi"  value="MENUNGGU" class="form-control"  hidden required>
+                            <input type="text" name="status_verifikasi" value="MENUNGGU" class="form-control" hidden required>
                             <button type="submit" class="btn btn-success mr-2">Simpan</button>
                             <!-- <button class="btn btn-light">Batal</button> -->
                             <a href="/detailpenatausahaan/show/<?= service('uri')->getSegment(3); ?>" class="btn btn-danger">Batal</a>

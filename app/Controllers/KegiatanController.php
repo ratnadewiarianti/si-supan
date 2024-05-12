@@ -65,7 +65,7 @@ class KegiatanController extends BaseController
     {
         $data = [
             'kegiatan' => $this->KegiatanModel->find($id),
-            'program' => $this->ProgramModel->find($id),
+            'program' => $this->ProgramModel->findAll(),
             'bidang_urusan' => $this->BidangUrusanModel->findAll(),
             'urusan' => $this->UrusanModel->findAll(),
         ];

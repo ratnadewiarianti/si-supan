@@ -62,6 +62,7 @@
                                                 <?php $no = 1; ?>
                                                 <?php foreach ($verifikasi as $row) : ?>
                                                     <tr>
+                                                       
                                                         <td><?= $no++; ?></td>
                                                         <td><?= $row['kode_urusan']; ?>.<?= $row['kode_bidang_urusan']; ?>.<?= $row['kode_program']; ?>.<?= $row['kode_kegiatan']; ?>.<?= $row['kode_subkegiatan']; ?> <?= $row['nomenklatur_urusan_provinsi']; ?></td>
 
@@ -84,36 +85,30 @@
                                                             <a href="/verifikasi/preview_kwintansi/<?= $row['file_kwitansi']; ?>" class="btn btn-sm btn-dark" target="_blank">Pratinjau</a>
                                                         </td>
                                                         <!-- id_detail_penatausahaan','nomor_bku', 'tanggal', 'uraian', 'nilai_spj', 'ppn', 'pph_psl_23', 'pph_psl_22', 'pph_psl_21', 'pajak_daerah', 'diterima', 'file_spj', 'file_kwitansi', 'status_bendahara', 'status_kasubbag', 'status_pptik', 'status_verifikator_keuangan -->
-                                                    <td>
-                                                    <?php
-                                                    $buttonClass = '';
-                                                    switch ($row['status_bendahara']) {
-                                                        case 'MENUNGGU':
-                                                            $buttonClass = 'btn-warning';
-                                                            break;
-                                                        case 'DITERIMA':
-                                                            $buttonClass = 'btn-success';
-                                                            break;
-                                                        case 'DITOLAK':
-                                                            $buttonClass = 'btn-danger';
-                                                            break;
-                                                        default:
-                                                            // Default class atau logika jika tidak sesuai kondisi di atas.
-                                                            break;
-                                                    }
-                                                    ?>
-                                                    <button class="btn <?= $buttonClass; ?>" disabled><?= $row['status_bendahara']; ?></button>
-                                                </td>
-                                                <td>
-                                                    <a href="/verifikasi/terima/<?= $row['id']; ?>"
-                                                        class="btn btn-success btn-sm btn-terima"
-                                                        data-id="<?= $row['id']; ?>"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menerima data ini?')">Disetujui</a>
-                                                    <a href="/verifikasi/tolak/<?= $row['id']; ?>"
-                                                        class="btn btn-danger btn-sm btn-tolak"
-                                                        data-id="<?= $row['id']; ?>"
-                                                        onclick="return confirm('Apakah Anda yakin ingin menolak data ini?')">Ditolak</a>
-                                                </td>
+                                                        <td>
+                                                            <?php
+                                                            $buttonClass = '';
+                                                            switch ($row['status_bendahara']) {
+                                                                case 'MENUNGGU':
+                                                                    $buttonClass = 'btn-warning';
+                                                                    break;
+                                                                case 'DITERIMA':
+                                                                    $buttonClass = 'btn-success';
+                                                                    break;
+                                                                case 'DITOLAK':
+                                                                    $buttonClass = 'btn-danger';
+                                                                    break;
+                                                                default:
+                                                                    // Default class atau logika jika tidak sesuai kondisi di atas.
+                                                                    break;
+                                                            }
+                                                            ?>
+                                                            <button class="btn <?= $buttonClass; ?>" disabled><?= $row['status_bendahara']; ?></button>
+                                                        </td>
+                                                        <td>
+                                                            <a href="/verifikasi/terima/<?= $row['id']; ?>" class="btn btn-success btn-sm btn-terima" data-id="<?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menerima data ini?')">Disetujui</a>
+                                                            <a href="/verifikasi/tolak/<?= $row['id']; ?>" class="btn btn-danger btn-sm btn-tolak" data-id="<?= $row['id']; ?>" onclick="return confirm('Apakah Anda yakin ingin menolak data ini?')">Ditolak</a>
+                                                        </td>
                                                         <td>
                                                             <a href="/verifikasi/edit/<?= $row['id']; ?>" class="btn btn-sm btn-primary">Edit</a>
                                                             <a href="/verifikasi/destroy/<?= $row['id']; ?>" class="btn btn-sm btn-danger">Delete</a>

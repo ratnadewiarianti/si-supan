@@ -66,8 +66,8 @@ class SubkegiatanController extends BaseController
     {
         $data = [
             'subkegiatan' => $this->SubkegiatanModel->find($id),
-            'kegiatan' => $this->KegiatanModel->find($id),
-            'program' => $this->ProgramModel->find($id),
+            'kegiatan' => $this->KegiatanModel->findAll(),
+            'program' => $this->ProgramModel->findAll(),
             'bidang_urusan' => $this->BidangUrusanModel->findAll(),
             'urusan' => $this->UrusanModel->findAll(),
         ];
@@ -83,9 +83,9 @@ class SubkegiatanController extends BaseController
             'id_kegiatan' => $this->request->getPost('id_kegiatan'),
             'kode_subkegiatan' => $this->request->getPost('kode_subkegiatan'),
             'nomenklatur_urusan_provinsi' => $this->request->getPost('nomenklatur_urusan_provinsi'),
-            'kinerja' => $this->request->getPost('kinerja'),
-            'indikator' => $this->request->getPost('indikator'),
-            'satuan' => $this->request->getPost('satuan'),
+            // 'kinerja' => $this->request->getPost('kinerja'),
+            // 'indikator' => $this->request->getPost('indikator'),
+            // 'satuan' => $this->request->getPost('satuan'),
         ];
 
         $this->SubkegiatanModel->update($id, $data);
