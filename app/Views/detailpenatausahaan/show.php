@@ -225,21 +225,21 @@
             var buttonsTerima = document.querySelectorAll('.btn-terima');
             var buttonsTolak = document.querySelectorAll('.btn-tolak');
 
-            function handleResponse(data) {
-                if (data.status === 'success') {
-                    console.log(data.message);
-                    // Ubah tampilan sesuai dengan respons
-                    location.reload(); // Reload halaman setelah pembaruan berhasil
-                } else {
-                    console.error('Gagal memperbarui status:', data.message);
-                }
-            }
+    function handleResponse(data) {
+        if (data.status === 'success') {
+            console.log(data.message);
+            // Ubah tampilan sesuai dengan respons
+            location.reload(); // Reload halaman setelah pembaruan berhasil
+        } else {
+            console.error('Gagal memperbarui status:', data.message);
+        }
+    }
 
             buttonsTerima.forEach(function(button) {
                 button.addEventListener('click', function(event) {
                     event.preventDefault();
 
-                    var id = this.getAttribute('data-id');
+            var id = this.getAttribute('data-id');
 
                     fetch('/detailpenatausahaan/terima/' + id + '?timestamp=' + new Date().getTime(), {
                             method: 'GET',
@@ -258,7 +258,7 @@
                 button.addEventListener('click', function(event) {
                     event.preventDefault();
 
-                    var id = this.getAttribute('data-id');
+            var id = this.getAttribute('data-id');
 
                     fetch('/detailpenatausahaan/tolak/' + id + '?timestamp=' + new Date().getTime(), {
                             method: 'GET',
